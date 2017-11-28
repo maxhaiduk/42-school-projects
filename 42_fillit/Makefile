@@ -5,57 +5,74 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/27 10:55:46 by mhaiduk           #+#    #+#              #
-#    Updated: 2017/11/27 12:26:40 by mhaiduk          ###   ########.fr        #
+#    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
+#    Updated: 2017/11/28 09:45:31 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-# iEdit: main.o Editor.o TextLine.o
-#       gcc  $^  -o $@              ---->>>   main.o Editor.o TextLine.o -o iEdit
-# $^, $@ автоматические переменные
-# $^ - означает список зависимостей (main.o Editor.o TextLine.o)
-# $@ - означает имя цели (iEdit)
+NAME = fillit
 
-# % - любое кол-во произвольных символов
+# Output settings
+DEFAULT	:=\033[0m
+BOLD	:=\033[1m
+GREEN	:=\033[0;32m
+RED		:=\033[0;31m
 
-NAME	:= fillit
+# Compiler
+CC		= gcc
+FLAGS	= -Wall -Wextra -Werror
 
 # Directories
-SRC_DIR	:= ./src
-INC_DIR	:= ./includes
-OBJ_DIR	:= ./obj
-LIB_DIR	:= ./libft
+SRC_DIR := ./src
+OBJ_DIR := ./obj
+INC_DIR := ./includes
+LFT_DIR := ./libft
 
-CC		:= gcc
-FLAGS	:= -Wall -Wextra -Werror
+# Source files
+SRC :=	main.c
 
-# Source and objects files
-SRC		:= main.c
-OBJ		:= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+# Object files
+OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-# Library file
-L_FT	:= $(LIB_DIR)/libft.a
+#includes
+INC := $(addprefix -I, $(INC_DIR))
 
-# .PHONY - описывает имена абстрактных правил
-# для избежания совпадений имен правил с файлами на диске 
-.PHONY: all clean fclean re
+# printI:
+# 		@echo "$(INC)"
+# Libft
+LFT := libft.a
 
-#print:
-#	@echo $(OBJ)
+.PHONY = all clean
 
-all: $(NAME) 
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $^ $(L_FT) -o $(NAME)
+	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
+	@make -C $(LFT_DIR) all --silent
+	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"
+	@$(CC) $(FLAGS) $(OBJ) $(LFT_DIR)/$(LFT) -o $(NAME)
+	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
-
-$(OBJ): $(SRC_DIR)/$(SRC)
-	$(CC) $(FLAGS) -c  $^ -o $(OBJ)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	@echo "$(RED)Cleaning libft...$(DEFAULT)" 
+	@make -C $(LFT_DIR) clean --silent
+	@echo "$(RED)Cleaning $(NAME) o-files...$(DEFAULT)"
+	@rm -rf $(OBJ)
+	@rm -r $(OBJ_DIR)
+	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
 fclean: clean
-	rm -rf $(NAME)
+	@echo "$(RED)Deleting libft.a...$(DEFAULT)" 
+	@rm -rf $(LFT_DIR)/$(LFT)
+	@echo "$(RED)Deleting fillit...$(DEFAULT)" 
+	@rm -rf $(NAME)
+	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
 re: fclean all
+
+
+
