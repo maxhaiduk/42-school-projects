@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   reader.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:15:33 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/11/28 14:24:50 by mhaiduk          ###   ########.fr       */
+/*   Created: 2017/11/27 16:43:54 by mhaiduk           #+#    #+#             */
+/*   Updated: 2017/11/28 13:48:52 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#ifndef READER_H
+# define READER_H
 
-void show(t_list *node)
-{
-	ft_putchar(*(char *)(node->content));
-}
+#include <fcntl.h>
+#include <sys/uio.h>
+#include <unistd.h>
 
-int	main(int argc, char **argv)
-{
-	t_list *file_cont;
+#include "../libft/libft.h"
 
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fillit [filename]\n");
-		return(0);
-	}
-	file_cont = read_file(argv[1]);
-	ft_lstiter(file_cont, show);
-	check_input(file_cont);
-	ft_lst_erase(file_cont);
-}
+t_list  *read_file(char *filename);
+
+#endif

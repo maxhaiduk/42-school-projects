@@ -29,7 +29,9 @@ INC_DIR := ./includes
 LFT_DIR := ./libft
 
 # Source files
-SRC :=	main.c
+SRC :=	main.c \
+		reader.c \
+		input_checker.c
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
@@ -37,8 +39,6 @@ OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 #includes
 INC := $(addprefix -I, $(INC_DIR))
 
-# printI:
-# 		@echo "$(INC)"
 # Libft
 LFT := libft.a
 

@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   input_checker.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 10:15:33 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/11/28 14:24:50 by mhaiduk          ###   ########.fr       */
+/*   Created: 2017/11/28 13:54:09 by mhaiduk           #+#    #+#             */
+/*   Updated: 2017/11/28 15:39:17 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fillit.h"
+#ifndef INPUT_CHECKER_H
+# define INPUT_CHECKER_H
 
-void show(t_list *node)
+#include "../libft/libft.h"
+
+typedef struct	s_map_cont
 {
-	ft_putchar(*(char *)(node->content));
-}
+	int			hashes;
+	int			dots;
+	int			new_lines;
+	int			len;
+}				t_map_cont;
 
-int	main(int argc, char **argv)
-{
-	t_list *file_cont;
+void    check_input(t_list *head);
 
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./fillit [filename]\n");
-		return(0);
-	}
-	file_cont = read_file(argv[1]);
-	ft_lstiter(file_cont, show);
-	check_input(file_cont);
-	ft_lst_erase(file_cont);
-}
+#endif
