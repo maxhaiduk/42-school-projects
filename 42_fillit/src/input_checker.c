@@ -6,13 +6,20 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 13:53:05 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/11/29 13:26:47 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/11/30 09:57:37 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/input_checker.h"
 
-/*static t_map_cont	parse_content(t_list *head)
+#include <stdio.h>
+
+/*
+** Get information about map
+** error if wrong character will be found
+*/
+
+static t_map_cont	parse_content(t_list *head)
 {
 	t_map_cont cont;
 
@@ -31,21 +38,25 @@
 			cont.new_lines++;
 		else
 		{
-			ft_putstr("error\n");
+			ft_putendl("error");
 			exit(1);
 		}
 		head = head->next;
 	}
 	return (cont);
-	}*/
+}
 
-static void			check_disposition(t_list *head)
+/*
+** Check right form of map:
+** - position of newlines;
+** - invalid row length;
+*/
+
+static void			check_field_form(t_list *head)
 {
 	int position;
-	int hashes;
 
 	position = 1;
-	hashes = 0;
 	while (head)
 	{
 		if (*(char *)(head->content) == '.' || *(char *)(head->content) == '#')
@@ -54,7 +65,7 @@ static void			check_disposition(t_list *head)
 			;
 		else
 		{
-			ft_putstr("error\n");
+			ft_putendl("error");
 			exit(1);
 		}
 		position++;
@@ -64,21 +75,69 @@ static void			check_disposition(t_list *head)
 	}
 }
 
-void				check_content(t_map_cont cont)
+static int			adjacency(t_list *head)
 {
-	if (cont.hashes % 4 != 0)
+	int i;
+	int neighbors;
+	int position;
+
+	i = 0;
+	neighbors = 0;
+	position = 0;
+	while (head->next && i < 6)
 	{
-		ft_putstr("error\n");
-		exit(1);
+		if (i == 1 && *(char *)(head->content) == '#')
+			neighbors++;
+		if (i == 5 && *(char *)(head->content) == '#')
+			neighbors++;
+		if (*(char *)(head->content) == '\n' &&
+			*(char *)(head->next->content) == '\n')
+			break ;
+		head = head->next;
+		i++;
 	}
-		
+	return (neighbors);
 }
 
-void	check_input(t_list *head)
+static void			check_tetromino(t_list *head)
 {
-	//t_map_cont cont;
+	int hashes;
+	int neighbors;
 
-	//cont = parse_content(head);
-	check_disposition(head);
-	//check_content(cont);
+	hashes = 0;
+	neighbors = 0;
+	while (head)
+	{
+		if (*(char *)(head->content) == '#')
+		{
+			neighbors += adjacency(head);
+			hashes++;
+		}
+		if (hashes == 4 && (neighbors < 3 || neighbors > 4))
+		{
+			ft_putendl("error");
+			exit(1);
+		}
+		else if (hashes == 4 && (neighbors == 3 || neighbors == 4))
+		{
+			hashes = 0;
+			neighbors = 0;
+		}
+		head = head->next;
+	}
+}
+
+void				check_input(t_list *head)
+{
+	t_map_cont cont;
+
+	cont = parse_content(head);
+	check_field_form(head);
+	if (cont.hashes % 4 != 0 ||
+		cont.new_lines != cont.hashes + cont.hashes / 4 - 1)
+	{
+		ft_putendl("error");
+		exit(1);
+	}
+	check_tetromino(head);
 }
