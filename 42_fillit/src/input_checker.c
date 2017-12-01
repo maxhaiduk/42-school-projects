@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 13:53:05 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/11/30 09:57:37 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/01 18:18:59 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ static t_map_cont	parse_content(t_list *head)
 	cont.hashes = 0;
 	cont.dots = 0;
 	cont.new_lines = 0;
-	cont.len = 0;
 	while (head)
 	{
-		cont.len++;
 		if (*(char *)(head->content) == '#')
 			cont.hashes++;
 		else if (*(char *)(head->content) == '.')
@@ -127,7 +125,7 @@ static void			check_tetromino(t_list *head)
 	}
 }
 
-void				check_input(t_list *head)
+int					check_input(t_list *head)
 {
 	t_map_cont cont;
 
@@ -140,4 +138,5 @@ void				check_input(t_list *head)
 		exit(1);
 	}
 	check_tetromino(head);
+	return (cont.hashes / 4);
 }

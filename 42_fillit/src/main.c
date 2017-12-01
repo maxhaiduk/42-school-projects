@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 10:15:33 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/11/30 09:58:31 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/01 18:20:06 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	show(t_list *node)
 
 int		main(int argc, char **argv)
 {
-	t_list *file_cont;
+	t_list	*file_cont;
+	int		tetros;
+	//char	***composition;
 
 	if (argc != 2)
 	{
@@ -28,6 +30,7 @@ int		main(int argc, char **argv)
 	}
 	file_cont = read_file(argv[1]);
 	ft_lstiter(file_cont, show);
-	check_input(file_cont);
+	tetros = check_input(file_cont);
+	
 	ft_lst_erase(file_cont);
 }

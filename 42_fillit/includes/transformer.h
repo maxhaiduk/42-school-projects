@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_checker.h                                    :+:      :+:    :+:   */
+/*   transformer.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 13:54:09 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/01 18:19:52 by mhaiduk          ###   ########.fr       */
+/*   Created: 2017/12/01 17:26:28 by mhaiduk           #+#    #+#             */
+/*   Updated: 2017/12/01 17:32:48 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INPUT_CHECKER_H
-# define INPUT_CHECKER_H
+#ifndef TRANSFORMER_H
+# define TRANSFORMER_H
 
-#include "../libft/libft.h"
-
-typedef struct	s_map_cont
+typedef struct		s_coords
 {
-	int			hashes;
-	int			dots;
-	int			new_lines;
-}				t_map_cont;
+	int				row;
+	int				col;
+}					t_coords;
 
-int				check_input(t_list *head);
+typedef struct		s_tetro
+{
+	t_coords		coords[4];
+	struct	tetro	*next;
+}					t_tetro;
 
 #endif
