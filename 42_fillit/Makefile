@@ -31,7 +31,9 @@ LFT_DIR := ./libft
 # Source files
 SRC :=	main.c \
 		reader.c \
-		input_checker.c
+		input_checker.c \
+		transformer.c \
+		board_funcs.c
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

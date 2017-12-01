@@ -16,5 +16,6 @@
 #include "../libft/libft.h"
 #include "reader.h"
 #include "input_checker.h"
+#include "transformer.h"
 
 #endif
