@@ -6,7 +6,7 @@
 #    By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2017/11/28 09:45:31 by mhaiduk          ###   ########.fr        #
+#    Updated: 2017/12/02 15:27:26 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -45,7 +45,7 @@ INC := $(addprefix -I, $(INC_DIR))
 # Libft
 LFT := libft.a
 
-.PHONY = all clean
+.PHONY = all clean fclean re
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 13:53:05 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/01 18:18:59 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/02 15:26:52 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,10 @@ int					check_input(t_list *head)
 		exit(1);
 	}
 	check_tetromino(head);
+	if (cont.hashes / 4 > 26)
+	{
+		ft_putendl("error");
+		exit(1);
+	}
 	return (cont.hashes / 4);
 }
