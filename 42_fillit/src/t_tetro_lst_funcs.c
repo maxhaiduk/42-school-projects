@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 10:34:01 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/02 13:18:02 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/02 14:31:50 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,14 @@ void		show_tetro_list(t_tetro *head)
 
 void		free_composition(char ***composition)
 {
+	char ***temp;
+
+	temp = composition;
 	while (*composition)
 	{
 		free_board(*composition);
 		(*composition) = 0;
 		composition++;
 	}
+	free(temp);
 }
