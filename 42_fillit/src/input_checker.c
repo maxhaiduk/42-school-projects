@@ -77,11 +77,9 @@ static int			adjacency(t_list *head)
 {
 	int i;
 	int neighbors;
-	int position;
 
 	i = 0;
 	neighbors = 0;
-	position = 0;
 	while (head->next && i < 6)
 	{
 		if (i == 1 && *(char *)(head->content) == '#')

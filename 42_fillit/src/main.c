@@ -29,9 +29,10 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	file_cont = read_file(argv[1]);
-	//ft_lstiter(file_cont, show);
+	ft_lstiter(file_cont, show);
 	tet_num = check_input(file_cont);
 	fetch_coords(file_cont, tet_num); 
 	
 	ft_lst_erase(file_cont);
+	return (0);
 }

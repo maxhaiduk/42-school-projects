@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:26:28 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/01 18:51:57 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/02 13:13:44 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ typedef struct		s_coords
 typedef struct		s_tetro
 {
 	t_coords		coords[4];
-	struct	tetro	*next;
+	char			label;
+	struct	s_tetro	*next;
 }					t_tetro;
 
-void    fetch_coords(t_list *head, int tet_num);
+t_tetro				*fetch_coords(t_list *head, int tet_num);
+t_tetro				*create_new_node(void);
+void				add_back(t_tetro **head, t_tetro *new_node);
+void				show_tetro_list(t_tetro *head);
+void				free_composition(char ***composition);
 
 #endif

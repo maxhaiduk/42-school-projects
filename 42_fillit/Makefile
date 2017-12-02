@@ -29,10 +29,11 @@ INC_DIR := ./includes
 LFT_DIR := ./libft
 
 # Source files
-SRC :=	main.c \
-		reader.c \
-		input_checker.c \
-		transformer.c \
+SRC :=	main.c 				\
+		reader.c 			\
+		input_checker.c 	\
+		transformer.c 		\
+		t_tetro_lst_funcs.c \
 		board_funcs.c
 
 # Object files

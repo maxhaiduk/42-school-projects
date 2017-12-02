@@ -6,20 +6,20 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:25:11 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/01 19:13:09 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/02 13:13:51 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/transformer.h"
 
-static char	*get_row(t_list **head)
+static char			*get_row(t_list **head)
 {
 	int		i;
 	char	*row;
 
 	row = ft_strnew(4);
 	i = 0;
-	while (i < 4)
+	while (i < 4 && *head)
 	{
 		if (*(char *)((*head)->content) != '\n')
 		{
@@ -31,13 +31,13 @@ static char	*get_row(t_list **head)
 	return (row);
 }
 
-static char	***transform_input(t_list *head, int tet_num)
+static char			***transform_input(t_list *head, int tet_num)
 {
-	int i;
-	int j;
-	char ***composition;
-	char **tetro;
-	char *row;
+	int		i;
+	int		j;
+	char	***composition;
+	char	**tetro;
+	char	*row;
 
 	composition = (char ***)malloc(sizeof(char **) * (tet_num + 1));
 	if (!composition)
@@ -50,8 +50,7 @@ static char	***transform_input(t_list *head, int tet_num)
 		while (j < 4)
 		{
 			row = get_row(&head);
-			tetro[j] = row;
-			j++;
+			tetro[j++] = row;
 		}
 		tetro[j] = 0;
 		composition[i] = tetro;
@@ -61,18 +60,80 @@ static char	***transform_input(t_list *head, int tet_num)
 	return (composition);
 }
 
-void	fetch_coords(t_list *head, int tet_num)
+static t_coords		get_zero_coords(char **tetro)
 {
-	char ***composition;
+	t_coords a_c;
+
+	a_c.row = 0;
+	a_c.col = 0;
+	while (a_c.row < 4)
+	{
+		a_c.col = 0;
+		while (a_c.col < 4)
+		{
+			if (tetro[a_c.row][a_c.col] == '#')
+				break ;
+			a_c.col++;
+		}
+		if (tetro[a_c.row][a_c.col] == '#')
+			break ;
+		a_c.row++;
+	}
+	return (a_c);
+}
+
+/*
+** Get coordinates of current tetromino
+** a_c means absolute coordinates
+** t_z means tetromeno zero coordinates;
+*/
+
+static t_tetro		*analyze_tetro(char **tetro)
+{
+	t_tetro		*tetro_node;
+	t_coords	a_c;
+	t_coords	t_z;
+	int			i;
+
+	tetro_node = create_new_node();
+	a_c = get_zero_coords(tetro);
+	t_z = a_c;
+	i = 1;
+	while (tetro[a_c.row])
+	{
+		while (tetro[a_c.row][++a_c.col])
+		{
+			if (tetro[a_c.row][a_c.col] == '#')
+			{
+				tetro_node->coords[i].row = a_c.row - t_z.row;
+				tetro_node->coords[i].col = a_c.col - t_z.col;
+				i++;
+			}
+		}
+		a_c.col = 0;
+		a_c.row++;
+	}
+	return (tetro_node);
+}
+
+t_tetro				*fetch_coords(t_list *head, int tet_num)
+{
+	char	***composition;
+	t_tetro	*coord_list;
+	t_tetro	*curr_tetro;
+	int		count;
 
 	composition = transform_input(head, tet_num);
-	
-
-	while (*composition)
+	coord_list = create_new_node();
+	count = 0;
+	while (composition[count])
 	{
-		print_board(*composition);
-		ft_putchar('\n');
-		composition++;
+		curr_tetro = analyze_tetro(*composition);
+		curr_tetro->label = count + 'A';
+		add_back(&coord_list, curr_tetro);
+		count++;
 	}
-	
-} 
+	free_composition(composition);
+	show_tetro_list(coord_list);
+	return (coord_list);
+}
