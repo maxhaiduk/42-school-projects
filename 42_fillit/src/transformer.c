@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:25:11 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/02 13:13:51 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/02 13:37:46 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,18 @@ static t_tetro		*analyze_tetro(char **tetro)
 	tetro_node = create_new_node();
 	a_c = get_zero_coords(tetro);
 	t_z = a_c;
+	a_c.col++;
 	i = 1;
 	while (tetro[a_c.row])
 	{
-		while (tetro[a_c.row][++a_c.col])
+		while (tetro[a_c.row][a_c.col])
 		{
 			if (tetro[a_c.row][a_c.col] == '#')
 			{
 				tetro_node->coords[i].row = a_c.row - t_z.row;
-				tetro_node->coords[i].col = a_c.col - t_z.col;
-				i++;
+				tetro_node->coords[i++].col = a_c.col - t_z.col;
 			}
+			a_c.col++;
 		}
 		a_c.col = 0;
 		a_c.row++;
@@ -128,7 +129,7 @@ t_tetro				*fetch_coords(t_list *head, int tet_num)
 	count = 0;
 	while (composition[count])
 	{
-		curr_tetro = analyze_tetro(*composition);
+		curr_tetro = analyze_tetro(composition[count]);
 		curr_tetro->label = count + 'A';
 		add_back(&coord_list, curr_tetro);
 		count++;
