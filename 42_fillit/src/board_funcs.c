@@ -37,15 +37,36 @@ void	print_board(char **board)
 
 void	free_board(char **board)
 {
+	int i;
+
 	if (board)
 	{
-		while (*board)
+		i = 0;
+		while (board[i])
 		{
-			free(*board);
-			*board = NULL;
+			free(board[i]);
+			board[i] = NULL;
+			i++;
 		}
 		free(board);
 	}
+}
+
+char	**dup_board(char **board, int board_size)
+{
+	int		i;
+	char	**new_board;
+
+	new_board = (char **)malloc(sizeof(char *) * (board_size + 1));
+	i = 0;
+	while (i < board_size)
+	{
+		new_board[i] = ft_strdup(board[i]);
+		i++;
+	}
+	new_board[i] = 0;
+	return (new_board);
+
 }
 
 char	**create_board(int board_size)

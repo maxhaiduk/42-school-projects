@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   solver.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 14:23:13 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/11/28 15:32:14 by mhaiduk          ###   ########.fr       */
+/*   Created: 2017/12/02 15:32:16 by mhaiduk           #+#    #+#             */
+/*   Updated: 2017/12/02 16:30:49 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#ifndef SOLVER_H
+# define SOLVER_H
 
-#include "../libft/libft.h"
-#include "reader.h"
-#include "input_checker.h"
 #include "transformer.h"
-#include "solver.h"
+#include "board_funcs.h"
+
+void	solve_problem(t_tetro *tetro_list, int tet_num);
 
 #endif

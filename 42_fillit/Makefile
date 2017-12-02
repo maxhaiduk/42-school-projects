@@ -34,6 +34,7 @@ SRC :=	main.c 				\
 		input_checker.c 	\
 		transformer.c 		\
 		t_tetro_lst_funcs.c \
+		solver.c 			\
 		board_funcs.c
 
 # Object files

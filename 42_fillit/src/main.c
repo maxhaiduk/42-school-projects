@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 10:15:33 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/01 19:05:00 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/02 15:38:01 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		main(int argc, char **argv)
 {
 	t_list	*file_cont;
 	int		tet_num;
-	//char	***composition;
+	t_tetro	*tetro_list;
 
 	if (argc != 2)
 	{
@@ -31,8 +31,8 @@ int		main(int argc, char **argv)
 	file_cont = read_file(argv[1]);
 	ft_lstiter(file_cont, show);
 	tet_num = check_input(file_cont);
-	fetch_coords(file_cont, tet_num); 
-	
+	tetro_list = fetch_coords(file_cont, tet_num); 
+	solve_problem(tetro_list, tet_num);
 	ft_lst_erase(file_cont);
 	return (0);
 }

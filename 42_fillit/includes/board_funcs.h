@@ -17,5 +17,6 @@ int     get_initial_size(int tet_num);
 void    print_board(char **board);
 void    free_board(char **board);
 char    **create_board(int board_size);
+char	**dup_board(char **board, int board_size);
 
 #endif
