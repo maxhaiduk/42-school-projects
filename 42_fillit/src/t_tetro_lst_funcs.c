@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 10:34:01 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/02 14:31:50 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/04 10:32:17 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,17 @@ void		free_composition(char ***composition)
 		composition++;
 	}
 	free(temp);
+}
+
+void	free_list_tetro(t_tetro **head)
+{
+	t_tetro *tmp;
+
+	while (*head)
+	{
+		tmp = *head;
+		*head = (*head)->next;
+		free(tmp);
+		tmp->next = NULL;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 10:15:33 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/02 15:38:01 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/04 10:57:09 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int		main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./fillit [filename]\n");
+		ft_putendl("usage: ./fillit target_file");
 		return (0);
 	}
 	file_cont = read_file(argv[1]);
-	ft_lstiter(file_cont, show);
 	tet_num = check_input(file_cont);
 	tetro_list = fetch_coords(file_cont, tet_num); 
 	solve_problem(tetro_list, tet_num);
 	ft_lst_erase(file_cont);
+	free_list_tetro(&tetro_list);
 	return (0);
 }

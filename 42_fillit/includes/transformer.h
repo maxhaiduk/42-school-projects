@@ -34,5 +34,6 @@ t_tetro				*create_new_node(void);
 void				add_back(t_tetro **head, t_tetro *new_node);
 void				show_tetro_list(t_tetro *head);
 void				free_composition(char ***composition);
+void    			free_list_tetro(t_tetro **head);
 
 #endif

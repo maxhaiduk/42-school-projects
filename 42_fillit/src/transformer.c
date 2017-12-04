@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 17:25:11 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/02 13:37:46 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/04 10:56:52 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,5 @@ t_tetro				*fetch_coords(t_list *head, int tet_num)
 		count++;
 	}
 	free_composition(composition);
-	show_tetro_list(coord_list);
 	return (coord_list);
 }
