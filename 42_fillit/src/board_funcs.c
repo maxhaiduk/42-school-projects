@@ -66,7 +66,6 @@ char	**dup_board(char **board, int board_size)
 	}
 	new_board[i] = 0;
 	return (new_board);
-
 }
 
 char	**create_board(int board_size)

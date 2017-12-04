@@ -6,14 +6,14 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 13:54:09 by mhaiduk           #+#    #+#             */
-/*   Updated: 2017/12/01 18:19:52 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2017/12/04 11:20:12 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INPUT_CHECKER_H
 # define INPUT_CHECKER_H
 
-#include "../libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_map_cont
 {
