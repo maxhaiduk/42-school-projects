@@ -66,8 +66,8 @@ clean:
 	@make -C $(LFT_DIR) clean --silent
 	@echo "$(RED)Cleaning $(NAME) o-files...$(DEFAULT)"
 	@rm -rf $(OBJ)
-	#@rm -r $(OBJ_DIR)
-	#@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
+	@rm -rf $(OBJ_DIR)
+	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
 fclean: clean
 	@echo "$(RED)Deleting libft.a...$(DEFAULT)" 
