@@ -6,7 +6,7 @@
 #    By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/01/09 10:09:39 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/01/09 10:50:31 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -36,6 +36,8 @@ SRC :=	main.c 		        \
 		parser.c			\
         matrix.c            \
 		matrix2.c			\
+		transformations.c	\
+		helpers.c
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

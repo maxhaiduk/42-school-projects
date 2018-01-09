@@ -6,9 +6,11 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/25 13:50:31 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/06 14:37:57 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/09 11:35:30 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/fdf.h"
 
 #include "../includes/matrix.h"
 
@@ -51,11 +53,13 @@ void		print_matrix(t_matrix m)
 		j = 0;
 		while (j < m.cols)
 		{
-			ft_putnbr(m.values[i][j]);
-			ft_putchar(' ');
+			printf("%.2f ", m.values[i][j]);
+			//ft_putnbr(m.values[i][j]);
+			//ft_putchar(' ');
 			j++;
 		}
-		ft_putchar('\n');
+		//ft_putchar('\n');
+		printf("\n");
 		i++;
 	}
 }
