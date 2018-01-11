@@ -6,7 +6,7 @@
 #    By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/01/10 17:16:40 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/01/11 11:41:27 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -41,7 +41,9 @@ SRC :=	main.c 		        \
 		camera.c			\
 		clip.c				\
 		transformations.c	\
-		helpers.c
+		helpers.c			\
+		drawer.c			\
+		primitives.c		
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

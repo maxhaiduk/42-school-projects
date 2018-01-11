@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 10:01:01 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/10 17:52:09 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/11 14:20:45 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ALPHA 			DEG(10)
 
 # define DEG(x)			(x * 3.14) / 180
+# define RAD(x)			(x * 180) / 3.14
 
 typedef struct	s_point
 {
