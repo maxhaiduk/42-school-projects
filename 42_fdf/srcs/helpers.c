@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 18:15:50 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/13 13:46:21 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 14:40:25 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,6 @@ t_vector	get_amp(t_matrix m)
 	amp.w = min_z;
 	return (amp);
 }
-/*
-int			restore_view(t_env *env)
-{
-	free_matrix(env->map);
-	env->map = dup_matrix(env->init_map);
-	init_figure(env);
-	return (0);
-}*/
 
 void		print_notations(t_env *env)
 {

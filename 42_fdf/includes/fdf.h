@@ -6,14 +6,12 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 10:01:01 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/13 13:42:54 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 14:41:06 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-
-#include <stdio.h>
 
 # include <unistd.h>
 # include <stdlib.h>
