@@ -6,12 +6,12 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 10:43:18 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/06 14:40:47 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 09:00:43 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/matrix.h"
-# include <math.h>
+#include <math.h>
 
 t_matrix	get_translation_matrix(float x, float y, float z)
 {

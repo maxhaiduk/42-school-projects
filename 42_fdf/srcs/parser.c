@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 14:01:57 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/09 10:09:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 09:05:38 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ static void		calculate_points(t_object *obj, t_list *head)
 
 t_object		parse_content(t_list *head)
 {
-	int n_points;
-	int n_rows;
-	t_object obj;
+	int			n_points;
+	int			n_rows;
+	t_object	obj;
 
 	n_points = ft_lstlen(head);
 	obj.vert.rows = n_points;

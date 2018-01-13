@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:10:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/12 16:26:38 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 08:48:14 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	draw_f(t_env *env)
 int				expose_hook(t_env *env)
 {
 	mlx_clear_window(env->mlx, env->win);
-	env->camera.vert = mult_matrix(env->world.vert, env->camera.look);
+	//env->camera.vert = mult_matrix(env->world.vert, env->camera.look);
 	env->clip.vert = mult_matrix(env->camera.vert, env->clip.clip_mat);
     normalize(env);
 	env->view_port.vert = mult_matrix(env->clip.vert, env->view_port.morph);
