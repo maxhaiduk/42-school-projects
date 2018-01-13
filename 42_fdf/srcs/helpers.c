@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/26 18:15:50 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/13 14:40:25 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 15:18:24 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ void		print_notations(t_env *env)
 	mlx_string_put(env->mlx, env->win, NX_P, 10 * NY_P, N_COLOR,
 			"change color : 1 - 4");
 }
-
