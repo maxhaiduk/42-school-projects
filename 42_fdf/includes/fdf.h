@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 10:01:01 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/13 08:44:57 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/13 13:42:54 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define SCREEN_WIDTH	1024
 # define SCREEN_HEIGHT	768
 # define WORK_WIDTH		SCREEN_WIDTH - N_WIDTH
-# define N_COLOR		0x00cc00
+# define N_COLOR		0x999999
 # define N_WIDTH		100
 # define NX_P			20
 # define NY_P			20
