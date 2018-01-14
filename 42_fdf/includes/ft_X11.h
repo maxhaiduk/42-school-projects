@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 15:32:03 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/13 15:32:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/14 15:32:46 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 # define Q_KEY				12
 # define W_KEY				13
 # define E_KEY				14
+
+# define P_KEY				35
+# define O_KEY				31
 
 # define ONE_KEY			18
 # define TWO_KEY			19
