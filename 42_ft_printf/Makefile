@@ -31,6 +31,7 @@ LFT_DIR := ./libft
 
 # Source files
 SRC :=	ft_printf.c		        \
+		ft_former.c
 
 
 # Object files
