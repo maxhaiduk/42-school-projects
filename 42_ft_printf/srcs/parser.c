@@ -6,25 +6,24 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 14:24:12 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/23 17:58:49 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/24 12:09:43 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
 
 /*
 ** Searching for type and put it to structure
 ** Such as type is the last part of qualifier, indent for can be calculated;
 */
 
-static void init_types(char *types)
+static void			init_types(char *types)
 {
 	types[0] = 's';
 	types[1] = '\0';
 }
 
-static const char  *check_type(const char *qual, t_fq *fq __attribute__ ((unused)))
+static const char 	*check_type(const char *qual, t_fq *fq)
 {
 	static char		types[2];
 	const char		*temp;
@@ -48,8 +47,7 @@ static const char  *check_type(const char *qual, t_fq *fq __attribute__ ((unused
 	return (NULL);
 }
 
-
-static void init_flags_values(char *fv)
+static void			init_flags_values(char *fv)
 {
 	fv[0] = '-';
 	fv[1] = '+';
@@ -59,7 +57,7 @@ static void init_flags_values(char *fv)
 	fv[5] = '\0';
 }
 
-static void	check_flags(char *q_str, t_fq *fq)
+static void			check_flags(char *q_str, t_fq *fq)
 {
 	static char fv[6];
 	char		*tmp;
@@ -75,20 +73,22 @@ static void	check_flags(char *q_str, t_fq *fq)
 	printf("flags: %s\n", fq->flags);
 }
 
-int	 parse_qualifier(const char *qual, t_fq *fq, va_list ap)
+int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 {
 	const char  *type_place;
 	char		*q_str;
 
 	type_place = check_type(qual, fq);
 	q_str = ft_strsub(qual, 0, type_place - qual);
-	if (*q_str)
+	if (q_str[2])
 	{
 		check_flags(q_str, fq);
 		check_width(q_str, fq, ap);
 		printf("Width: %i\n", fq->width);
 		check_precision(q_str, fq, ap);
 		printf("Precision: %i\n", fq->precision);
+		check_size(q_str, fq);
+		printf("Size: %i\n", fq->size);
 	}
 	printf("q_str: %s :: len %lu\n", q_str, ft_strlen(q_str));
 	free(q_str);
