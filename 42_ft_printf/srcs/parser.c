@@ -80,7 +80,7 @@ int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 
 	type_place = check_type(qual, fq);
 	q_str = ft_strsub(qual, 0, type_place - qual);
-	if (q_str[2])
+	if (q_str[1])
 	{
 		check_flags(q_str, fq);
 		check_width(q_str, fq, ap);

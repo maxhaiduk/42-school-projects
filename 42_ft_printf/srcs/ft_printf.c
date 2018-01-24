@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 14:51:42 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/23 16:28:50 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/24 14:57:19 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	init_struct(t_fq *fq)
 	ft_memset(fq->flags, '0', 5);
 	fq->flags[5] = '\0';
 	fq->width = 0;
-	fq->precision = 0;
+	fq->precision = -1;
 	fq->size = 0;
 	fq->type = '\0';
 	fq->indent = 0;
@@ -56,9 +56,9 @@ int		perform(const char *format, va_list ap)
 	}
 	write(1, fiber, ft_strlen(fiber));
 	count += ft_strlen(fiber);
-	ft_putstr("Symbols counter: ");
+/*	ft_putstr("Symbols counter: ");
 	ft_putnbr(count);
-	ft_putstr("\n");
+	ft_putstr("\n");*/
 	return (count);
 }
 
