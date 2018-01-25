@@ -10,7 +10,7 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME = libftprintf.a
+NAME 	 := libftprintf.a
 
 # Output settings
 DEFAULT	:=\033[0m
@@ -31,7 +31,9 @@ LFT_DIR := ./libft
 
 # Source files
 SRC :=	ft_printf.c		        \
-		ft_former.c
+		parser.c 				\
+		checker.c 				\
+		former.c
 
 
 # Object files
@@ -51,7 +53,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
 	@make -C $(LFT_DIR) all --silent
 	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"
-	@ar rc $(NAME) $(OBJ) $(LFT_DIR)/$(LFT)
+	@ar rc $(NAME) $(OBJ) $(LFT_DIR)/*.o
 	@ranlib $(NAME) 
 	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
@@ -62,15 +64,15 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	@echo "$(RED)Cleaning libft o-files...$(DEFAULT)" 
 	@make -C $(LFT_DIR) clean --silent
-	@echo "$(RED)Cleaning minilibX o-files...$(DEFAULT)" 
+	@echo "$(RED)Cleaning ft_printf o-files...$(DEFAULT)" 
 	@rm -rf $(OBJ)
 	@rm -rf $(OBJ_DIR)
 	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
 fclean: clean
-	@echo "$(RED)Deleting libft.a...$(DEFAULT)" 
+	@echo "$(RED)Deleting libft.a ...$(DEFAULT)" 
 	@rm -rf $(LFT_DIR)/$(LFT)
-	@echo "$(RED)Deleting minilibX.a...$(DEFAULT)" 
+	@echo "$(RED)Deleting libftprintf.a ...$(DEFAULT)" 
 	@rm -rf $(NAME)
 	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 

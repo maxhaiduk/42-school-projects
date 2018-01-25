@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 14:24:12 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/24 18:06:06 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 10:14:49 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 static void			init_types(char *types)
 {
 	types[0] = 's';
-	types[1] = '\0';
+	types[1] = 'n';
+	types[2] = '\0';
 }
 
 static const char 	*check_type(const char *qual, t_fq *fq)
 {
-	static char		types[2];
+	static char		types[3];
 	const char		*temp;
 	char			*type;
 
@@ -90,7 +91,7 @@ int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 		check_size(q_str, fq);
 		printf("Size: %i\n", fq->size);
 	}
-	printf("q_str: %s :: len %lu\n", q_str, ft_strlen(q_str));
+	//printf("q_str: %s :: len %lu\n", q_str, ft_strlen(q_str));
 	free(q_str);
 
 	return (0);

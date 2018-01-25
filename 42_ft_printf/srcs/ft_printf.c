@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 14:51:42 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 09:06:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 10:13:06 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ static void	init_struct(t_fq *fq)
 	fq->indent = 0;
 }
 
+void	write_counter(va_list ap, int count)
+{
+	int *dest;
+
+	dest = va_arg(ap, int *);
+	*dest = count;
+}
+
 void	perform(const char *format, va_list ap, int *count)
 {
 	const char	*needle;
@@ -40,16 +48,18 @@ void	perform(const char *format, va_list ap, int *count)
 	fiber = format;
 	while ((needle = ft_strchr(fiber, '%')))
 	{
-		if (needle - fiber)
-		{
-			*count += (needle - fiber);
-			write(1, fiber, needle - fiber);
-		}
+		*count += (needle - fiber);
+		write(1, fiber, needle - fiber);
 		init_struct(&fq);
 		parse_qualifier(needle, &fq, ap);
-		form_output(ap, &fq);
-		*count += write(1, fq.str_out, ft_strlen(fq.str_out));
-		ft_strdel(&(fq.str_out));
+		if (fq.type == 'n')
+			write_counter(ap, *count);
+		else
+		{
+			form_output(ap, &fq);
+			*count += write(1, fq.str_out, ft_strlen(fq.str_out));
+			ft_strdel(&(fq.str_out));
+		}
 		needle += fq.indent;
 		fiber = needle;
 	}
