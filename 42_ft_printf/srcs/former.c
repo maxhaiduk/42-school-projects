@@ -6,20 +6,17 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 12:29:41 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/24 16:04:59 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 09:01:34 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-
-char	*fill_left(char *s, int width)
+char	*fill_left(char *s, size_t width, size_t len)
 {
 	char	*temp;
 	size_t	i;
-	size_t	len;
 
-	len = ft_strlen(s);
 	temp = ft_strnew(width);
 	i = 0;
 	while (i < width)
@@ -33,19 +30,48 @@ char	*fill_left(char *s, int width)
 	return (temp);
 }
 
+char	*fill_right(char *s, size_t width, size_t len)
+{
+	char	*temp;
+	size_t	i;
+	size_t	diff;
+
+	temp = ft_strnew(width);
+	diff = width - len;
+	i = 0;
+	while (i < width)
+	{
+		if (i < diff)
+			temp[i] = ' ';
+		else
+			temp[i] = s[i - diff];
+		i++;
+	}
+	return (temp);
+}
+
 int		form_s(t_fq *fq, va_list ap)
 {
-	char *s;
-	char *t;
+	char	*s;
+	char	*t;
+	size_t	len;
 
-	t = va_arg(ap, char *);
-	s = t; 
+	s = ft_strdup(va_arg(ap, char *));
+	t = s;
 	if (fq->precision >= 0 && fq->precision < (int)ft_strlen(t))
-		s = ft_strsub(t, 0, fq->precision);
-	if (fq->width > (int)ft_strlen(s))
 	{
-		if (fq->flags[MINUS] == 1)
-			t = fill_left(s, fq->width);
+		s = ft_strsub(s, 0, fq->precision);
+		ft_strdel(&t);
+	}
+	len = ft_strlen(s);
+	if (fq->width > len)
+	{
+		t = s;
+		if (fq->flags[MINUS] == '1')
+			s = fill_left(s, fq->width, len);
+		else
+			s = fill_right(s, fq->width, len);
+		ft_strdel(&t);
 	}
 	fq->str_out = s;
 	return (0);

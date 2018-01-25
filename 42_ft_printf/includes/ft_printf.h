@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 14:52:28 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/24 11:24:30 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/24 16:06:18 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef enum	e_size_modificator
 typedef struct	s_format_qualifier
 {
 	char		flags[6];
-	int			width;
+	size_t		width;
 	int			precision;
 	t_sm		size;
 	char		type;

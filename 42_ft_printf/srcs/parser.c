@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 14:24:12 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/24 12:09:43 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/24 18:06:06 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 	q_str = ft_strsub(qual, 0, type_place - qual);
 	if (q_str[1])
 	{
-		check_flags(q_str, fq);
 		check_width(q_str, fq, ap);
-		printf("Width: %i\n", fq->width);
+		printf("Width: %zu\n", fq->width);
+		check_flags(q_str, fq);
 		check_precision(q_str, fq, ap);
 		printf("Precision: %i\n", fq->precision);
 		check_size(q_str, fq);

@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 14:51:42 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/24 14:57:19 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 09:06:04 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,35 +31,30 @@ static void	init_struct(t_fq *fq)
 	fq->indent = 0;
 }
 
-int		perform(const char *format, va_list ap)
+void	perform(const char *format, va_list ap, int *count)
 {
 	const char	*needle;
 	const char	*fiber;
-	int			count;
 	t_fq		fq;
 
-	count = 0;
 	fiber = format;
 	while ((needle = ft_strchr(fiber, '%')))
 	{
 		if (needle - fiber)
 		{
-			count += (needle - fiber);
+			*count += (needle - fiber);
 			write(1, fiber, needle - fiber);
 		}
 		init_struct(&fq);
 		parse_qualifier(needle, &fq, ap);
 		form_output(ap, &fq);
-		count += write(1, fq.str_out, ft_strlen(fq.str_out));
+		*count += write(1, fq.str_out, ft_strlen(fq.str_out));
+		ft_strdel(&(fq.str_out));
 		needle += fq.indent;
 		fiber = needle;
 	}
 	write(1, fiber, ft_strlen(fiber));
-	count += ft_strlen(fiber);
-/*	ft_putstr("Symbols counter: ");
-	ft_putnbr(count);
-	ft_putstr("\n");*/
-	return (count);
+	*count += ft_strlen(fiber);
 }
 
 int		ft_printf(const char *format, ...)
@@ -69,7 +64,7 @@ int		ft_printf(const char *format, ...)
 
 	count = 0;
 	va_start(ap, format);
-	count = perform(format, ap);
+	perform(format, ap, &count);
 	va_end(ap);
 	return (count);
 }
