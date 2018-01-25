@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 14:24:12 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 10:14:49 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 12:17:48 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@
 static void			init_types(char *types)
 {
 	types[0] = 's';
-	types[1] = 'n';
-	types[2] = '\0';
+	types[1] = '%';
+	types[2] = 'n';
+	types[3] = '\0';
 }
 
 static const char 	*check_type(const char *qual, t_fq *fq)
 {
-	static char		types[3];
+	static char		types[4];
 	const char		*temp;
 	char			*type;
 
@@ -38,9 +39,7 @@ static const char 	*check_type(const char *qual, t_fq *fq)
 		if ((type = ft_strchr(types, *temp)))
 		{
 			fq->type = *type;
-			fq->indent = temp - qual + 1;
-			//printf("type: %s, qual: %s, - : %li\n", type, qual, type - qual);
-			//printf("\nindent %i\n", fq->indent);
+			fq->indent = temp - qual + 2;
 			return (temp);
 		}
 		temp++;
@@ -71,7 +70,14 @@ static void			check_flags(char *q_str, t_fq *fq)
 			fq->flags[tmp - fv] = '1';
 		q_str++;
 	}
+}
+
+void print_flags(t_fq *fq)
+{
 	printf("flags: %s\n", fq->flags);
+	printf("\nWidth: %zu\n", fq->width);
+	printf("Precision: %i\n", fq->precision);
+	printf("Size: %i\n", fq->size);
 }
 
 int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
@@ -79,17 +85,15 @@ int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 	const char  *type_place;
 	char		*q_str;
 
-	type_place = check_type(qual, fq);
+	type_place = check_type(qual + 1, fq);
 	q_str = ft_strsub(qual, 0, type_place - qual);
 	if (q_str[1])
 	{
 		check_width(q_str, fq, ap);
-		printf("Width: %zu\n", fq->width);
 		check_flags(q_str, fq);
 		check_precision(q_str, fq, ap);
-		printf("Precision: %i\n", fq->precision);
 		check_size(q_str, fq);
-		printf("Size: %i\n", fq->size);
+		//print_flags(fq);
 	}
 	//printf("q_str: %s :: len %lu\n", q_str, ft_strlen(q_str));
 	free(q_str);

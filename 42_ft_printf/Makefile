@@ -50,7 +50,7 @@ LFT := libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
+	@echo "$(GREEN)Compiling libft.a...$(DEFAULT)"
 	@make -C $(LFT_DIR) all --silent
 	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"
 	@ar rc $(NAME) $(OBJ) $(LFT_DIR)/*.o

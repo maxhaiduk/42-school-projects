@@ -6,13 +6,11 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 14:51:42 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 10:13:06 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 13:03:04 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-//__attribute__ ((unused))
 
 /*
 ** Goes through the format string, looking for the % symbol
@@ -31,7 +29,7 @@ static void	init_struct(t_fq *fq)
 	fq->indent = 0;
 }
 
-void	write_counter(va_list ap, int count)
+void		write_counter(va_list ap, int count)
 {
 	int *dest;
 
@@ -39,7 +37,7 @@ void	write_counter(va_list ap, int count)
 	*dest = count;
 }
 
-void	perform(const char *format, va_list ap, int *count)
+void		perform(const char *format, va_list ap, int *count)
 {
 	const char	*needle;
 	const char	*fiber;
@@ -67,7 +65,7 @@ void	perform(const char *format, va_list ap, int *count)
 	*count += ft_strlen(fiber);
 }
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list ap;
 	int		count;
