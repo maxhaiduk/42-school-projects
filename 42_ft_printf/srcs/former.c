@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 12:29:41 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 13:09:20 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/25 14:49:51 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int		form_output(va_list ap, t_fq *fq)
 {
 	if (fq->type == 's')
 		form_s(fq, ap);
+	if (fq->type == 'c')
+		form_c(fq, ap);
 	if (fq->type == '%')
 		form_elips(fq);
 	return (0);

@@ -20,14 +20,15 @@
 static void			init_types(char *types)
 {
 	types[0] = 's';
-	types[1] = '%';
-	types[2] = 'n';
-	types[3] = '\0';
+	types[1] = 'c';
+	types[2] = '%';
+	types[3] = 'n';
+	types[4] = '\0';
 }
 
 static const char 	*check_type(const char *qual, t_fq *fq)
 {
-	static char		types[4];
+	static char		types[5];
 	const char		*temp;
 	char			*type;
 
