@@ -80,7 +80,9 @@ LIST_FUNCS :=	ft_lstnew.c 		\
 
 INT_FUNCS :=	ft_atoi.c 			\
 				ft_atoi16.c			\
-				ft_itoa.c 			
+				ft_itoa.c 			\
+				ft_itoa_base.c 		\
+				#ft_itoa_sign.c		
 
 RW_FUNCS = 		get_next_line.c 	\
 				ft_putchar.c 		\

@@ -102,6 +102,7 @@ int					ft_atoi(char const *str);
 long long int		ft_atoi16(char const *str);
 char				*ft_itoa(long long n);
 char            	*ft_itoa_base(long long n, char base);
+char            	*ft_itoa_sign(long long n);
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);

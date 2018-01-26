@@ -16,9 +16,7 @@ static size_t	ft_get_len(long long n)
 {
 	size_t len;
 
-	len = 0;
-	if (n <= 0)
-		len++;
+	len = 1;
 	while (n)
 	{
 		len++;
@@ -27,7 +25,7 @@ static size_t	ft_get_len(long long n)
 	return (len);
 }
 
-char			*ft_itoa(long long n)
+char			*ft_itoa_sign(long long n)
 {
 	long long	num;
 	char		temp;
@@ -50,5 +48,7 @@ char			*ft_itoa(long long n)
 	}
 	if (n < 0)
 		str[len] = '-';
+	else
+		str[len] = '+';
 	return (str);
 }
