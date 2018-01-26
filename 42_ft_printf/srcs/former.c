@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 12:29:41 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 14:49:51 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/26 16:53:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,42 @@
 
 char	*fill_left(char *s, size_t width, size_t len, char c)
 {
-	char	*temp;
+	char	*t;
 	size_t	i;
 
-	temp = ft_strnew(width);
+	t = ft_strnew(width);
 	i = 0;
 	while (i < width)
 	{
 		if (i < len)
-			temp[i] = s[i];
+			t[i] = s[i];
 		else
-			temp[i] = c;
+			t[i] = c;
 		i++;
 	}
-	return (temp);
+	ft_strdel(&s);
+	return (t);
 }
 
 char	*fill_right(char *s, size_t width, size_t len, char c)
 {
-	char	*temp;
+	char	*t;
 	size_t	i;
 	size_t	diff;
 
-	temp = ft_strnew(width);
+	t = ft_strnew(width);
 	diff = width - len;
 	i = 0;
 	while (i < width)
 	{
 		if (i < diff)
-			temp[i] = c;
+			t[i] = c;
 		else
-			temp[i] = s[i - diff];
+			t[i] = s[i - diff];
 		i++;
 	}
-	return (temp);
+	ft_strdel(&s);
+	return (t);
 }
 
 void	form_elips(t_fq *fq)
@@ -60,7 +62,6 @@ void	form_elips(t_fq *fq)
 	s[0] = '%';
 	if (fq->width > 1)
 	{
-		t = s;
 		if (fq->flags[ZERO] == '1')
 			c = '0';
 		else
@@ -69,7 +70,6 @@ void	form_elips(t_fq *fq)
 			s = fill_left(s, fq->width, 1, ' ');
 		else
 			s = fill_right(s, fq->width, 1, c);
-		ft_strdel(&t);
 	}
 	fq->str_out = s;
 	fq->str_len = (fq->width > 1) ? fq->width : 1;

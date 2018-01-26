@@ -21,12 +21,10 @@ void	form_c(t_fq *fq, va_list ap)
 	s[0] = (unsigned char)va_arg(ap, int);
 	if (fq->width > 1)
 	{
-		t = s;
 		if (fq->flags[MINUS] == '1')
 			s = fill_left(s, fq->width, 1, ' ');
 		else
 			s = fill_right(s, fq->width, 1, ' ');
-		ft_strdel(&t);
 	}
 	fq->str_out = s;
 	fq->str_len = (fq->width > 1) ? fq->width : 1;
