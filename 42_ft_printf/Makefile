@@ -55,7 +55,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)Compiling libft.a...$(DEFAULT)"
 	@make -C $(LFT_DIR) all --silent
 	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"
-	@ar rc $(NAME) $(OBJ) $(LFT_DIR)/*.o
+	@ar rc $(NAME) $(OBJ) $(LFT_DIR)/objs/*.o
 	@ranlib $(NAME) 
 	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
