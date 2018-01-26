@@ -14,6 +14,8 @@ CC 		:= gcc -Wall -Wextra -Werror -c
 
 NAME 	:= libft.a
 
+SRC_DIRS := mem_funcs str_funcs str_arr_funcs char_funcs list_funcs int_funcs rw_funcs
+OBJ_DIR	 := ./objs
 
 MEM_FUNCS := 	ft_memset.c 		\
 				ft_bzero.c  		\
@@ -82,7 +84,7 @@ INT_FUNCS :=	ft_atoi.c 			\
 				ft_atoi16.c			\
 				ft_itoa.c 			\
 				ft_itoa_base.c 		\
-				#ft_itoa_sign.c		
+				ft_itoa_sign.c		
 
 RW_FUNCS = 		get_next_line.c 	\
 				ft_putchar.c 		\
@@ -97,7 +99,7 @@ RW_FUNCS = 		get_next_line.c 	\
 
 
 SRCS = $(MEM_FUNCS) $(STR_FUNCS) $(STR_ARR_FUNCS) $(CHAR_FUNCS) $(LIST_FUNCS) $(INT_FUNCS) $(RW_FUNCS)
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 all: $(NAME)
 
@@ -105,11 +107,18 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-%.o: %.c
+print:
+	echo '$(OBJS)'
+
+VPATH := $(SRC_DIRS)
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
 	$(CC) $< -o $@
 
 clean:
 	rm -rf $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm $(NAME)
