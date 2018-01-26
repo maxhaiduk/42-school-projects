@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 17:19:27 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/24 18:05:25 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/26 14:07:43 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 void	check_width(char *q_str, t_fq *fq, va_list ap)
 {
 	int i;
+	int t;
 
-	i = 1;
-	while (q_str[i])
+	i = 0;
+	while (q_str[++i])
 	{
 		if (q_str[i] == '.')
 			return ;
 		if (q_str[i] == '*')
 		{
-			fq->width = va_arg(ap, int);
+			t = va_arg(ap, int);
+			fq->width = FT_ABS(t);
 			return ;
 		}
 		if (ft_isdigit(q_str[i]) && q_str[i] != '0')
@@ -36,7 +38,6 @@ void	check_width(char *q_str, t_fq *fq, va_list ap)
 			}
 			return ;
 		}
-		i++;
 	}
 }
 

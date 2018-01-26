@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 14:24:12 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 12:17:48 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/26 12:50:13 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ static void			init_types(char *types)
 	types[0] = 's';
 	types[1] = 'c';
 	types[2] = '%';
-	types[3] = 'n';
-	types[4] = '\0';
+	types[3] = 'i';
+	types[4] = 'n';
+	types[5] = '\0';
 }
 
 static const char 	*check_type(const char *qual, t_fq *fq)
 {
-	static char		types[5];
+	static char		types[6];
 	const char		*temp;
 	char			*type;
 

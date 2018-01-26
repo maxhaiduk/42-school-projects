@@ -6,13 +6,13 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 14:46:14 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 15:22:02 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/26 12:20:18 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void form_c(t_fq *fq, va_list ap)
+void	form_c(t_fq *fq, va_list ap)
 {
 	char *s;
 	char *t;
@@ -29,4 +29,5 @@ void form_c(t_fq *fq, va_list ap)
 		ft_strdel(&t);
 	}
 	fq->str_out = s;
+	fq->str_len = (fq->width > 1) ? fq->width : 1;
 }

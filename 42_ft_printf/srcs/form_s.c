@@ -38,4 +38,5 @@ void	form_s(t_fq *fq, va_list ap)
 		ft_strdel(&t);
 	}
 	fq->str_out = s;
+	fq->str_len = (fq->width > len) ? fq->width : len;
 }

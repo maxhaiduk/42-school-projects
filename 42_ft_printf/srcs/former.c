@@ -72,6 +72,7 @@ void	form_elips(t_fq *fq)
 		ft_strdel(&t);
 	}
 	fq->str_out = s;
+	fq->str_len = (fq->width > 1) ? fq->width : 1;
 }
 
 int		form_output(va_list ap, t_fq *fq)

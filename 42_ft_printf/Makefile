@@ -33,7 +33,9 @@ LFT_DIR := ./libft
 SRC :=	ft_printf.c		        \
 		parser.c 				\
 		checker.c 				\
-		former.c
+		former.c 				\
+		form_s.c 				\
+		form_c.c 			
 
 
 # Object files
