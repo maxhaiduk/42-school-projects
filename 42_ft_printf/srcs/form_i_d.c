@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 14:29:24 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/27 17:37:18 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/27 17:49:26 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ static char	*compute_width(long long n, char *s, t_fq *fq)
 
 	len = ft_strlen(s);
 	if (fq->precision > (int)len)
-		s = compute_precision(n, s, fq);
-	else if (fq->flags[ZERO] == '0')
+		s = fill_right(s, fq->precision, len, '0');
+	len = ft_strlen(s);;
+	if (fq->flags[ZERO] == '0')
 	{
 		s = add_sign(n, s, fq, &len);
 		if (fq->flags[MINUS] == '1')
@@ -101,17 +102,17 @@ static long long get_value(t_fq *fq, va_list ap)
 
     if (fq->size == i)
         n = (va_arg(ap, int));
-	if (fq->size == hh)
+	else if (fq->size == hh)
 		n = (char)(va_arg(ap, int));
-	if (fq->size == h)
+	else if (fq->size == h)
 		n = (short)(va_arg(ap, int));
-	if (fq->size == ll)
+	else if (fq->size == ll)
 		n = va_arg(ap, long long);
-	if (fq->size == l)
+	else if (fq->size == l)
 		n = (va_arg(ap, long));
-	if (fq->size == j)
+	else if (fq->size == j)
 		n = (va_arg(ap, intmax_t));
-	if (fq->size == z)
+	else if (fq->size == z)
 		n = (va_arg(ap, size_t));
 	return (n);
 }
