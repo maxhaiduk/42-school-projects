@@ -15,7 +15,6 @@
 void	form_c(t_fq *fq, va_list ap)
 {
 	char *s;
-	char *t;
 
 	s = ft_strnew(1);
 	s[0] = (unsigned char)va_arg(ap, int);

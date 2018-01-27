@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 12:29:41 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/26 16:53:57 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/27 09:26:15 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	*fill_right(char *s, size_t width, size_t len, char c)
 void	form_elips(t_fq *fq)
 {
 	char	*s;
-	char	*t;
 	char	c;
 
 	s = ft_strnew(1);
