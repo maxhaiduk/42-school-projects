@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 14:29:24 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/28 12:03:10 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/28 15:59:28 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,5 @@ void	form_i_d(t_fq *fq, va_list ap)
 	else
 		 s = compute_number(n, s, fq);
 	fq->str_out = s;
-	printf("OUT STR %s\n", s);
 	fq->str_len = ft_strlen(fq->str_out);
 }
