@@ -42,6 +42,7 @@ void		perform(const char *format, va_list ap, int *count)
 	const char	*needle;
 	const char	*fiber;
 	t_fq		fq;
+	size_t		flen;
 
 	fiber = format;
 	while ((needle = ft_strchr(fiber, '%')))
@@ -61,8 +62,9 @@ void		perform(const char *format, va_list ap, int *count)
 		needle += fq.indent;
 		fiber = needle;
 	}
-	write(1, fiber, ft_strlen(fiber));
-	*count += ft_strlen(fiber);
+	flen = ft_strlen(fiber);
+	write(1, fiber, flen);
+	*count += flen;
 }
 
 int			ft_printf(const char *format, ...)

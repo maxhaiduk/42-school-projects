@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 14:29:24 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/27 17:49:26 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/01/28 12:03:10 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static char	*compute_width(long long n, char *s, t_fq *fq)
 	len = ft_strlen(s);
 	if (fq->precision > (int)len)
 		s = fill_right(s, fq->precision, len, '0');
-	len = ft_strlen(s);;
+	len = ft_strlen(s);
 	if (fq->flags[ZERO] == '0')
 	{
 		s = add_sign(n, s, fq, &len);
@@ -100,9 +100,7 @@ static long long get_value(t_fq *fq, va_list ap)
 {
 	intmax_t n;
 
-    if (fq->size == i)
-        n = (va_arg(ap, int));
-	else if (fq->size == hh)
+	if (fq->size == hh)
 		n = (char)(va_arg(ap, int));
 	else if (fq->size == h)
 		n = (short)(va_arg(ap, int));
@@ -114,6 +112,8 @@ static long long get_value(t_fq *fq, va_list ap)
 		n = (va_arg(ap, intmax_t));
 	else if (fq->size == z)
 		n = (va_arg(ap, size_t));
+	else
+		n = (va_arg(ap, int));
 	return (n);
 }
 
@@ -123,7 +123,6 @@ void	form_i_d(t_fq *fq, va_list ap)
 	char		*s;
 	size_t		len;
 
-	//n = va_arg(ap, int);
 	n = get_value(fq, ap);
 	s = ft_itoa_abs(n);
 	len = ft_strlen(s);
@@ -134,5 +133,6 @@ void	form_i_d(t_fq *fq, va_list ap)
 	else
 		 s = compute_number(n, s, fq);
 	fq->str_out = s;
+	printf("OUT STR %s\n", s);
 	fq->str_len = ft_strlen(fq->str_out);
 }
