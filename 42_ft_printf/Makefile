@@ -35,8 +35,8 @@ SRC :=	ft_printf.c		        \
 		checker.c 				\
 		former.c 				\
 		form_s.c 				\
-		form_c.c 				\
-		form_i_d.c
+		#form_c.c 				\
+		#form_i_d.c
 
 
 # Object files

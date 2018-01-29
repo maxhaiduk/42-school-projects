@@ -14,27 +14,24 @@
 
 void	form_s(t_fq *fq, va_list ap)
 {
-	char	*s;
 	char	*t;
-	size_t	len;
 
-	s = ft_strdup(va_arg(ap, char *));
-	if (!s)
-		s = ft_strdup("(null)");
-	if (fq->precision >= 0 && fq->precision < (int)ft_strlen(t))
+	fq->s = ft_strdup(va_arg(ap, char *));
+	if (!fq->s)
+		fq->s = ft_strdup("(null)");
+	fq->l = ft_strlen(fq->s);
+	if (fq->precision >= 0 && fq->precision < (int)fq->l)
 	{
-		t = s;
-		s = ft_strsub(s, 0, fq->precision);
+		t = fq->s;
+		fq->s = ft_strsub(fq->s, 0, fq->precision);
+		fq->l = fq->precision;
 		ft_strdel(&t);
 	}
-	len = ft_strlen(s);
-	if (fq->width > len)
+	if (fq->width > fq->l)
 	{
 		if (fq->flags[MINUS] == '1')
-			s = fill_left(s, fq->width, len, ' ');
+			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 		else
-			s = fill_right(s, fq->width, len, ' ');
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
 	}
-	fq->str_out = s;
-	fq->str_len = (fq->width > len) ? fq->width : len;
 }

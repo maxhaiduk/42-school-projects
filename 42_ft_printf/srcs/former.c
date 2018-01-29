@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-char	*fill_left(char *s, size_t width, size_t len, char c)
+char	*fill_left(char *s, size_t width, size_t *len, char c)
 {
 	char	*t;
 	size_t	i;
@@ -21,24 +21,25 @@ char	*fill_left(char *s, size_t width, size_t len, char c)
 	i = 0;
 	while (i < width)
 	{
-		if (i < len)
+		if (i < *len)
 			t[i] = s[i];
 		else
 			t[i] = c;
 		i++;
 	}
+	*len = width;
 	ft_strdel(&s);
 	return (t);
 }
 
-char	*fill_right(char *s, size_t width, size_t len, char c)
+char	*fill_right(char *s, size_t width, size_t *len, char c)
 {
 	char	*t;
 	size_t	i;
 	size_t	diff;
 
 	t = ft_strnew(width);
-	diff = width - len;
+	diff = width - *len;
 	i = 0;
 	while (i < width)
 	{
@@ -48,10 +49,11 @@ char	*fill_right(char *s, size_t width, size_t len, char c)
 			t[i] = s[i - diff];
 		i++;
 	}
+	*len = width;
 	ft_strdel(&s);
 	return (t);
 }
-
+/*
 void	form_elips(t_fq *fq)
 {
 	char	*s;
@@ -72,17 +74,17 @@ void	form_elips(t_fq *fq)
 	}
 	fq->str_out = s;
 	fq->str_len = (fq->width > 1) ? fq->width : 1;
-}
+}*/
 
 int		form_output(va_list ap, t_fq *fq)
 {
 	if (fq->type == 's')
 		form_s(fq, ap);
-	if (fq->type == 'c')
+/*	if (fq->type == 'c')
 		form_c(fq, ap);
 	if (fq->type == 'i' || fq->type == 'd')
 		form_i_d(fq, ap);
 	if (fq->type == '%')
-		form_elips(fq);
+		form_elips(fq);*/
 	return (0);
 }

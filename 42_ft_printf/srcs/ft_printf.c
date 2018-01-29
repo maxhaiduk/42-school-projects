@@ -56,8 +56,8 @@ void		perform(const char *format, va_list ap, int *count)
 		else
 		{
 			form_output(ap, &fq);
-			*count += write(1, fq.str_out, fq.str_len);
-			ft_strdel(&(fq.str_out));
+			*count += write(1, fq.s, fq.l);
+			ft_strdel(&(fq.s));
 		}
 		needle += fq.indent;
 		fiber = needle;
