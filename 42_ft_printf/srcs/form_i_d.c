@@ -45,28 +45,15 @@ static void	set_sign(long long n, char *s, t_fq *fq)
 		s[0] = '+';
 }
 
-static char	*compute_minus(long long n, char *s, t_fq *fq, size_t *len) 
-{		
-	if (fq->flags[MINUS] == '1')
-	{
-		s = add_sign(n, s, fq, len);
-		s = fill_left(s, fq->width, *len, ' ');
-	}
-	else
-	{
-		s = fill_right(s, fq->width, *len, '0');
-		set_sign(n, s, fq);
-	}
-	return (s);
-}
-
 static char	*compute_width(long long n, char *s, t_fq *fq)
 {
 	size_t len;
+	int t;
 
+	t = 0;
 	len = ft_strlen(s);
-	if (fq->precision > (int)len)
-		s = fill_right(s, fq->precision, len, '0');
+	if (fq->precision > (int)len && (s = fill_right(s, fq->precision, len, '0')))
+		t = 1;
 	len = ft_strlen(s);
 	if (fq->flags[ZERO] == '0')
 	{
@@ -77,7 +64,13 @@ static char	*compute_width(long long n, char *s, t_fq *fq)
 			s = fill_right(s, fq->width, len, ' ');
 	}
 	else if (fq->flags[ZERO] == '1')
-		s = compute_minus(n, s, fq, &len);
+	{
+		if (fq->flags[MINUS] == '1' && (s = add_sign(n, s, fq, &len)))
+			s = fill_left(s, fq->width, len, ' ');
+		else if ((s = fill_right(s, fq->width, len, t ? ' ' : 0)))
+			set_sign(n, s, fq);
+	}
+
 	return (s);
 }
 
