@@ -12,23 +12,20 @@
 
 #include "../includes/ft_printf.h"
 
-static void compute_precision(t_fq *fq)
-{
-	fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
-	if (fq->n < 0)
-		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), '-');
-	if (fq->flags[PLUS] == '1' && fq->n >= 0)
-		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), '+');
-	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
-		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), ' ');
-}
-
 static void	add_sign(t_fq *fq)
 {
 	if (fq->n < 0)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '-');
 	if (fq->flags[PLUS] == '1' && fq->n >= 0)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
+}
+
+static void compute_precision(t_fq *fq)
+{
+	fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
+	add_sign(fq);
+	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), ' ');
 }
 
 static void	set_sign(t_fq *fq)
@@ -75,10 +72,7 @@ static void compute_width(t_fq *fq)
 
 static void compute_number(t_fq *fq)
 {
-	if (fq->n < 0)
-		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '-');
-	if (fq->flags[PLUS] == '1' && fq->n >= 0)
-		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
+	add_sign(fq);
 	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
 }
