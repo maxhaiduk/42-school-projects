@@ -46,6 +46,7 @@ typedef struct	s_format_qualifier
 	int			indent;
 	char		*s;
 	size_t		l;
+	intmax_t	n;
 }				t_fq;
 
 int				ft_printf(const char *format, ...);

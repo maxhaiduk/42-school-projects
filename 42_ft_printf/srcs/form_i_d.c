@@ -12,119 +12,105 @@
 
 #include "../includes/ft_printf.h"
 
-static char	*compute_precision(long long n, char *s, t_fq *fq)
+static void compute_precision(t_fq *fq)
 {
-	size_t 	len;
-
-	len = ft_strlen(s);
-	s = fill_right(s, fq->precision, len, '0');
-	if (n < 0)
-		s = fill_right(s, fq->precision + 1, fq->precision, '-');
-	if (fq->flags[PLUS] == '1' && n >= 0)
-		s = fill_right(s, fq->precision + 1, fq->precision, '+');
-	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && n >= 0)
-		s = fill_right(s, fq->precision + 1, fq->precision, ' ');
-	return (s);
+	fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
+	if (fq->n < 0)
+		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), '-');
+	if (fq->flags[PLUS] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), '+');
+	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), ' ');
 }
 
-static char	*add_sign(long long n, char *s, t_fq *fq, size_t *len)
+static void	add_sign(t_fq *fq)
 {
-	if (n < 0)
-		s = fill_right(s, *len + 1, *len, '-');
-	if (fq->flags[PLUS] == '1' && n >= 0)
-		s = fill_right(s, *len + 1, *len, '+');
-	*len = ft_strlen(s);
-	return (s);
+	if (fq->n < 0)
+		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '-');
+	if (fq->flags[PLUS] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
 }
 
-static void	set_sign(long long n, char *s, t_fq *fq)
+static void	set_sign(t_fq *fq)
 {
-	if (n < 0)
-		s[0] = '-';
-	if (fq->flags[PLUS] == '1' && n >= 0)
-		s[0] = '+';
+	if (fq->n < 0)
+		fq->s[0] = '-';
+	if (fq->flags[PLUS] == '1' && fq->n >= 0)
+		fq->s[0] = '+';
 }
 
-static char	*compute_width(long long n, char *s, t_fq *fq)
+static void compute_width(t_fq *fq)
 {
-	size_t len;
 	int t;
 
 	t = 0;
-	len = ft_strlen(s);
-	if (fq->precision > (int)len && (s = fill_right(s, fq->precision, len, '0')))
+	fq->l = ft_strlen(fq->s);
+	if (fq->precision > (int)fq->l)
+	{	
+		fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
 		t = 1;
-	len = ft_strlen(s);
+	}
 	if (fq->flags[ZERO] == '0')
 	{
-		s = add_sign(n, s, fq, &len);
+		add_sign(fq);
 		if (fq->flags[MINUS] == '1')
-			s = fill_left(s, fq->width, len, ' ');
+			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 		else
-			s = fill_right(s, fq->width, len, ' ');
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
 	}
 	else if (fq->flags[ZERO] == '1')
 	{
-		if (fq->flags[MINUS] == '1' && (s = add_sign(n, s, fq, &len)))
-			s = fill_left(s, fq->width, len, ' ');
-		else if ((s = fill_right(s, fq->width, len, t ? ' ' : 0)))
-			set_sign(n, s, fq);
+		if (fq->flags[MINUS] == '1')
+		{
+			add_sign(fq);
+			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
+		}
+		else
+		{
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
+			set_sign(fq);
+		}
 	}
-
-	return (s);
 }
 
-static char *compute_number(long long n, char *s, t_fq *fq)
+static void compute_number(t_fq *fq)
 {
-	size_t len;
-
-    len = ft_strlen(s);
-	if (n < 0)
-		s = fill_right(s, len + 1, len, '-');
-	if (fq->flags[PLUS] == '1' && n >= 0)
-		s = fill_right(s, len + 1, len, '+');
-	len = ft_strlen(s);
-	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && n >= 0)
-		s = fill_right(s, len + 1, len, ' ');
-	return (s);
+	if (fq->n < 0)
+		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '-');
+	if (fq->flags[PLUS] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
+	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
 }
 
-static long long get_value(t_fq *fq, va_list ap)
+static void get_value(t_fq *fq, va_list ap)
 {
-	intmax_t n;
 
 	if (fq->size == hh)
-		n = (char)(va_arg(ap, int));
+		fq->n = (char)(va_arg(ap, int));
 	else if (fq->size == h)
-		n = (short)(va_arg(ap, int));
+		fq->n = (short)(va_arg(ap, int));
 	else if (fq->size == ll)
-		n = va_arg(ap, long long);
+		fq->n = va_arg(ap, long long);
 	else if (fq->size == l)
-		n = (va_arg(ap, long));
+		fq->n = (va_arg(ap, long));
 	else if (fq->size == j)
-		n = (va_arg(ap, intmax_t));
+		fq->n = (va_arg(ap, intmax_t));
 	else if (fq->size == z)
-		n = (va_arg(ap, size_t));
+		fq->n = (va_arg(ap, size_t));
 	else
-		n = (va_arg(ap, int));
-	return (n);
+		fq->n = (va_arg(ap, int));
 }
 
 void	form_i_d(t_fq *fq, va_list ap)
 {
-	intmax_t	n;
-	char		*s;
-	size_t		len;
-
-	n = get_value(fq, ap);
-	s = ft_itoa_abs(n);
-	len = ft_strlen(s);
-	if (fq->precision >= (int)fq->width && fq->precision > (int)len)
-		s = compute_precision(n, s, fq);
-	else if ((int)fq->width > fq->precision && fq->width > len)
-		s = compute_width(n, s, fq);
+	get_value(fq, ap);
+	fq->s = ft_itoa_abs(fq->n);
+	fq->l = ft_strlen(fq->s);
+	if (fq->precision >= (int)fq->width && fq->precision > (int)fq->l)
+		compute_precision(fq);
+	else if ((int)fq->width > fq->precision && fq->width > fq->l)
+		compute_width(fq);
 	else
-		 s = compute_number(n, s, fq);
-	fq->str_out = s;
-	fq->str_len = ft_strlen(fq->str_out);
+		compute_number(fq);
 }
