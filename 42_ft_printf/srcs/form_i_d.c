@@ -20,12 +20,21 @@ static void	add_sign(t_fq *fq)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
 }
 
+static void compute_space(t_fq *fq)
+{
+		if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
+			fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
+}
+
 static void compute_precision(t_fq *fq)
 {
-	fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
-	add_sign(fq);
-	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
-		fq->s = fill_right(fq->s, fq->precision + 1, &(fq->l), ' ');
+	if (fq->precision == 0)
+	{
+		fq->s = ft_strnew(0);
+		fq->l = 0;
+	}	
+	else if (fq->precision > (int)fq->l)
+		fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
 }
 
 static void	set_sign(t_fq *fq)
@@ -43,10 +52,8 @@ static void compute_width(t_fq *fq)
 	t = 0;
 	fq->l = ft_strlen(fq->s);
 	if (fq->precision > (int)fq->l)
-	{	
-		fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
 		t = 1;
-	}
+	compute_precision(fq);
 	if (fq->flags[ZERO] == '0')
 	{
 		add_sign(fq);
@@ -68,13 +75,6 @@ static void compute_width(t_fq *fq)
 			set_sign(fq);
 		}
 	}
-}
-
-static void compute_number(t_fq *fq)
-{
-	add_sign(fq);
-	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
-		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
 }
 
 static void get_value(t_fq *fq, va_list ap)
@@ -101,10 +101,19 @@ void	form_i_d(t_fq *fq, va_list ap)
 	get_value(fq, ap);
 	fq->s = ft_itoa_abs(fq->n);
 	fq->l = ft_strlen(fq->s);
-	if (fq->precision >= (int)fq->width && fq->precision > (int)fq->l)
+	if (fq->precision == 0 && fq->n == 0)
 		compute_precision(fq);
+	if (fq->precision >= (int)fq->width && fq->precision > (int)fq->l)
+	{
+		compute_precision(fq);
+		add_sign(fq);
+		compute_space(fq);
+	}
 	else if ((int)fq->width > fq->precision && fq->width > fq->l)
 		compute_width(fq);
 	else
-		compute_number(fq);
+	{
+		add_sign(fq);
+		compute_space(fq);
+	}
 }

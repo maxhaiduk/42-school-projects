@@ -69,6 +69,8 @@ static void			check_flags(char *q_str, t_fq *fq)
 		init_flags_values(fv);
 	while (*q_str)
 	{
+		if (*q_str == '.')
+			break;
 		if ((tmp = ft_strchr(fv, *q_str)))
 			fq->flags[tmp - fv] = '1';
 		q_str++;
