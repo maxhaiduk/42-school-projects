@@ -53,38 +53,33 @@ char	*fill_right(char *s, size_t width, size_t *len, char c)
 	ft_strdel(&s);
 	return (t);
 }
-/*
+
 void	form_elips(t_fq *fq)
 {
-	char	*s;
 	char	c;
 
-	s = ft_strnew(1);
-	s[0] = '%';
+	fq->s = ft_strnew(1);
+	fq->s[0] = '%';
+	fq->l = 1;
 	if (fq->width > 1)
 	{
-		if (fq->flags[ZERO] == '1')
-			c = '0';
-		else
-			c = ' ';
+		fq->flags[ZERO] == '1' ? c = '0' : (c = ' ');
 		if (fq->flags[MINUS] == '1')
-			s = fill_left(s, fq->width, 1, ' ');
+			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 		else
-			s = fill_right(s, fq->width, 1, c);
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), c);
 	}
-	fq->str_out = s;
-	fq->str_len = (fq->width > 1) ? fq->width : 1;
-}*/
+}
 
 int		form_output(va_list ap, t_fq *fq)
 {
 	if (fq->type == 's')
 		form_s(fq, ap);
-/*	if (fq->type == 'c')
+	if (fq->type == 'c')
 		form_c(fq, ap);
-	if (fq->type == 'i' || fq->type == 'd')
-		form_i_d(fq, ap);
+/*	if (fq->type == 'i' || fq->type == 'd')
+		form_i_d(fq, ap);*/
 	if (fq->type == '%')
-		form_elips(fq);*/
+		form_elips(fq);
 	return (0);
 }

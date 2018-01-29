@@ -14,17 +14,14 @@
 
 void	form_c(t_fq *fq, va_list ap)
 {
-	char *s;
-
-	s = ft_strnew(1);
-	s[0] = (unsigned char)va_arg(ap, int);
+	fq->s = ft_strnew(1);
+	fq->l = 1;
+	fq->s[0] = (unsigned char)va_arg(ap, int);
 	if (fq->width > 1)
 	{
 		if (fq->flags[MINUS] == '1')
-			s = fill_left(s, fq->width, 1, ' ');
+			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 		else
-			s = fill_right(s, fq->width, 1, ' ');
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
 	}
-	fq->str_out = s;
-	fq->str_len = (fq->width > 1) ? fq->width : 1;
 }
