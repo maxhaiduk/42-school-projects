@@ -62,5 +62,8 @@ char			*fill_right(char *s, size_t width, size_t *len, char c);
 void			form_s(t_fq *fq, va_list ap);
 void			form_c(t_fq *fq, va_list ap);
 void			form_i_d(t_fq *fq, va_list ap);
+void			add_sign(t_fq *fq);
+void			compute_precision(t_fq *fq);
+void			compute_width(t_fq *fq);
 
 #endif

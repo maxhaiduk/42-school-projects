@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-static void	add_sign(t_fq *fq)
+void	add_sign(t_fq *fq)
 {
 	if (fq->n < 0)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '-');
@@ -20,66 +20,25 @@ static void	add_sign(t_fq *fq)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
 }
 
-static void compute_space(t_fq *fq)
+void	compute_space(t_fq *fq)
 {
-		if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
-			fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
+	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
+		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
 }
 
-static void compute_precision(t_fq *fq)
+void	compute_precision(t_fq *fq)
 {
-	if (fq->precision == 0)
+	if (fq->precision == 0 && fq->n == 0)
 	{
 		fq->s = ft_strnew(0);
 		fq->l = 0;
-	}	
+	}
 	else if (fq->precision > (int)fq->l)
 		fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
 }
 
-static void	set_sign(t_fq *fq)
+static void	get_value(t_fq *fq, va_list ap)
 {
-	if (fq->n < 0)
-		fq->s[0] = '-';
-	if (fq->flags[PLUS] == '1' && fq->n >= 0)
-		fq->s[0] = '+';
-}
-
-static void compute_width(t_fq *fq)
-{
-	int t;
-
-	t = 0;
-	fq->l = ft_strlen(fq->s);
-	if (fq->precision > (int)fq->l)
-		t = 1;
-	compute_precision(fq);
-	if (fq->flags[ZERO] == '0')
-	{
-		add_sign(fq);
-		if (fq->flags[MINUS] == '1')
-			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
-		else
-			fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
-	}
-	else if (fq->flags[ZERO] == '1')
-	{
-		if (fq->flags[MINUS] == '1')
-		{
-			add_sign(fq);
-			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
-		}
-		else
-		{
-			fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
-			set_sign(fq);
-		}
-	}
-}
-
-static void get_value(t_fq *fq, va_list ap)
-{
-
 	if (fq->size == hh)
 		fq->n = (char)(va_arg(ap, int));
 	else if (fq->size == h)
@@ -96,7 +55,7 @@ static void get_value(t_fq *fq, va_list ap)
 		fq->n = (va_arg(ap, int));
 }
 
-void	form_i_d(t_fq *fq, va_list ap)
+void		form_i_d(t_fq *fq, va_list ap)
 {
 	get_value(fq, ap);
 	fq->s = ft_itoa_abs(fq->n);
