@@ -20,44 +20,44 @@ static void	set_sign(t_fq *fq)
 		fq->s[0] = '+';
 }
 
-static void handle_minus_1(t_fq *fq)
+static void	handle_minus_1(t_fq *fq)
 {
-    if (fq->flags[MINUS] == '1')
+	if (fq->flags[MINUS] == '1')
 		fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 	else
 		fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
 }
 
-static void handle_minus_2(t_fq *fq, int t)
+static void	handle_minus_2(t_fq *fq, int t)
 {
-    if (fq->flags[MINUS] == '1')
-    {
-        add_sign(fq);
-        fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
-    }
-    else
-    {
-        fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
-        set_sign(fq);
-    }    
+	if (fq->flags[MINUS] == '1')
+	{
+		add_sign(fq);
+		fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
+	}
+	else
+	{
+		fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
+		set_sign(fq);
+	}
 }
 
-void	compute_width(t_fq *fq)
+void		compute_width(t_fq *fq)
 {
 	int t;
 
 	t = 0;
 	fq->l = ft_strlen(fq->s);
 	if (fq->precision > (int)fq->l)
-    {
-	    t = 1;
-        compute_precision(fq);
-    }
+	{
+		t = 1;
+		compute_precision(fq);
+	}
 	if (fq->flags[ZERO] == '0')
 	{
 		add_sign(fq);
 		handle_minus_1(fq);
 	}
 	else if (fq->flags[ZERO] == '1')
-	    handle_minus_2(fq, t);
+		handle_minus_2(fq, t);
 }

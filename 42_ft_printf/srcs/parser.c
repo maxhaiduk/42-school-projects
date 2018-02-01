@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 14:24:12 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/27 08:50:45 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/01 16:49:35 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void			init_types(char *types)
 	types[5] = '\0';
 }
 
-static const char 	*check_type(const char *qual, t_fq *fq)
+static const char	*check_type(const char *qual, t_fq *fq)
 {
 	static char		types[7];
 	const char		*temp;
@@ -70,24 +70,16 @@ static void			check_flags(char *q_str, t_fq *fq)
 	while (*q_str)
 	{
 		if (*q_str == '.')
-			break;
+			break ;
 		if ((tmp = ft_strchr(fv, *q_str)))
 			fq->flags[tmp - fv] = '1';
 		q_str++;
 	}
 }
 
-void print_flags(t_fq *fq)
-{
-	printf("flags: %s\n", fq->flags);
-	printf("\nWidth: %zu\n", fq->width);
-	printf("Precision: %i\n", fq->precision);
-	printf("Size: %i\n", fq->size);
-}
-
 int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 {
-	const char  *type_place;
+	const char	*type_place;
 	char		*q_str;
 
 	type_place = check_type(qual + 1, fq);
@@ -98,10 +90,7 @@ int					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 		check_flags(q_str, fq);
 		check_precision(q_str, fq, ap);
 		check_size(q_str, fq);
-		//print_flags(fq);
 	}
-	//printf("q_str: %s :: len %lu\n", q_str, ft_strlen(q_str));
 	free(q_str);
-
 	return (0);
 }

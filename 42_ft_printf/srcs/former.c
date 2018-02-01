@@ -63,7 +63,7 @@ void	form_elips(t_fq *fq)
 	fq->l = 1;
 	if (fq->width > 1)
 	{
-		fq->flags[ZERO] == '1' ? c = '0' : (c = ' ');
+		fq->flags[ZERO] == '1' ? c = '0' : ' ';
 		if (fq->flags[MINUS] == '1')
 			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 		else

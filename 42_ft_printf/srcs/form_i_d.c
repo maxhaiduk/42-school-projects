@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	add_sign(t_fq *fq)
+void		add_sign(t_fq *fq)
 {
 	if (fq->n < 0)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '-');
@@ -20,13 +20,13 @@ void	add_sign(t_fq *fq)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), '+');
 }
 
-void	compute_space(t_fq *fq)
+void		compute_space(t_fq *fq)
 {
 	if (fq->flags[PLUS] == '0' && fq->flags[SPACE] == '1' && fq->n >= 0)
 		fq->s = fill_right(fq->s, fq->l + 1, &(fq->l), ' ');
 }
 
-void	compute_precision(t_fq *fq)
+void		compute_precision(t_fq *fq)
 {
 	if (fq->precision == 0 && fq->n == 0)
 	{
