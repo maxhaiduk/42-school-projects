@@ -15,29 +15,32 @@
 static void	get_value(t_fq *fq, va_list ap)
 {
 	if (fq->size == hh)
-		fq->un = (unsigned char)(va_arg(ap, int));
+		fq->n = (unsigned char)(va_arg(ap, int));
 	else if (fq->size == h)
-		fq->un = (unsigned short)(va_arg(ap, int));
+		fq->n = (unsigned short)(va_arg(ap, int));
 	else if (fq->size == ll)
-		fq->un = va_arg(ap, unsigned long long);
+		fq->n = va_arg(ap, unsigned long long);
 	else if (fq->size == l)
-		fq->un = (va_arg(ap, unsigned long));
+		fq->n = (va_arg(ap, unsigned long));
 	else if (fq->size == j)
-		fq->un = (va_arg(ap, uintmax_t));
+		fq->n = (va_arg(ap, uintmax_t));
 	else if (fq->size == z)
-		fq->un = (va_arg(ap, size_t));
+		fq->n = (va_arg(ap, size_t));
 	else
-		fq->un = (va_arg(ap, unsigned int));
+		fq->n = (va_arg(ap, unsigned int));
 }
 
 void    form_x(t_fq *fq, va_list ap)
 {
     get_value(fq, ap);
-    fq->s = fq->type == 'x' ? ft_itoa_base(fq->un, 16, 0) 
-                            : ft_itoa_base(fq->un, 16, 1);
-    if (fq->precision == 0 && fq->n == 0)
-		compute_precision(fq);
-    if ((int)fq->width > fq->precision && fq->width > fq->l)
-		compute_width(fq);
-    fq->l = ft_strlen(fq->s);
+    fq->s = fq->type == 'x' ? ft_itoa_base(fq->n, 16, 0) 
+                            : ft_itoa_base(fq->n, 16, 1);
+	fq->l = ft_strlen(fq->s);
+	if ((fq->precision >= (int)fq->width && fq->precision > (int)fq->l) ||
+		(fq->width == 0 && fq->precision == 0 && fq->n == 0))
+		compute_precision(fq);	
+    else if ((int)fq->width > fq->precision && fq->width > fq->l)
+		compute_width_unsigned(fq);
+	else if (fq->flags[HASH] == '1' && fq->n != 0)
+		add_prefix(fq);
 }

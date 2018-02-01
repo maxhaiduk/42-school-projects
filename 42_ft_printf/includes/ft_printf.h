@@ -68,5 +68,7 @@ void			form_x(t_fq *fq, va_list ap);
 void			add_sign(t_fq *fq);
 void			compute_precision(t_fq *fq);
 void			compute_width(t_fq *fq);
+void			compute_width_unsigned(t_fq *fq);
+void			add_prefix(t_fq *fq);
 
 #endif

@@ -30,14 +30,15 @@ INC_DIR := ./includes
 LFT_DIR := ./libft
 
 # Source files
-SRC :=	ft_printf.c		        \
-		parser.c 				\
-		checker.c 				\
-		former.c 				\
-		form_s.c 				\
-		form_c.c 				\
-		form_i_d.c				\
-		compute_width.c			\
+SRC :=	ft_printf.c		        	\
+		parser.c 					\
+		checker.c 					\
+		former.c 					\
+		form_s.c 					\
+		form_c.c 					\
+		form_i_d.c					\
+		compute_width.c				\
+		compute_width_unsigned.c	\
 		form_x.c
 
 
