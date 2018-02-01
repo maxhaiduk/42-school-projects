@@ -102,7 +102,7 @@ int					ft_tolower(int c);
 int					ft_atoi(char const *str);
 long long int		ft_atoi16(char const *str);
 char				*ft_itoa(long long n);
-char				*ft_itoa_base(long long n, char base);
+char				*ft_itoa_base(long long n, char base, int char_case);
 char				*ft_itoa_sign(long long n);
 char				*ft_itoa_abs(long long n);
 

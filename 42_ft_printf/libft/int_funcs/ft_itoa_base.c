@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:05:00 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/19 18:14:08 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/01 17:15:28 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	ft_get_len(long long n, char base)
 	return (len);
 }
 
-char			*ft_itoa_base(long long n, char base)
+char			*ft_itoa_base(long long n, char base, int char_case)
 {
 	long long	num;
 	char		temp;
@@ -46,7 +46,7 @@ char			*ft_itoa_base(long long n, char base)
 		if (temp <= 9)
 			str[len] = temp + '0';
 		else
-			str[len] = temp - 10 + 'a';
+			str[len] = temp - 10 + (char_case == 1 ? 'A' : 'a');
 		num /= base;
 		len--;
 	}
