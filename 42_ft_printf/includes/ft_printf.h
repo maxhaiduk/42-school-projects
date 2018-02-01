@@ -47,6 +47,7 @@ typedef struct	s_format_qualifier
 	char		*s;
 	size_t		l;
 	intmax_t	n;
+	uintmax_t	un;
 }				t_fq;
 
 int				ft_printf(const char *format, ...);
@@ -62,6 +63,8 @@ char			*fill_right(char *s, size_t width, size_t *len, char c);
 void			form_s(t_fq *fq, va_list ap);
 void			form_c(t_fq *fq, va_list ap);
 void			form_i_d(t_fq *fq, va_list ap);
+void			form_x(t_fq *fq, va_list ap);
+
 void			add_sign(t_fq *fq);
 void			compute_precision(t_fq *fq);
 void			compute_width(t_fq *fq);
