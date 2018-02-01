@@ -23,7 +23,7 @@ static void	get_value(t_fq *fq, va_list ap)
 	else if (fq->size == l)
 		fq->un = (va_arg(ap, unsigned long));
 	else if (fq->size == j)
-		fq->un = (uintmax_t)(va_arg(ap, intmax_t));
+		fq->un = (va_arg(ap, uintmax_t));
 	else if (fq->size == z)
 		fq->un = (va_arg(ap, size_t));
 	else
@@ -35,5 +35,9 @@ void    form_x(t_fq *fq, va_list ap)
     get_value(fq, ap);
     fq->s = fq->type == 'x' ? ft_itoa_base(fq->un, 16, 0) 
                             : ft_itoa_base(fq->un, 16, 1);
+    if (fq->precision == 0 && fq->n == 0)
+		compute_precision(fq);
+    if ((int)fq->width > fq->precision && fq->width > fq->l)
+		compute_width(fq);
     fq->l = ft_strlen(fq->s);
 }
