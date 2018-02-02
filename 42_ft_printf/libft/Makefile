@@ -80,11 +80,12 @@ LIST_FUNCS :=	ft_lstnew.c 		\
 				ft_lstlen.c 		\
 				ft_lst_erase.c
 
-INT_FUNCS :=	ft_atoi.c 			\
-				ft_atoi16.c			\
-				ft_itoa.c 			\
-				ft_itoa_base.c 		\
-				ft_itoa_sign.c		\
+INT_FUNCS :=	ft_atoi.c 				\
+				ft_atoi16.c				\
+				ft_itoa.c 				\
+				ft_itoa_base.c 			\
+				ft_itoa_base_unsigned.c \
+				ft_itoa_sign.c			\
 				ft_itoa_abs.c
 
 RW_FUNCS = 		get_next_line.c 	\

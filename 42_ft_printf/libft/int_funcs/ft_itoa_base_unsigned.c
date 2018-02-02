@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base_unsigned.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/19 18:05:00 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/02 10:57:13 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/02 10:47:01 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/02 10:56:44 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-static size_t	ft_get_len(intmax_t n, char base)
+static size_t	ft_get_len(uintmax_t n, char base)
 {
 	size_t len;
 
 	len = 0;
-	if (n <= 0)
+	if (n == 0)
 		len++;
 	while (n)
 	{
@@ -27,9 +27,9 @@ static size_t	ft_get_len(intmax_t n, char base)
 	return (len);
 }
 
-char			*ft_itoa_base(intmax_t n, char base, int char_case)
+char			*ft_itoa_base_unsigned(uintmax_t n, char base, int char_case)
 {
-	intmax_t	num;
+	uintmax_t	num;
 	char		temp;
 	size_t		len;
 	char		*str;
@@ -50,7 +50,5 @@ char			*ft_itoa_base(intmax_t n, char base, int char_case)
 		num /= base;
 		len--;
 	}
-	if (n < 0)
-		str[len] = '-';
 	return (str);
 }

@@ -53,14 +53,14 @@ static void	handle_minus_2(t_fq *fq, int t)
 {
 	if (fq->flags[MINUS] == '1')
 	{
-		if (fq->flags[HASH] == '1' && fq->n != 0)
+		if (fq->flags[HASH] == '1' && fq->un != 0)
 			add_prefix(fq);
 		fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 	}
 	else
 	{
 		fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
-		if (fq->flags[HASH] == '1' && fq->n != 0)
+		if (fq->flags[HASH] == '1' && fq->un != 0)
 			set_prefix(fq);
 	}
 }
@@ -71,14 +71,14 @@ void		compute_width_unsigned(t_fq *fq)
 
 	t = 0;
 	fq->l = ft_strlen(fq->s);
-	if ((fq->precision > (int)fq->l) || (fq->precision == 0 && fq->n == 0))
+	if ((fq->precision > (int)fq->l) || (fq->precision == 0 && fq->un == 0))
 	{
 		t = 1;
-		compute_precision(fq);
+		compute_precision_unsigned(fq);
 	}
 	if (fq->flags[ZERO] == '0')
 	{
-		if (fq->flags[HASH] == '1' && fq->n != 0)
+		if (fq->flags[HASH] == '1' && fq->un != 0)
 			add_prefix(fq);
 		handle_minus_1(fq);
 	}
