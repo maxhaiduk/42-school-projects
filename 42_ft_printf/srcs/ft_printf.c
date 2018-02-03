@@ -27,6 +27,8 @@ static void	init_struct(t_fq *fq)
 	fq->size = 0;
 	fq->type = '\0';
 	fq->indent = 0;
+	fq->s = NULL;
+	fq->l = 0;
 }
 
 void		write_counter(va_list ap, int count)

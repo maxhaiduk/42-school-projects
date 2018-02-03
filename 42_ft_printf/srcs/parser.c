@@ -53,7 +53,8 @@ static const char	*check_type(const char *qual, t_fq *fq)
 		}
 		temp++;
 	}
-	return (NULL);
+	fq->indent = 1;
+	return (qual);
 }
 
 static void			init_flags_values(char *fv)
