@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form_x.c                                           :+:      :+:    :+:   */
+/*   form_xou.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/01 17:27:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/01 17:27:21 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/03 11:18:18 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/03 11:18:19 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void		compute_precision_unsigned(t_fq *fq)
 void		get_value(t_fq *fq, va_list ap)
 {
 	if (fq->size == hh)
-		fq->un = (unsigned char)(va_arg(ap, int));
+		fq->un = (unsigned char)(va_arg(ap,  unsigned int));
 	else if (fq->size == h)
-		fq->un = (unsigned short)(va_arg(ap, int));
+		fq->un = (unsigned short)(va_arg(ap, unsigned int));
 	else if (fq->size == ll)
 		fq->un = va_arg(ap, unsigned long long);
 	else if (fq->size == l)
@@ -41,19 +41,26 @@ void		get_value(t_fq *fq, va_list ap)
 		fq->un = (va_arg(ap, unsigned int));
 }
 
+
 void		get_string(t_fq *fq)
 {
 	if (fq->type == 'x')
 		fq->s = ft_itoa_base_unsigned(fq->un, 16, 0);
-	else if(fq->type == 'X')
+	else if (fq->type == 'X')
 		fq->s = ft_itoa_base_unsigned(fq->un, 16, 1);
-	else if(fq->type == 'o' || fq->type == 'O')
+	else if (fq->type == 'o' || fq->type == 'O')
 		fq->s = ft_itoa_base_unsigned(fq->un, 8, 0);
+	else if (fq->type == 'u' || fq->type == 'U')
+		fq->s = ft_itoa_base_unsigned(fq->un, 10, 0);
 }
 
-void		form_x_o(t_fq *fq, va_list ap)
+void		form_x_o_u(t_fq *fq, va_list ap)
 {
-	get_value(fq, ap);
+
+	if (fq->type == 'U')
+		fq->un = (va_arg(ap, unsigned long));
+	else
+		get_value(fq, ap);
 	get_string(fq);
 	fq->l = ft_strlen(fq->s);
 	if ((fq->precision >= (int)fq->width && fq->precision > (int)fq->l) ||

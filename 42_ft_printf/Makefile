@@ -39,7 +39,7 @@ SRC :=	ft_printf.c		        	\
 		form_i_d.c					\
 		compute_width.c				\
 		compute_width_unsigned.c	\
-		form_x.c
+		form_xou.c
 
 
 # Object files
