@@ -40,6 +40,11 @@ void		compute_precision(t_fq *fq)
 
 static void	get_value(t_fq *fq, va_list ap)
 {
+	if (fq->type == 'D')
+	{
+		fq->n = (va_arg(ap, long));
+		return ;
+	}
 	if (fq->size == hh)
 		fq->n = (char)(va_arg(ap, int));
 	else if (fq->size == h)

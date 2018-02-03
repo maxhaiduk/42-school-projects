@@ -59,7 +59,7 @@ void		get_string(t_fq *fq)
 void		form_x_o_u(t_fq *fq, va_list ap)
 {
 
-	if (fq->type == 'U')
+	if (fq->type == 'U' || fq->type == 'O')
 		fq->un = (va_arg(ap, unsigned long));
 	else
 		get_value(fq, ap);

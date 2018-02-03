@@ -17,6 +17,7 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
+# include <limits.h>
 # include "../libft/libft.h"
 
 # define MINUS 0

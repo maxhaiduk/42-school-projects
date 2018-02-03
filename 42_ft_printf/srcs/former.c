@@ -77,7 +77,7 @@ int		form_output(va_list ap, t_fq *fq)
 		form_s(fq, ap);
 	else if (fq->type == 'c')
 		form_c(fq, ap);
-	else if (fq->type == 'i' || fq->type == 'd')
+	else if (fq->type == 'i' || fq->type == 'd' || fq->type == 'D')
 		form_i_d(fq, ap);
 	else if (fq->type == 'x' || fq->type == 'X' ||
 		fq->type == 'o' || fq->type == 'O' ||
