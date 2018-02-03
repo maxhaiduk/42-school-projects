@@ -17,16 +17,18 @@ void	check_width(char *q_str, t_fq *fq, va_list ap)
 	int i;
 	int t;
 
-	i = 0;
-	while (q_str[++i])
+	i = 1;
+	while (q_str[i])
 	{
 		if (q_str[i] == '.')
 			return ;
 		if (q_str[i] == '*')
 		{
 			t = va_arg(ap, int);
+			if (t < 0 && t != 0)
+				fq->flags[MINUS] = '1';
 			fq->width = FT_ABS(t);
-			return ;
+			//return ;
 		}
 		if (ft_isdigit(q_str[i]) && q_str[i] != '0')
 		{
@@ -34,10 +36,13 @@ void	check_width(char *q_str, t_fq *fq, va_list ap)
 			while (ft_isdigit(q_str[i]))
 			{
 				q_str[i] = '_';
+				if (!ft_isdigit(q_str[i + 1]))
+					break ;
 				i++;
 			}
-			return ;
+			//return ;
 		}
+		i++;
 	}
 }
 

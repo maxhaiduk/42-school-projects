@@ -32,6 +32,7 @@ void	form_s(t_fq *fq, va_list ap)
 		if (fq->flags[MINUS] == '1')
 			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
 		else
-			fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
+			fq->s = fill_right(fq->s, fq->width, &(fq->l),
+					fq->flags[ZERO] == '1' ? '0' : ' ');
 	}
 }

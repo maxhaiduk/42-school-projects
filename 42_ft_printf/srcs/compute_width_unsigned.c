@@ -41,11 +41,9 @@ void	set_prefix(t_fq *fq)
 
 static void	handle_minus_1(t_fq *fq)
 {
-	if (fq->flags[MINUS] == '1')
-	{
+	if (fq->flags[MINUS] == '1' && fq->width > fq->l)
 		fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
-	}
-	else
+	else if (fq->flags[MINUS] == '0')
 		fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
 }
 
