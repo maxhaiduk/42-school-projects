@@ -30,6 +30,7 @@ void		compute_precision(t_fq *fq)
 {
 	if (fq->precision == 0 && fq->n == 0)
 	{
+		free(fq->s);
 		fq->s = ft_strnew(0);
 		fq->l = 0;
 	}

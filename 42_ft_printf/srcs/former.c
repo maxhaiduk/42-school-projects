@@ -28,7 +28,7 @@ char	*fill_left(char *s, size_t width, size_t *len, char c)
 		i++;
 	}
 	*len = width;
-	ft_strdel(&s);
+	free(s);
 	return (t);
 }
 
@@ -50,7 +50,7 @@ char	*fill_right(char *s, size_t width, size_t *len, char c)
 		i++;
 	}
 	*len = width;
-	ft_strdel(&s);
+	free(s);
 	return (t);
 }
 

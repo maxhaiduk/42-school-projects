@@ -16,11 +16,13 @@ void		compute_precision_unsigned(t_fq *fq)
 {
 	if (fq->precision == 0 && fq->un == 0)
 	{
+		free(fq->s);
 		fq->s = ft_strnew(0);
 		fq->l = 0;
 	}
 	else if (fq->precision > (int)fq->l)
 		fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
+	
 }
 
 void		get_value(t_fq *fq, va_list ap)
@@ -69,6 +71,7 @@ void		form_x_o_u(t_fq *fq, va_list ap)
 			compute_precision_unsigned(fq);
 			if ((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1')
 				add_prefix(fq);
+		
 		}
 	else if ((int)fq->width > fq->precision && fq->width > fq->l)
 		compute_width_unsigned(fq);
