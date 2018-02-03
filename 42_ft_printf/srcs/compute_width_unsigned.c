@@ -19,7 +19,7 @@ void	add_prefix(t_fq *fq)
 
 	prefix[0] = '0';
 	prefix[2] = '\0';
-	if (fq->type == 'x')
+	if (fq->type == 'x' || fq->type == 'p')
 		prefix[1] = 'x';
 	else if(fq->type == 'X')
 		prefix[1] = 'X';
@@ -78,7 +78,7 @@ void		compute_width_unsigned(t_fq *fq)
 	}
 	if (fq->flags[ZERO] == '0')
 	{
-		if (fq->flags[HASH] == '1' && fq->un != 0)
+		if ((fq->flags[HASH] == '1' && fq->un != 0) || fq->type == 'p')
 			add_prefix(fq);
 		handle_minus_1(fq);
 	}

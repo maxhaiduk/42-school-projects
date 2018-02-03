@@ -71,7 +71,6 @@ void		form_x_o_u(t_fq *fq, va_list ap)
 			compute_precision_unsigned(fq);
 			if ((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1')
 				add_prefix(fq);
-		
 		}
 	else if ((int)fq->width > fq->precision && fq->width > fq->l)
 		compute_width_unsigned(fq);
