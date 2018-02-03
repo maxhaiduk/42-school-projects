@@ -27,7 +27,7 @@ void	add_prefix(t_fq *fq)
 		prefix[1] = '\0';
 	temp = fq->s;
 	fq->s = ft_strjoin(prefix, fq->s);
-	fq->l += 2;
+	fq->l = ft_strlen(fq->s);
 	free(temp);
 }
 

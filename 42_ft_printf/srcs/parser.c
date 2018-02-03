@@ -26,13 +26,15 @@ static void			init_types(char *types)
 	types[3] = 'd';
 	types[4] = 'x';
 	types[5] = 'X';
-	types[6] = 'n';
-	types[7] = '\0';
+	types[6] = 'o';
+	types[7] = 'O';
+	types[8] = 'n';
+	types[9] = '\0';
 }
 
 static const char	*check_type(const char *qual, t_fq *fq)
 {
-	static char		types[8];
+	static char		types[10];
 	const char		*temp;
 	char			*type;
 
