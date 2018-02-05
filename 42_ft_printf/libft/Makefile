@@ -110,9 +110,6 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-print:
-	echo '$(OBJS)'
-
 VPATH := $(SRC_DIRS)
 
 $(OBJ_DIR)/%.o: %.c

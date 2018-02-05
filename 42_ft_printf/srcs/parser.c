@@ -17,7 +17,7 @@
 ** Such as type is the last part of qualifier, indent for can be calculated;
 */
 
-static void			init_types(char *types)
+static void	init_types(char *types)
 {
 	types[0] = 's';
 	types[1] = 'c';
@@ -36,14 +36,13 @@ static void			init_types(char *types)
 	types[14] = '\0';
 }
 
-static int check_type(char **qual, t_fq *fq)
+static int	check_type(char **qual, t_fq *fq)
 {
 	static char		types[15];
 	char			*type;
 
 	if (!types[0])
 		init_types(types);
-
 	if ((type = ft_strchr(types, **qual)))
 	{
 		fq->type = *type;
@@ -52,8 +51,7 @@ static int check_type(char **qual, t_fq *fq)
 	return (0);
 }
 
-
-static int			check_flags(char **q_str, t_fq *fq)
+static int	check_flags(char **q_str, t_fq *fq)
 {
 	static char fv[6];
 	char		*tmp;
@@ -76,12 +74,12 @@ static int			check_flags(char **q_str, t_fq *fq)
 	return (0);
 }
 
-void					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
+void		parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 {
 	char *q_str;
 
 	q_str = (char *)qual + 1;
-	while(*q_str)
+	while (*q_str)
 	{
 		if (!(check_flags(&q_str, fq) ||
 		check_width(&q_str, fq, ap) ||
@@ -89,7 +87,7 @@ void					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 		check_size(&q_str, fq) ||
 		check_type(&q_str, fq)) ||
 		fq->type)
-			break;
+			break ;
 	}
 	if (fq->type)
 		fq->indent = q_str - qual + 1;

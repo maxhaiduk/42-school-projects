@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int	check_width(char **q_str, t_fq *fq, va_list ap)
+int			check_width(char **q_str, t_fq *fq, va_list ap)
 {
 	int t;
 
@@ -21,6 +21,8 @@ int	check_width(char **q_str, t_fq *fq, va_list ap)
 	if (**q_str == '*')
 	{
 		t = va_arg(ap, int);
+		if (t < 0)
+			fq->flags[MINUS] = '1';
 		fq->width = FT_ABS(t);
 		(*q_str)++;
 		return (1);
@@ -34,7 +36,7 @@ int	check_width(char **q_str, t_fq *fq, va_list ap)
 	return (0);
 }
 
-int	 check_precision(char **q_str, t_fq *fq, va_list ap)
+int			check_precision(char **q_str, t_fq *fq, va_list ap)
 {
 	char	*dot;
 
@@ -57,24 +59,12 @@ int	 check_precision(char **q_str, t_fq *fq, va_list ap)
 	return (0);
 }
 
-int	check_size(char **q_str, t_fq *fq)
+static int	check_single_hl(char **q_str, t_fq *fq)
 {
-	if (**q_str == 'h' && *(*q_str + 1) == 'h')
-	{
-		fq->size = hh;
-		(*q_str) += 2;
-		return (1);
-	}
-	else if (**q_str == 'h')
+	if (**q_str == 'h')
 	{
 		fq->size = h;
 		(*q_str) += 1;
-		return (1);
-	}
-	else if (**q_str == 'l' && *(*q_str + 1) == 'l')
-	{
-		fq->size = ll;
-		(*q_str) += 2;
 		return (1);
 	}
 	else if (**q_str == 'l')
@@ -83,7 +73,12 @@ int	check_size(char **q_str, t_fq *fq)
 		(*q_str) += 1;
 		return (1);
 	}
-	else if (**q_str == 'j')
+	return (0);
+}
+
+static int	check_single_jz(char **q_str, t_fq *fq)
+{
+	if (**q_str == 'j')
 	{
 		fq->size = j;
 		(*q_str) += 1;
@@ -95,5 +90,25 @@ int	check_size(char **q_str, t_fq *fq)
 		(*q_str) += 1;
 		return (1);
 	}
-	return 0;
+	return (0);
+}
+
+int			check_size(char **q_str, t_fq *fq)
+{
+	if (**q_str == 'h' && *(*q_str + 1) == 'h')
+	{
+		fq->size = hh;
+		(*q_str) += 2;
+		return (1);
+	}
+	else if (**q_str == 'l' && *(*q_str + 1) == 'l')
+	{
+		fq->size = ll;
+		(*q_str) += 2;
+		return (1);
+	}
+	else if (check_single_hl(q_str, fq) ||
+			check_single_jz(q_str, fq))
+		return (1);
+	return (0);
 }
