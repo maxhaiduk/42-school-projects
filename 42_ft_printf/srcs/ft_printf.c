@@ -57,7 +57,8 @@ void		perform(const char *format, va_list ap, int *count)
 				write_counter(ap, *count);
 		else if (fq.type)
 		{
-			form_output(ap, &fq);
+			if (fq.type != 't')
+				form_output(ap, &fq);
 			*count += write(1, fq.s, fq.l);
 			free(fq.s);
 		}

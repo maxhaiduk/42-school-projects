@@ -85,8 +85,12 @@ void		parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 		check_width(&q_str, fq, ap) ||
 		check_precision(&q_str, fq, ap) ||
 		check_size(&q_str, fq) ||
-		check_type(&q_str, fq)) ||
-		fq->type)
+		check_type(&q_str, fq)))
+		{
+			form_issue_out(fq, *q_str);
+			break ;
+		}
+		else if (fq->type)
 			break ;
 	}
 	if (fq->type)

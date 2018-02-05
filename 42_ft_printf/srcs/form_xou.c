@@ -58,7 +58,6 @@ void		get_string(t_fq *fq)
 
 void		form_x_o_u(t_fq *fq, va_list ap)
 {
-
 	if (fq->type == 'U' || fq->type == 'O')
 		fq->un = (va_arg(ap, unsigned long));
 	else
@@ -69,7 +68,10 @@ void		form_x_o_u(t_fq *fq, va_list ap)
 		(fq->width == 0 && fq->precision == 0 && fq->un == 0))
 		{
 			compute_precision_unsigned(fq);
-			if ((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1')
+			if (((fq->type == 'x' || fq->type == 'X') && fq->flags[HASH] == '1') &&
+				!(fq->width == 0 && fq->precision == 0 && fq->un == 0))
+				add_prefix(fq);
+			if (((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1'))
 				add_prefix(fq);
 		}
 	else if ((int)fq->width > fq->precision && fq->width > fq->l)
