@@ -54,8 +54,8 @@ void		perform(const char *format, va_list ap, int *count)
 		init_struct(&fq);
 		parse_qualifier(needle, &fq, ap);
 		if (fq.type == 'n')
-			write_counter(ap, *count);
-		else
+				write_counter(ap, *count);
+		else if (fq.type)
 		{
 			form_output(ap, &fq);
 			*count += write(1, fq.s, fq.l);

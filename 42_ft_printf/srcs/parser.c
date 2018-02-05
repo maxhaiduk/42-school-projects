@@ -23,20 +23,22 @@ static void			init_types(char *types)
 	types[1] = 'c';
 	types[2] = '%';
 	types[3] = 'i';
-	types[3] = 'd';
-	types[4] = 'x';
-	types[5] = 'X';
-	types[6] = 'o';
-	types[7] = 'O';
-	types[8] = 'u';
-	types[9] = 'U';
-	types[10] = 'n';
-	types[11] = '\0';
+	types[4] = 'd';
+	types[5] = 'D';
+	types[6] = 'x';
+	types[7] = 'X';
+	types[8] = 'o';
+	types[9] = 'O';
+	types[10] = 'u';
+	types[11] = 'U';
+	types[12] = 'p';
+	types[13] = 'n';
+	types[14] = '\0';
 }
 
 static int check_type(char **qual, t_fq *fq)
 {
-	static char		types[12];
+	static char		types[15];
 	char			*type;
 
 	if (!types[0])
@@ -89,4 +91,8 @@ void					parse_qualifier(const char *qual, t_fq *fq, va_list ap)
 		fq->type)
 			break;
 	}
+	if (fq->type)
+		fq->indent = q_str - qual + 1;
+	else
+		fq->indent = q_str - qual;
 }

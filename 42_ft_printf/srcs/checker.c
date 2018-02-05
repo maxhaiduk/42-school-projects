@@ -48,7 +48,10 @@ int	 check_precision(char **q_str, t_fq *fq, va_list ap)
 			return (1);
 		}
 		fq->precision = ft_atoi(dot + 1);
-		(*q_str) += ft_numlen(fq->precision) + 1;
+		if (ft_isdigit(*(*q_str + 1)))
+			(*q_str) += ft_numlen(fq->precision) + 1;
+		else
+			(*q_str) += 1;
 		return (1);
 	}
 	return (0);

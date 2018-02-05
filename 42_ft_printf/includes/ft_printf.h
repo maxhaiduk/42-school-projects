@@ -53,10 +53,10 @@ typedef struct	s_format_qualifier
 
 int				ft_printf(const char *format, ...);
 
-int				parse_qualifier(const char *qual, t_fq *fq, va_list ap);
-void			check_width(char *q_str, t_fq *fq, va_list ap);
-void			check_precision(char *q_str, t_fq *fq, va_list ap);
-void			check_size(char *q_str, t_fq *fq);
+void			parse_qualifier(const char *qual, t_fq *fq, va_list ap);
+int				check_width(char **q_str, t_fq *fq, va_list ap);
+int				check_precision(char **q_str, t_fq *fq, va_list ap);
+int				check_size(char **q_str, t_fq *fq);
 
 int				form_output(va_list ap, t_fq *fq);
 char			*fill_left(char *s, size_t width, size_t *len, char c);
