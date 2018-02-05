@@ -63,13 +63,15 @@ static int	check_single_hl(char **q_str, t_fq *fq)
 {
 	if (**q_str == 'h')
 	{
-		fq->size = h;
+		if (!fq->size || (fq->size && fq->size < h))
+			fq->size = h;
 		(*q_str) += 1;
 		return (1);
 	}
 	else if (**q_str == 'l')
 	{
-		fq->size = l;
+		if (!fq->size || (fq->size && fq->size < l))
+			fq->size = l;
 		(*q_str) += 1;
 		return (1);
 	}
@@ -80,13 +82,15 @@ static int	check_single_jz(char **q_str, t_fq *fq)
 {
 	if (**q_str == 'j')
 	{
-		fq->size = j;
+		if (!fq->size || (fq->size && fq->size < j))
+			fq->size = j;
 		(*q_str) += 1;
 		return (1);
 	}
 	else if (**q_str == 'z')
 	{
-		fq->size = z;
+		if (!fq->size || (fq->size && fq->size < z))
+			fq->size = z;
 		(*q_str) += 1;
 		return (1);
 	}
@@ -97,13 +101,15 @@ int			check_size(char **q_str, t_fq *fq)
 {
 	if (**q_str == 'h' && *(*q_str + 1) == 'h')
 	{
-		fq->size = hh;
+		if (!fq->size || (fq->size && fq->size < hh))
+			fq->size = hh;
 		(*q_str) += 2;
 		return (1);
 	}
 	else if (**q_str == 'l' && *(*q_str + 1) == 'l')
 	{
-		fq->size = ll;
+		if (!fq->size || (fq->size && fq->size < ll))
+			fq->size = ll;
 		(*q_str) += 2;
 		return (1);
 	}
