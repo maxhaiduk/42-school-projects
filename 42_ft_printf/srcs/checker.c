@@ -44,7 +44,7 @@ int	 check_precision(char **q_str, t_fq *fq, va_list ap)
 		if (*(dot + 1) == '*')
 		{
 			fq->precision = va_arg(ap, int);
-			(*q_str)++;
+			(*q_str) += 2;
 			return (1);
 		}
 		fq->precision = ft_atoi(dot + 1);
