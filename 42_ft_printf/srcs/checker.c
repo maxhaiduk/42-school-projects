@@ -12,67 +12,85 @@
 
 #include "../includes/ft_printf.h"
 
-void	check_width(char *q_str, t_fq *fq, va_list ap)
+int	check_width(char **q_str, t_fq *fq, va_list ap)
 {
-	int i;
 	int t;
 
-	i = 1;
-	while (q_str[i])
+	if (**q_str == '.')
+		return (0);
+	if (**q_str == '*')
 	{
-		if (q_str[i] == '.')
-			return ;
-		if (q_str[i] == '*')
-		{
-			t = va_arg(ap, int);
-			if (t < 0 && t != 0)
-				fq->flags[MINUS] = '1';
-			fq->width = FT_ABS(t);
-			//return ;
-		}
-		if (ft_isdigit(q_str[i]) && q_str[i] != '0')
-		{
-			fq->width = ft_atoi(&(q_str[i]));
-			while (ft_isdigit(q_str[i]))
-			{
-				q_str[i] = '_';
-				if (!ft_isdigit(q_str[i + 1]))
-					break ;
-				i++;
-			}
-			//return ;
-		}
-		i++;
+		t = va_arg(ap, int);
+		fq->width = FT_ABS(t);
+		(*q_str)++;
+		return (1);
 	}
+	if (ft_isdigit(**q_str) && **q_str != '0')
+	{
+		fq->width = ft_atoi(*q_str);
+		(*q_str) += ft_numlen(fq->width);
+		return (1);
+	}
+	return (0);
 }
 
-void	check_precision(char *q_str, t_fq *fq, va_list ap)
+int	 check_precision(char **q_str, t_fq *fq, va_list ap)
 {
 	char	*dot;
 
-	if ((dot = ft_strchr(q_str, '.')))
+	dot = *q_str;
+	if (*dot == '.')
 	{
 		if (*(dot + 1) == '*')
 		{
 			fq->precision = va_arg(ap, int);
-			return ;
+			(*q_str)++;
+			return (1);
 		}
 		fq->precision = ft_atoi(dot + 1);
+		(*q_str) += ft_numlen(fq->precision) + 1;
+		return (1);
 	}
+	return (0);
 }
 
-void	check_size(char *q_str, t_fq *fq)
+int	check_size(char **q_str, t_fq *fq)
 {
-	if (ft_strstr(q_str, "hh"))
+	if (**q_str == 'h' && *(*q_str + 1) == 'h')
+	{
 		fq->size = hh;
-	else if (ft_strstr(q_str, "h"))
+		(*q_str) += 2;
+		return (1);
+	}
+	else if (**q_str == 'h')
+	{
 		fq->size = h;
-	else if (ft_strstr(q_str, "ll"))
+		(*q_str) += 1;
+		return (1);
+	}
+	else if (**q_str == 'l' && *(*q_str + 1) == 'l')
+	{
 		fq->size = ll;
-	else if (ft_strstr(q_str, "l"))
+		(*q_str) += 2;
+		return (1);
+	}
+	else if (**q_str == 'l')
+	{
 		fq->size = l;
-	else if (ft_strstr(q_str, "j"))
+		(*q_str) += 1;
+		return (1);
+	}
+	else if (**q_str == 'j')
+	{
 		fq->size = j;
-	else if (ft_strstr(q_str, "z"))
+		(*q_str) += 1;
+		return (1);
+	}
+	else if (**q_str == 'z')
+	{
 		fq->size = z;
+		(*q_str) += 1;
+		return (1);
+	}
+	return 0;
 }
