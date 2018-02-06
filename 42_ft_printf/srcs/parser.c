@@ -32,13 +32,14 @@ static void	init_types(char *types)
 	types[10] = 'u';
 	types[11] = 'U';
 	types[12] = 'p';
-	types[13] = 'n';
-	types[14] = '\0';
+	types[13] = 'C';
+	types[14] = 'n';
+	types[15] = '\0';
 }
 
 static int	check_type(char **qual, t_fq *fq)
 {
-	static char		types[15];
+	static char		types[16];
 	char			*type;
 
 	if (!types[0])

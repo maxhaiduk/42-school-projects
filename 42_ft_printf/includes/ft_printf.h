@@ -63,6 +63,7 @@ char			*fill_left(char *s, size_t width, size_t *len, char c);
 char			*fill_right(char *s, size_t width, size_t *len, char c);
 void			form_s(t_fq *fq, va_list ap);
 void			form_c(t_fq *fq, va_list ap);
+void			form_c_wide(t_fq *fq, va_list ap);
 void			form_i_d(t_fq *fq, va_list ap);
 void			form_x_o_u(t_fq *fq, va_list ap);
 void 			form_p(t_fq *fq, va_list ap);
