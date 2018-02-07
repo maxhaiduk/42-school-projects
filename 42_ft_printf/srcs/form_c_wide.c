@@ -58,7 +58,7 @@ void    form_c_wide(t_fq *fq, va_list ap)
 
     val = va_arg(ap, int);
     nb = count_active_bits(val);
-    if (nb <= 7)
+    if (nb <= 7 || MB_CUR_MAX == 1)
     {
         fq->s = ft_strnew(1);
         fq->s[0] = val;
