@@ -51,20 +51,22 @@ static char		*utf8_encode(int val, short nb)
 	return (arr);
 }
 
-void            encode_symbol(t_fq *fq, int val)
+char           *encode_symbol(int val)
 {
     short	nb;
+	char	*s;
 
     nb = count_active_bits(val);
 	if (nb <= 7)
 	{
-		fq->s = ft_strnew(1);
-		fq->s[0] = val;
+		s = ft_strnew(1);
+		s[0] = val;
 	}
 	else
-		fq->s = utf8_encode(val, nb);
-	if (!fq->s)
-		fq->s = ft_strnew(0);
+		s = utf8_encode(val, nb);
+	if (!s)
+		s = ft_strnew(0);
+	return (s);
 }
 
 void			form_c_wide(t_fq *fq, va_list ap)
@@ -73,7 +75,7 @@ void			form_c_wide(t_fq *fq, va_list ap)
 	int		val;
 
 	val = va_arg(ap, int);
-	encode_symbol(fq, val);
+	fq->s = encode_symbol(val);
 	fq->l = val ? ft_strlen(fq->s) : 1;
 	if (fq->width > 1)
 	{

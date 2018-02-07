@@ -17,33 +17,11 @@
 ** Such as type is the last part of qualifier, indent for can be calculated;
 */
 
-static void	init_types(char *types)
-{
-	types[0] = 's';
-	types[1] = 'c';
-	types[2] = '%';
-	types[3] = 'i';
-	types[4] = 'd';
-	types[5] = 'D';
-	types[6] = 'x';
-	types[7] = 'X';
-	types[8] = 'o';
-	types[9] = 'O';
-	types[10] = 'u';
-	types[11] = 'U';
-	types[12] = 'p';
-	types[13] = 'C';
-	types[14] = 'n';
-	types[15] = '\0';
-}
-
 static int	check_type(char **qual, t_fq *fq)
 {
-	static char		types[16];
+
 	char			*type;
 
-	if (!types[0])
-		init_types(types);
 	if ((type = ft_strchr(types, **qual)))
 	{
 		fq->type = *type;
@@ -54,18 +32,9 @@ static int	check_type(char **qual, t_fq *fq)
 
 static int	check_flags(char **q_str, t_fq *fq)
 {
-	static char fv[6];
+
 	char		*tmp;
 
-	if (!fv[0])
-	{
-		fv[0] = '-';
-		fv[1] = '+';
-		fv[2] = ' ';
-		fv[3] = '#';
-		fv[4] = '0';
-		fv[5] = '\0';
-	}
 	if ((tmp = ft_strchr(fv, **q_str)))
 	{
 		fq->flags[tmp - fv] = '1';

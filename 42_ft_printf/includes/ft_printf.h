@@ -15,12 +15,14 @@
 
 # include <stdio.h>
 
-# include <stdarg.h>
 # include <wchar.h>
 # include <locale.h>
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/libft.h"
+
+# define types 	"sScC%idDxXoOuUpn"
+# define fv		"-+ #0"
 
 # define MINUS 0
 # define PLUS  1
@@ -48,6 +50,7 @@ typedef struct	s_format_qualifier
 	char		type;
 	int			indent;
 	char		*s;
+	int			*p;
 	size_t		l;
 	intmax_t	n;
 	uintmax_t	un;
@@ -64,6 +67,7 @@ int				form_output(va_list ap, t_fq *fq);
 char			*fill_left(char *s, size_t width, size_t *len, char c);
 char			*fill_right(char *s, size_t width, size_t *len, char c);
 void			form_s(t_fq *fq, va_list ap);
+void			form_s_wide(t_fq *fq, va_list ap);
 void			form_c(t_fq *fq, va_list ap);
 void			form_c_wide(t_fq *fq, va_list ap);
 void			form_i_d(t_fq *fq, va_list ap);
