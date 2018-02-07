@@ -42,6 +42,18 @@ static char  *utf8_3bytes(int val)
     return (arr);
 }
 
+static char  *utf8_4bytes(int val)
+{
+    char *arr;
+
+    arr = ft_strnew(4);
+    arr[0] = 0b11110000 | (val >> 18);
+    arr[1] = (0b10000000 | (val >> 12)) & 0b10111111;
+    arr[2] = (0b10000000 | (val >> 6)) & 0b10111111;
+    arr[3] = (0b10000000 | val) & 0b10111111;
+    return (arr);
+}
+
 void    form_c_wide(t_fq *fq, va_list ap)
 {
     short nb;
@@ -58,5 +70,9 @@ void    form_c_wide(t_fq *fq, va_list ap)
         fq->s = utf8_2bytes(val);
     else if (nb <= 16)
         fq->s = utf8_3bytes(val);
+    else if (nb <= 21)
+        fq->s = utf8_4bytes(val);
+    else
+        fq->s = ft_strnew(0);
     fq->l = ft_strlen(fq->s);
 }
