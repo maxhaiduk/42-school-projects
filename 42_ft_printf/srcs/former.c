@@ -95,9 +95,9 @@ void	form_char(t_fq *fq, va_list ap)
 
 int		form_output(va_list ap, t_fq *fq)
 {
-	if (fq->type == 's')
+	if (fq->type == 's' && fq->size != l)
 		form_s(fq, ap);
-	else if (fq->type == 'S')
+	else if (fq->type == 'S' || (fq->type == 's' && fq->size == l))
 		form_s_wide(fq, ap);
 	else if (fq->type == 'c' && fq->size != l)
 		form_c(fq, ap);

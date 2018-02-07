@@ -33,7 +33,7 @@ void	add_prefix(t_fq *fq)
 
 void	set_prefix(t_fq *fq)
 {
-	if (fq->type == 'x')
+	if (fq->type == 'x' || fq->type == 'p')
 		fq->s[1] = 'x';
 	else if(fq->type == 'X')
 		fq->s[1] = 'X';
@@ -58,7 +58,7 @@ static void	handle_minus_2(t_fq *fq, int t)
 	else
 	{
 		fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
-		if (fq->flags[HASH] == '1' && fq->un != 0)
+		if ((fq->flags[HASH] == '1' && fq->un != 0) || fq->type == 'p')
 			set_prefix(fq);
 	}
 }

@@ -50,7 +50,7 @@ typedef struct	s_format_qualifier
 	char		type;
 	int			indent;
 	char		*s;
-	int			*p;
+	wchar_t		*p;
 	size_t		l;
 	intmax_t	n;
 	uintmax_t	un;
@@ -74,6 +74,7 @@ void			form_i_d(t_fq *fq, va_list ap);
 void			form_x_o_u(t_fq *fq, va_list ap);
 void 			form_p(t_fq *fq, va_list ap);
 
+char          	*encode_symbol(int val);
 void			form_issue_out(t_fq *fq, char c);
 
 void			add_sign(t_fq *fq);

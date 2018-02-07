@@ -35,6 +35,7 @@ SRC :=	ft_printf.c		        	\
 		checker.c 					\
 		former.c 					\
 		form_s.c 					\
+		form_s_wide.c				\
 		form_c.c 					\
 		form_c_wide.c				\
 		form_i_d.c					\
