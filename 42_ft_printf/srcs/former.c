@@ -75,9 +75,10 @@ int		form_output(va_list ap, t_fq *fq)
 {
 	if (fq->type == 's')
 		form_s(fq, ap);
-	else if (fq->type == 'c')
+	else if ((fq->type == 'c' && fq->size != l) ||
+			(fq->type = 'C' && MB_CUR_MAX == 1))
 		form_c(fq, ap);
-	else if (fq->type == 'C' || (fq->type == 'c' && fq->size == l))
+	else if (fq->type == 'C')
 		form_c_wide(fq, ap);
 	else if (fq->type == 'i' || fq->type == 'd' || fq->type == 'D')
 		form_i_d(fq, ap);
