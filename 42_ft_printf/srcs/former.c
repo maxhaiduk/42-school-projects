@@ -77,6 +77,8 @@ void	form_char(t_fq *fq, va_list ap)
 	{
 		if (fq->type == 'c')
 			form_c(fq, ap);
+		if (fq->type == 'c' && fq->size == l)
+			form_c_wide(fq, ap);
 		if (fq->type == 'C')
 			form_c_wide(fq, ap);
 	}
@@ -85,7 +87,7 @@ void	form_char(t_fq *fq, va_list ap)
 		if (fq->type == 'c' && fq->size != l)
 			form_c(fq, ap);
 		if (fq->type == 'c' && fq->size == l)
-			form_c(fq, ap);
+			form_c_wide(fq, ap);
 		if (fq->type == 'C')
 			form_c_wide(fq, ap);
 	}
@@ -95,9 +97,9 @@ int		form_output(va_list ap, t_fq *fq)
 {
 	if (fq->type == 's')
 		form_s(fq, ap);
-	else if (fq->type == 'c' || fq->type == 'C')
-		form_char(fq, ap);
-	else if (fq->type == 'C')
+	else if (fq->type == 'c' && fq->size != l)
+		form_c(fq, ap);
+	else if (fq->type == 'C' || (fq->type == 'c' && fq->size == l))
 		form_c_wide(fq, ap);
 	else if (fq->type == 'i' || fq->type == 'd' || fq->type == 'D')
 		form_i_d(fq, ap);
