@@ -55,11 +55,10 @@ void		write_counter(va_list ap, t_fq *fq, int count)
 		*((int *)dest) = count;
 }
 
-void		perform(const char *format, va_list ap, int *count)
+void		perform(const char *format, va_list ap, int *count, t_fq *fq)
 {
 	const char	*needle;
 	const char	*fiber;
-	t_fq		fq;
 	size_t		len;
 
 	fiber = format;
@@ -67,18 +66,18 @@ void		perform(const char *format, va_list ap, int *count)
 	{
 		*count += (needle - fiber);
 		write(1, fiber, needle - fiber);
-		init_struct(&fq);
-		parse_qualifier(needle, &fq, ap);
-		if (fq.type == 'n')
-				write_counter(ap, &fq, *count);
-		else if (fq.type)
+		init_struct(fq);
+		parse_qualifier(needle, fq, ap);
+		if (fq->type == 'n')
+			write_counter(ap, fq, *count);
+		else if (fq->type)
 		{
-			if (fq.type != 't')
-				form_output(ap, &fq);
-			*count += write(1, fq.s, fq.l);
-			free(fq.s);
+			if (fq->type != 't')
+				form_output(ap, fq);
+			*count += write(1, fq->s, fq->l);
+			free(fq->s);
 		}
-		needle += fq.indent;
+		needle += fq->indent;
 		fiber = needle;
 	}
 	write(1, fiber, (len = ft_strlen(fiber)));
@@ -89,10 +88,11 @@ int			ft_printf(const char *format, ...)
 {
 	va_list ap;
 	int		count;
+	t_fq	fq;
 
 	count = 0;
 	va_start(ap, format);
-	perform(format, ap, &count);
+	perform(format, ap, &count, &fq);
 	va_end(ap);
 	return (count);
 }

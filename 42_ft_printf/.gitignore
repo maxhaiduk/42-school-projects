@@ -2,6 +2,7 @@
 *#*#
 .*
 !.gitignore
+!.testing
 *.o
 libft/testing*
 testing/*

@@ -19,10 +19,9 @@
 
 static int	check_type(char **qual, t_fq *fq)
 {
-
 	char			*type;
 
-	if ((type = ft_strchr(types, **qual)))
+	if ((type = ft_strchr(TYPES, **qual)))
 	{
 		fq->type = *type;
 		return (1);
@@ -32,12 +31,11 @@ static int	check_type(char **qual, t_fq *fq)
 
 static int	check_flags(char **q_str, t_fq *fq)
 {
-
 	char		*tmp;
 
-	if ((tmp = ft_strchr(fv, **q_str)))
+	if ((tmp = ft_strchr(FV, **q_str)))
 	{
-		fq->flags[tmp - fv] = '1';
+		fq->flags[tmp - FV] = '1';
 		(*q_str)++;
 		return (1);
 	}

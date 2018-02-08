@@ -23,8 +23,8 @@
 # include "../libft/libft.h"
 # include "ft_style_sheet.h"
 
-# define types 	"sScC%idDxXoOuUbpn"
-# define fv		"-+ #0"
+# define TYPES 	"sScC%idDxXoOuUbpn"
+# define FV		"-+ #0"
 
 # define MINUS 0
 # define PLUS  1
@@ -36,11 +36,11 @@ typedef enum	e_size_modificator
 {
 	i = 0,
 	hh = 1,
-	h  = 2,
+	h = 2,
 	ll = 3,
-	l  = 4,
-	j  = 5,
-	z  = 6
+	l = 4,
+	j = 5,
+	z = 6
 }				t_sm;
 
 typedef struct	s_format_qualifier
@@ -75,9 +75,9 @@ void			form_c_wide(t_fq *fq, va_list ap);
 void			form_elips(t_fq *fq);
 void			form_i_d(t_fq *fq, va_list ap);
 void			form_xoubp(t_fq *fq, va_list ap);
-void 			form_p(t_fq *fq, va_list ap);
+void			form_p(t_fq *fq, va_list ap);
 
-char          	*encode_symbol(int val);
+char			*encode_symbol(int val);
 void			form_issue_out(t_fq *fq, char c);
 
 void			add_sign(t_fq *fq);

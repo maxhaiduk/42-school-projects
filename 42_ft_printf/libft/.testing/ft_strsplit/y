@@ -1,0 +1,4 @@
+Debugger entered--Lisp error: (error "Cannot return from the debugger in an error")
+  eval(w)
+  eval-expression(w nil)
+  call-interactively(eval-expression)

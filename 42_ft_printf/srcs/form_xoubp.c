@@ -6,10 +6,9 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 15:06:21 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/08 15:06:23 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/08 15:18:42 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/ft_printf.h"
 
@@ -23,13 +22,12 @@ void			compute_precision_unsigned(t_fq *fq)
 	}
 	else if (fq->precision > (int)fq->l)
 		fq->s = fill_right(fq->s, fq->precision, &(fq->l), '0');
-	
 }
 
 static void		get_value(t_fq *fq, va_list ap)
 {
 	if (fq->size == hh)
-		fq->un = (unsigned char)(va_arg(ap,  unsigned int));
+		fq->un = (unsigned char)(va_arg(ap, unsigned int));
 	else if (fq->size == h)
 		fq->un = (unsigned short)(va_arg(ap, unsigned int));
 	else if (fq->size == ll)
@@ -43,7 +41,6 @@ static void		get_value(t_fq *fq, va_list ap)
 	else
 		fq->un = (va_arg(ap, unsigned int));
 }
-
 
 static void		get_string(t_fq *fq)
 {
@@ -69,35 +66,35 @@ void			form_xoubp(t_fq *fq, va_list ap)
 	fq->l = ft_strlen(fq->s);
 	if ((fq->precision >= (int)fq->width && fq->precision > (int)fq->l) ||
 		(fq->width == 0 && fq->precision == 0 && fq->un == 0))
-		{
-			compute_precision_unsigned(fq);
-			if (((fq->type == 'x' || fq->type == 'X' || fq->type == 'b')
-				&& fq->flags[HASH] == '1') &&
-				!(fq->width == 0 && fq->precision == 0 && fq->un == 0))
-				add_prefix(fq);
-			if (((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1') &&
-				(fq->width == 0 && fq->precision == 0 && fq->un == 0))
-				add_prefix(fq);
-		}
+	{
+		compute_precision_unsigned(fq);
+		if (((fq->type == 'x' || fq->type == 'X' || fq->type == 'b')
+			&& fq->flags[HASH] == '1') &&
+			!(fq->width == 0 && fq->precision == 0 && fq->un == 0))
+			add_prefix(fq);
+		if (((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1')
+			&& (fq->width == 0 && fq->precision == 0 && fq->un == 0))
+			add_prefix(fq);
+	}
 	else if ((int)fq->width > fq->precision && fq->width > fq->l)
 		compute_width_unsigned(fq);
 	else if (fq->flags[HASH] == '1' && fq->un != 0)
 		add_prefix(fq);
 }
 
-void form_p(t_fq *fq, va_list ap)
+void			form_p(t_fq *fq, va_list ap)
 {
-    fq->un = (va_arg(ap, uintmax_t));
-    fq->s = ft_itoa_base_unsigned(fq->un, 16, 0);
-    fq->l = ft_strlen(fq->s);
-    if ((fq->precision >= (int)fq->width && fq->precision > (int)fq->l) ||
+	fq->un = (va_arg(ap, uintmax_t));
+	fq->s = ft_itoa_base_unsigned(fq->un, 16, 0);
+	fq->l = ft_strlen(fq->s);
+	if ((fq->precision >= (int)fq->width && fq->precision > (int)fq->l) ||
 		(fq->width == 0 && fq->precision == 0 && fq->un == 0))
-		{
-			compute_precision_unsigned(fq);
-			add_prefix(fq);
-		}
+	{
+		compute_precision_unsigned(fq);
+		add_prefix(fq);
+	}
 	else if ((int)fq->width > fq->precision && fq->width > fq->l)
 		compute_width_unsigned(fq);
-    else
-        add_prefix(fq);
+	else
+		add_prefix(fq);
 }

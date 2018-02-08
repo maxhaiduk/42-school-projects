@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	add_prefix(t_fq *fq)
+void		add_prefix(t_fq *fq)
 {
 	char *temp;
 	char prefix[3];
@@ -33,11 +33,11 @@ void	add_prefix(t_fq *fq)
 	free(temp);
 }
 
-void	set_prefix(t_fq *fq)
+void		set_prefix(t_fq *fq)
 {
 	if (fq->type == 'x' || fq->type == 'p')
 		fq->s[1] = 'x';
-	else if(fq->type == 'X')
+	else if (fq->type == 'X')
 		fq->s[1] = 'X';
 }
 

@@ -51,12 +51,12 @@ static char		*utf8_encode(int val, short nb)
 	return (arr);
 }
 
-char           *encode_symbol(int val)
+char			*encode_symbol(int val)
 {
-    short	nb;
+	short	nb;
 	char	*s;
 
-    nb = count_active_bits(val);
+	nb = count_active_bits(val);
 	if (nb <= 7 || (nb <= 8 && MB_CUR_MAX == 1))
 	{
 		s = ft_strnew(1);
@@ -71,7 +71,6 @@ char           *encode_symbol(int val)
 
 void			form_c_wide(t_fq *fq, va_list ap)
 {
-
 	int		val;
 
 	val = va_arg(ap, int);
