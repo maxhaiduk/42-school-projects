@@ -26,19 +26,16 @@ void    get_wstr(t_fq *fq)
 {
     size_t  i;
     size_t  len;
-    char    *temp;
     char    *w_temp;
 
     len = wstr_len(fq->p);
     i = 0;
-    fq->s = ft_strnew(0);
+    fq->s = ft_strnew(len * 4 + 1);
     while (i < len)
     {
-        temp = fq->s;
         w_temp = encode_symbol(fq->p[i]);
-        fq->s = ft_strjoin(fq->s, w_temp);
+        fq->s = ft_strcat(fq->s, w_temp);
         free(w_temp);
-        free(temp);
         i++;
     }
     fq->l = ft_strlen(fq->s);
