@@ -57,11 +57,16 @@ char           *encode_symbol(int val)
 	char	*s;
 
     nb = count_active_bits(val);
-	if (nb <= 7)
+	if (nb <= 7 || (nb <= 8 && MB_CUR_MAX == 1))
 	{
 		s = ft_strnew(1);
 		s[0] = val;
 	}
+	/*else if (nb <= 8 && MB_CUR_MAX == 1)
+	{
+		s = ft_strnew(1);
+		s[0] = val;
+	}*/
 	else
 		s = utf8_encode(val, nb);
 	if (!s)
