@@ -30,14 +30,14 @@ static void	init_struct(t_fq *fq)
 	fq->s = NULL;
 	fq->l = 0;
 }
-
+/*
 void		write_counter(va_list ap, int count)
 {
 	int *dest;
 
 	dest = va_arg(ap, void*);
 	*dest = count;
-}
+}*/
 
 void		perform(const char *format, va_list ap, int *count)
 {
@@ -53,15 +53,15 @@ void		perform(const char *format, va_list ap, int *count)
 		write(1, fiber, needle - fiber);
 		init_struct(&fq);
 		parse_qualifier(needle, &fq, ap);
-		if (fq.type == 'n')
-				write_counter(ap, *count);
-		else if (fq.type)
-		{
+		//if (fq.type == 'n')
+		//		write_counter(ap, *count);
+		//else if (fq.type)
+		//{
 			if (fq.type != 't')
 				form_output(ap, &fq);
 			*count += write(1, fq.s, fq.l);
 			free(fq.s);
-		}
+		//}
 		needle += fq.indent;
 		fiber = needle;
 	}
