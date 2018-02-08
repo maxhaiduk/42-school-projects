@@ -36,11 +36,10 @@ SRC :=	ft_printf.c		        	\
 		former.c 					\
 		form_s.c 					\
 		form_s_wide.c				\
-		form_c.c 					\
+		form_ct_el.c 				\
 		form_c_wide.c				\
 		form_i_d.c					\
-		form_xou.c					\
-		form_p.c 					\
+		form_xoubp.c				\
 		compute_width.c				\
 		compute_width_unsigned.c	\
 		

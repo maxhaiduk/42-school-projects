@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form_c.c                                           :+:      :+:    :+:   */
+/*   form_ct_el.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/25 14:46:14 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/26 12:20:18 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/08 15:03:03 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/08 15:03:04 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ void	form_c(t_fq *fq, va_list ap)
 		else
 			fq->s = fill_right(fq->s, fq->width, &(fq->l),
 					fq->flags[ZERO] == '1' ? '0' : ' ');
+	}
+}
+
+void	form_elips(t_fq *fq)
+{
+	char	c;
+
+	fq->s = ft_strnew(1);
+	fq->s[0] = '%';
+	fq->l = 1;
+	if (fq->width > 1)
+	{
+		c = fq->flags[ZERO] == '1' ? '0' : ' ';
+		if (fq->flags[MINUS] == '1')
+			fq->s = fill_left(fq->s, fq->width, &(fq->l), ' ');
+		else
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), c);
 	}
 }
 

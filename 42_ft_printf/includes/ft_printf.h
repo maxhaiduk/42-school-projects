@@ -72,8 +72,9 @@ void			form_s(t_fq *fq, va_list ap);
 void			form_s_wide(t_fq *fq, va_list ap);
 void			form_c(t_fq *fq, va_list ap);
 void			form_c_wide(t_fq *fq, va_list ap);
+void			form_elips(t_fq *fq);
 void			form_i_d(t_fq *fq, va_list ap);
-void			form_x_o_u(t_fq *fq, va_list ap);
+void			form_xoubp(t_fq *fq, va_list ap);
 void 			form_p(t_fq *fq, va_list ap);
 
 char          	*encode_symbol(int val);

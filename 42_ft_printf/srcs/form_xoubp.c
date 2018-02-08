@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   form_xou.c                                         :+:      :+:    :+:   */
+/*   form_xoubp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/03 11:18:18 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/03 11:18:19 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/08 15:06:21 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/08 15:06:23 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/ft_printf.h"
 
@@ -58,7 +59,7 @@ static void		get_string(t_fq *fq)
 		fq->s = ft_itoa_base_unsigned(fq->un, 2, 0);
 }
 
-void			form_x_o_u(t_fq *fq, va_list ap)
+void			form_xoubp(t_fq *fq, va_list ap)
 {
 	if (fq->type == 'U' || fq->type == 'O')
 		fq->un = (va_arg(ap, unsigned long));
@@ -82,4 +83,21 @@ void			form_x_o_u(t_fq *fq, va_list ap)
 		compute_width_unsigned(fq);
 	else if (fq->flags[HASH] == '1' && fq->un != 0)
 		add_prefix(fq);
+}
+
+void form_p(t_fq *fq, va_list ap)
+{
+    fq->un = (va_arg(ap, uintmax_t));
+    fq->s = ft_itoa_base_unsigned(fq->un, 16, 0);
+    fq->l = ft_strlen(fq->s);
+    if ((fq->precision >= (int)fq->width && fq->precision > (int)fq->l) ||
+		(fq->width == 0 && fq->precision == 0 && fq->un == 0))
+		{
+			compute_precision_unsigned(fq);
+			add_prefix(fq);
+		}
+	else if ((int)fq->width > fq->precision && fq->width > fq->l)
+		compute_width_unsigned(fq);
+    else
+        add_prefix(fq);
 }
