@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void		compute_precision_unsigned(t_fq *fq)
+void			compute_precision_unsigned(t_fq *fq)
 {
 	if (fq->precision == 0 && fq->un == 0)
 	{
@@ -25,7 +25,7 @@ void		compute_precision_unsigned(t_fq *fq)
 	
 }
 
-void		get_value(t_fq *fq, va_list ap)
+static void		get_value(t_fq *fq, va_list ap)
 {
 	if (fq->size == hh)
 		fq->un = (unsigned char)(va_arg(ap,  unsigned int));
@@ -44,7 +44,7 @@ void		get_value(t_fq *fq, va_list ap)
 }
 
 
-void		get_string(t_fq *fq)
+static void		get_string(t_fq *fq)
 {
 	if (fq->type == 'x')
 		fq->s = ft_itoa_base_unsigned(fq->un, 16, 0);
@@ -54,9 +54,11 @@ void		get_string(t_fq *fq)
 		fq->s = ft_itoa_base_unsigned(fq->un, 8, 0);
 	else if (fq->type == 'u' || fq->type == 'U')
 		fq->s = ft_itoa_base_unsigned(fq->un, 10, 0);
+	else if (fq->type == 'b')
+		fq->s = ft_itoa_base_unsigned(fq->un, 2, 0);
 }
 
-void		form_x_o_u(t_fq *fq, va_list ap)
+void			form_x_o_u(t_fq *fq, va_list ap)
 {
 	if (fq->type == 'U' || fq->type == 'O')
 		fq->un = (va_arg(ap, unsigned long));
@@ -68,7 +70,8 @@ void		form_x_o_u(t_fq *fq, va_list ap)
 		(fq->width == 0 && fq->precision == 0 && fq->un == 0))
 		{
 			compute_precision_unsigned(fq);
-			if (((fq->type == 'x' || fq->type == 'X') && fq->flags[HASH] == '1') &&
+			if (((fq->type == 'x' || fq->type == 'X' || fq->type == 'b')
+				&& fq->flags[HASH] == '1') &&
 				!(fq->width == 0 && fq->precision == 0 && fq->un == 0))
 				add_prefix(fq);
 			if (((fq->type == 'o' || fq->type == 'O') && fq->flags[HASH] == '1') &&

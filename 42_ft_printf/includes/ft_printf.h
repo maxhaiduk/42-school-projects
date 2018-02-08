@@ -22,7 +22,7 @@
 # include <limits.h>
 # include "../libft/libft.h"
 
-# define types 	"sScC%idDxXoOuUpn"
+# define types 	"sScC%idDxXoOuUbpn"
 # define fv		"-+ #0"
 
 # define MINUS 0

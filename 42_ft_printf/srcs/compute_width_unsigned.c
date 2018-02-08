@@ -21,8 +21,10 @@ void	add_prefix(t_fq *fq)
 	prefix[2] = '\0';
 	if (fq->type == 'x' || fq->type == 'p')
 		prefix[1] = 'x';
-	else if(fq->type == 'X')
+	else if (fq->type == 'X')
 		prefix[1] = 'X';
+	else if (fq->type == 'b')
+		prefix[1] = 'b';
 	else
 		prefix[1] = '\0';
 	temp = fq->s;
