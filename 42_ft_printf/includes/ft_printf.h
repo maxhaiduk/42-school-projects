@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 
+# include <stdarg.h>
 # include <wchar.h>
 # include <locale.h>
 # include <stdlib.h>
