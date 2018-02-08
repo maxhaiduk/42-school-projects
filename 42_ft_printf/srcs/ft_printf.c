@@ -29,15 +29,31 @@ static void	init_struct(t_fq *fq)
 	fq->indent = 0;
 	fq->s = NULL;
 	fq->l = 0;
+	fq->p = NULL;
+	fq->n = 0;
+	fq->un = 0;
 }
-/*
-void		write_counter(va_list ap, int count)
-{
-	int *dest;
 
-	dest = va_arg(ap, void*);
-	*dest = count;
-}*/
+void		write_counter(va_list ap, t_fq *fq, int count)
+{
+	void *dest;
+
+	dest = va_arg(ap, void *);
+	if (fq->size == hh)
+		*((signed char *)dest) = count;
+	else if (fq->size == h)
+		*((short int *)dest) = count;
+	else if (fq->size == l)
+		*((long int *)dest) = count;
+	else if (fq->size == ll)
+		*((long long int *)dest) = count;
+	else if (fq->size == j)
+		*((intmax_t *)dest) = count;
+	else if (fq->size == z)
+		*((size_t *)dest) = count;
+	else
+		*((int *)dest) = count;
+}
 
 void		perform(const char *format, va_list ap, int *count)
 {
@@ -53,15 +69,15 @@ void		perform(const char *format, va_list ap, int *count)
 		write(1, fiber, needle - fiber);
 		init_struct(&fq);
 		parse_qualifier(needle, &fq, ap);
-		//if (fq.type == 'n')
-		//		write_counter(ap, *count);
-		//else if (fq.type)
-		//{
+		if (fq.type == 'n')
+				write_counter(ap, &fq, *count);
+		else if (fq.type)
+		{
 			if (fq.type != 't')
 				form_output(ap, &fq);
 			*count += write(1, fq.s, fq.l);
 			free(fq.s);
-		//}
+		}
 		needle += fq.indent;
 		fiber = needle;
 	}
