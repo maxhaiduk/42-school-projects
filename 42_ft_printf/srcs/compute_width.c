@@ -37,7 +37,10 @@ static void	handle_minus_2(t_fq *fq, int t)
 	}
 	else
 	{
-		fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
+		if ((size_t)fq->precision > fq->l)
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), t ? ' ' : ('0'));
+		else
+			fq->s = fill_right(fq->s, fq->width, &(fq->l), ' ');
 		set_sign(fq);
 		if (fq->flags[SPACE] == '1' && fq->flags[PLUS] == '0')
 			fq->s[0] = ' ';
