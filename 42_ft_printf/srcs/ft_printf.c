@@ -35,7 +35,7 @@ void		write_counter(va_list ap, int count)
 {
 	int *dest;
 
-	dest = va_arg(ap, void *);
+	dest = va_arg(ap, void*);
 	*dest = count;
 }
 
