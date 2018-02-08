@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include "../libft/libft.h"
+# include "ft_style_sheet.h"
 
 # define types 	"sScC%idDxXoOuUbpn"
 # define fv		"-+ #0"
