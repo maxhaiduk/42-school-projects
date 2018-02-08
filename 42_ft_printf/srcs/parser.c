@@ -12,11 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-/*
-** Searching for type and put it to structure
-** Such as type is the last part of qualifier, indent for can be calculated;
-*/
-
 static int	check_type(char **qual, t_fq *fq)
 {
 	char			*type;
