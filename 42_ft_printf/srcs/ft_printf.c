@@ -15,7 +15,7 @@
 /*
 ** Goes through the format string, looking for the % symbol
 ** If % was found - parse qualifier by filling stuct fq;
-** Then next ap should be written on stdout;
+** Then next ap will be written on stdout;
 */
 
 static void	init_struct(t_fq *fq)
@@ -55,32 +55,41 @@ void		write_counter(va_list ap, t_fq *fq, int count)
 		*((int *)dest) = count;
 }
 
-void		perform(const char *format, va_list ap, int *count, t_fq *fq)
+void		execute_qualifier(t_fq *fq, va_list ap, int *count)
+{
+	if (fq->type == 'n')
+		write_counter(ap, fq, *count);
+	else if (fq->type == '&')
+		fq->fd = va_arg(ap, int);
+	else if (fq->type)
+	{
+		if (fq->type != 't')
+			form_output(ap, fq);
+		*count += write(fq->fd, fq->s, fq->l);
+		free(fq->s);
+	}
+}
+
+void		perform(const char *format, va_list ap, int *count)
 {
 	const char	*needle;
 	const char	*fiber;
 	size_t		len;
+	t_fq		fq;
 
+	fq.fd = 1;
 	fiber = format;
 	while ((needle = ft_strchr(fiber, '%')))
 	{
 		*count += (needle - fiber);
-		write(1, fiber, needle - fiber);
-		init_struct(fq);
-		parse_qualifier(needle, fq, ap);
-		if (fq->type == 'n')
-			write_counter(ap, fq, *count);
-		else if (fq->type)
-		{
-			if (fq->type != 't')
-				form_output(ap, fq);
-			*count += write(1, fq->s, fq->l);
-			free(fq->s);
-		}
-		needle += fq->indent;
+		write(fq.fd, fiber, needle - fiber);
+		init_struct(&fq);
+		parse_qualifier(needle, &fq, ap);
+		execute_qualifier(&fq, ap, count);
+		needle += fq.indent;
 		fiber = needle;
 	}
-	write(1, fiber, (len = ft_strlen(fiber)));
+	write(fq.fd, fiber, (len = ft_strlen(fiber)));
 	*count += len;
 }
 
@@ -88,11 +97,10 @@ int			ft_printf(const char *format, ...)
 {
 	va_list ap;
 	int		count;
-	t_fq	fq;
-
+	
 	count = 0;
 	va_start(ap, format);
-	perform(format, ap, &count, &fq);
+	perform(format, ap, &count);
 	va_end(ap);
 	return (count);
 }

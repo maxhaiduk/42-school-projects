@@ -23,7 +23,7 @@
 # include "../libft/libft.h"
 # include "ft_style_sheet.h"
 
-# define TYPES 	"sScC%idDxXoOuUbpn"
+# define TYPES 	"sScC%idDxXoOuUbpn&"
 # define FV		"-+ #0"
 
 # define MINUS 0
@@ -56,6 +56,7 @@ typedef struct	s_format_qualifier
 	size_t		l;
 	intmax_t	n;
 	uintmax_t	un;
+	int			fd;
 }				t_fq;
 
 int				ft_printf(const char *format, ...);
