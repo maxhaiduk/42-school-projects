@@ -20,10 +20,11 @@
 # include <locale.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <time.h>
 # include "../libft/libft.h"
 # include "ft_style_sheet.h"
 
-# define TYPES 	"sScC%idDxXoOuUbpn&"
+# define TYPES 	"sScC%idDxXoOuUbpn&k"
 # define FV		"-+ #0"
 
 # define MINUS 0
@@ -78,6 +79,8 @@ void			form_i_d(t_fq *fq, va_list ap);
 void			form_xoubp(t_fq *fq, va_list ap);
 void			form_p(t_fq *fq, va_list ap);
 
+int   			print_date(t_fq *fq);
+
 char			*encode_symbol(int val);
 void			form_issue_out(t_fq *fq, char c);
 
@@ -87,5 +90,15 @@ void			compute_precision_unsigned(t_fq *fq);
 void			compute_width(t_fq *fq);
 void			compute_width_unsigned(t_fq *fq);
 void			add_prefix(t_fq *fq);
+
+/*
+**	%k print current date and time in defferent formats
+**	hh 				: hh:mm:ss
+**	h				: hh:mm
+**	l				: YYYY-MM-DD
+**	ll				: YYYY-MM
+**	z				: YYYY
+**	no size of j	: YYYY-MM-DD hh:mm:ss
+*/
 
 #endif

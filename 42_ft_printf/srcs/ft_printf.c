@@ -61,6 +61,8 @@ void		execute_qualifier(t_fq *fq, va_list ap, int *count)
 		write_counter(ap, fq, *count);
 	else if (fq->type == '&')
 		fq->fd = va_arg(ap, int);
+	else if	(fq->type == 'k')
+		*count += print_date(fq);
 	else if (fq->type)
 	{
 		if (fq->type != 't')
@@ -81,8 +83,11 @@ void		perform(const char *format, va_list ap, int *count)
 	fiber = format;
 	while ((needle = ft_strchr(fiber, '%')))
 	{
-		*count += (needle - fiber);
-		write(fq.fd, fiber, needle - fiber);
+		if (needle != fiber)
+		{
+			*count += (needle - fiber);
+			write(fq.fd, fiber, needle - fiber);
+		}
 		init_struct(&fq);
 		parse_qualifier(needle, &fq, ap);
 		execute_qualifier(&fq, ap, count);
