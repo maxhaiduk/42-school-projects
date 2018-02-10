@@ -75,5 +75,7 @@ int		form_output(va_list ap, t_fq *fq)
 		form_p(fq, ap);
 	else if (fq->type == '%')
 		form_elips(fq);
+	else if (fq->type == 'r' || fq->type == 'R')
+		form_r(fq, ap);
 	return (0);
 }

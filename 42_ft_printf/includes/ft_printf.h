@@ -24,7 +24,7 @@
 # include "../libft/libft.h"
 # include "ft_style_sheet.h"
 
-# define TYPES 	"sScC%idDxXoOuUbpn&k"
+# define TYPES 	"sScC%idDxXoOuUbpn&krR"
 # define FV		"-+ #0"
 
 # define MINUS 0
@@ -80,6 +80,7 @@ void			form_xoubp(t_fq *fq, va_list ap);
 void			form_p(t_fq *fq, va_list ap);
 
 int   			print_date(t_fq *fq);
+void			form_r(t_fq *fq, va_list ap);
 
 char			*encode_symbol(int val);
 void			form_issue_out(t_fq *fq, char c);
