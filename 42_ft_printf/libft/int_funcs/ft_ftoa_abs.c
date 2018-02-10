@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ftoa.c                                          :+:      :+:    :+:   */
+/*   ft_ftoa_abs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 11:33:55 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/10 14:24:16 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/10 14:57:03 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/10 15:54:42 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	char	*fstr;
 	char	*res;
 
-	istr = ft_itoa(ipart);
+	istr = ft_itoa_abs(ipart);
 	if (precision == 0)
 		return (istr);
 	fstr = ft_itoa(fpart);
@@ -43,7 +43,7 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	return (res);
 }
 
-char	*ft_ftoa(long double n, int precision)
+char	*ft_ftoa_abs(long double n, int precision)
 {
 	intmax_t		ipart;
 	long double		fpart;
@@ -58,9 +58,11 @@ char	*ft_ftoa(long double n, int precision)
 	ipart = (intmax_t)n;
 	fpart = n - (long double)ipart;
 	fpart = FT_ABS(fpart);
-	fpart = ((intmax_t)(fpart * pow + 0.5)) / (pow * 1.0);
 	if (precision != 0)
+	{
 		fpart = fpart * pow;
+		fpart = ((intmax_t)(fpart + 0.5)) / 1.0;
+	}
 	res = form_result(ipart, fpart, precision);
 	return (res);
 }

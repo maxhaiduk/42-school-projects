@@ -40,11 +40,12 @@ SRC :=	ft_printf.c		        	\
 		form_c_wide.c				\
 		form_i_d.c					\
 		form_xoubp.c				\
+		form_f.c					\
 		form_date.c 				\
+		form_r.c					\
 		compute_width.c				\
-		compute_width_unsigned.c	\
+		compute_width_unsigned.c	
 		
-
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

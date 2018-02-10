@@ -18,9 +18,7 @@ static void	get_hex_notation(t_fq *fq)
 	fq->s[0] = '\\';
 	if (fq->type == 'r')
 		fq->s[1] = 'x';
-	else
-		fq->s[1] = 'X';
-	fq->s = ft_strcat(fq->s, ft_itoa_base(fq->n, 16, fq->type == 'r' ? 0 : 1));
+	fq->s = ft_strcat(fq->s, ft_itoa_base(fq->n, 16, 1));
 	fq->l = ft_strlen(fq->s);
 }
 

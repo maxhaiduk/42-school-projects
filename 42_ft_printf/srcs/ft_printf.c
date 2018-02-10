@@ -20,8 +20,8 @@
 
 static void	init_struct(t_fq *fq)
 {
-	ft_memset(fq->flags, '0', 5);
-	fq->flags[5] = '\0';
+	ft_memset(fq->flags, '0', 6);
+	fq->flags[6] = '\0';
 	fq->width = 0;
 	fq->precision = -1;
 	fq->size = 0;
