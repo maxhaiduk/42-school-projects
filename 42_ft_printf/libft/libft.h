@@ -107,6 +107,7 @@ char				*ft_itoa_base_unsigned(uintmax_t n, char base,
 											int char_case);
 char				*ft_itoa_sign(long long n);
 char				*ft_itoa_abs(long long n);
+char				*ft_ftoa(double n, int precision);
 size_t				ft_numlen(intmax_t n);
 
 void				ft_putchar(char c);

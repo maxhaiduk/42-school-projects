@@ -87,6 +87,7 @@ INT_FUNCS :=	ft_atoi.c 				\
 				ft_itoa_base_unsigned.c \
 				ft_itoa_sign.c			\
 				ft_itoa_abs.c			\
+				ft_ftoa.c 				\
 				ft_numlen.c
 
 RW_FUNCS = 		get_next_line.c 	\
