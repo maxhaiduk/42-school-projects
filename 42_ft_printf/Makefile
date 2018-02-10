@@ -40,6 +40,7 @@ SRC :=	ft_printf.c		        	\
 		form_c_wide.c				\
 		form_i_d.c					\
 		form_xoubp.c				\
+		form_date.c 				\
 		compute_width.c				\
 		compute_width_unsigned.c	\
 		
