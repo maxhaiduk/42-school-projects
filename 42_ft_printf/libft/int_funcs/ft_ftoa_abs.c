@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:57:03 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/10 15:54:42 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/10 16:25:49 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	istr = ft_itoa_abs(ipart);
 	if (precision == 0)
 		return (istr);
-	fstr = ft_itoa(fpart);
+	if (fpart == 0)
+		fstr = ft_memset(ft_strnew(precision), '0', precision);
+	else
+		fstr = ft_itoa(fpart);
 	res = ft_strnew(ft_strlen(istr) + ft_strlen(fstr) + 1);
 	res = ft_strcat(res, istr);
 	res = ft_strcat(res, ".");
@@ -60,6 +63,8 @@ char	*ft_ftoa_abs(long double n, int precision)
 	fpart = FT_ABS(fpart);
 	if (precision != 0)
 	{
+		if (fpart == 0)
+			fpart = 0.0000000000001;
 		fpart = fpart * pow;
 		fpart = ((intmax_t)(fpart + 0.5)) / 1.0;
 	}
