@@ -78,7 +78,7 @@ int		form_output(va_list ap, t_fq *fq)
 		form_r(fq, ap);
 	else if (fq->type == 'f' || fq->type == 'F')
 		form_f(fq, ap);
-	/*else if (fq->type == 'e' || fq->type == 'E')
-		form_e(fq, ap);*/
+	else if (fq->type == 'e' || fq->type == 'E')
+		form_e(fq, ap);
 	return (0);
 }
