@@ -24,7 +24,7 @@
 # include "../libft/libft.h"
 # include "ft_style_sheet.h"
 
-# define TYPES 	"sScC%idDxXoOuUbpn&krfF"
+# define TYPES 	"sScC%idDxXoOuUbpn&krfFeE"
 # define FV		"-+ #0'"
 
 # define MINUS 0
@@ -42,7 +42,8 @@ typedef enum	e_size_modificator
 	ll = 3,
 	l = 4,
 	j = 5,
-	z = 6
+	z = 6,
+	L = 7
 }				t_sm;
 
 typedef struct	s_format_qualifier
@@ -84,6 +85,7 @@ void			form_p(t_fq *fq, va_list ap);
 int   			print_date(t_fq *fq);
 void			form_r(t_fq *fq, va_list ap);
 void			form_f(t_fq *fq, va_list ap);
+void			form_e(t_fq *fq, va_list ap);
 
 char			*encode_symbol(int val);
 void			form_issue_out(t_fq *fq, char c);
@@ -95,6 +97,8 @@ void			compute_width(t_fq *fq);
 void			compute_width_unsigned(t_fq *fq);
 void			add_prefix(t_fq *fq);
 void			compute_space(t_fq *fq);
+void    		compute_width_float(t_fq *fq);
+void			add_sign_float(t_fq *fq);
 
 /*
 **	%k print current date and time in defferent formats

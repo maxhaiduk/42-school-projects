@@ -94,6 +94,13 @@ static int	check_single_jz(char **q_str, t_fq *fq)
 		(*q_str) += 1;
 		return (1);
 	}
+	else if (**q_str == 'L')
+	{
+		if (!fq->size || (fq->size && fq->size < L))
+			fq->size = L;
+		(*q_str) += 1;
+		return (1);
+	}
 	return (0);
 }
 
@@ -114,7 +121,7 @@ int			check_size(char **q_str, t_fq *fq)
 		return (1);
 	}
 	else if (check_single_hl(q_str, fq) ||
-			check_single_jz(q_str, fq))
+			check_single_jzL(q_str, fq))
 		return (1);
 	return (0);
 }

@@ -37,7 +37,10 @@ void    compute_width_float(t_fq *fq)
 
 void    form_f(t_fq *fq, va_list ap)
 {
-    fq->fn = va_arg(ap, double);
+    if (fq->size == 'L')
+        fq->fn = va_arg(ap, long double);
+    else
+        fq->fn = va_arg(ap, double);
     fq->s = ft_ftoa_abs(fq->fn, fq->precision == -1 ? 6 : fq->precision);
     fq->l = ft_strlen(fq->s);
     if (fq->width > fq->l)
