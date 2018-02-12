@@ -24,6 +24,25 @@ int		ft_pow(int base, int power)
 	return (res);
 }
 
+char	*correct_fpart(char *fpart, int precision)
+{
+	size_t	len;
+	size_t	i;
+	char	*res;
+
+	len = ft_strlen(fpart);
+	res = ft_strnew(precision);
+	i = 0;
+	while (i < precision - len)
+	{
+		res[i] = '0';
+		i++;
+	}
+	res = ft_strcat(res, fpart);
+	ft_strdel(&fpart);
+	return (res);
+}
+
 char	*form_result(intmax_t ipart, long double fpart, int precision)
 {
 	char	*istr;
@@ -33,7 +52,12 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	istr = ft_itoa(ipart);
 	if (precision == 0)
 		return (istr);
-	fstr = ft_itoa(fpart);
+	if (fpart == 0)
+		fstr = ft_memset(ft_strnew(precision), '0', precision);
+	else
+		fstr = ft_itoa_abs(fpart);
+	if ((size_t)precision > ft_strlen(fstr))
+		fstr = correct_fpart(fstr, precision);
 	res = ft_strnew(ft_strlen(istr) + ft_strlen(fstr) + 1);
 	res = ft_strcat(res, istr);
 	res = ft_strcat(res, ".");

@@ -6,7 +6,7 @@
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 14:57:03 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/10 16:25:49 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/12 10:23:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,25 @@ int		ft_pow(int base, int power)
 	return (res);
 }
 
+char	*correct_fpart(char *fpart, int precision)
+{
+	size_t	len;
+	size_t	i;
+	char	*res;
+
+	len = ft_strlen(fpart);
+	res = ft_strnew(precision);
+	i = 0;
+	while (i < precision - len)
+	{
+		res[i] = '0';
+		i++;
+	}
+	res = ft_strcat(res, fpart);
+	ft_strdel(&fpart);
+	return (res);
+}
+
 char	*form_result(intmax_t ipart, long double fpart, int precision)
 {
 	char	*istr;
@@ -36,7 +55,9 @@ char	*form_result(intmax_t ipart, long double fpart, int precision)
 	if (fpart == 0)
 		fstr = ft_memset(ft_strnew(precision), '0', precision);
 	else
-		fstr = ft_itoa(fpart);
+		fstr = ft_itoa_abs(fpart);
+	if ((size_t)precision > ft_strlen(fstr))
+		fstr = correct_fpart(fstr, precision);
 	res = ft_strnew(ft_strlen(istr) + ft_strlen(fstr) + 1);
 	res = ft_strcat(res, istr);
 	res = ft_strcat(res, ".");
