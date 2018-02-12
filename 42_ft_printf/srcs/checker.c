@@ -78,7 +78,7 @@ static int	check_single_hl(char **q_str, t_fq *fq)
 	return (0);
 }
 
-static int	check_single_jz(char **q_str, t_fq *fq)
+static int	check_single_jzL(char **q_str, t_fq *fq)
 {
 	if (**q_str == 'j')
 	{

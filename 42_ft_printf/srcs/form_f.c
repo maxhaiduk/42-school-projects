@@ -37,7 +37,7 @@ void    compute_width_float(t_fq *fq)
 
 void    form_f(t_fq *fq, va_list ap)
 {
-    if (fq->size == 'L')
+    if (fq->size == L)
         fq->fn = va_arg(ap, long double);
     else
         fq->fn = va_arg(ap, double);

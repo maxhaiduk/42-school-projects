@@ -64,7 +64,7 @@ void    form_e(t_fq *fq, va_list ap)
 {
     int power;
 
-    if (fq->size == 'L')
+    if (fq->size == L)
         fq->fn = va_arg(ap, long double);
     else
         fq->fn = va_arg(ap, double);
