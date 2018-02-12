@@ -17,9 +17,9 @@ int     normalize_number(t_fq *fq)
     int power;
 
     power = 0;
-    if (fq->n >= 0)
+    if (fq->n > 1 || fq->n < 0)
     {
-        while ((intmax_t)fq->fn > 9)
+        while (((intmax_t)FT_ABS(fq->fn)) > 9)
         {
             fq->fn /= 10;
             power++;
@@ -44,7 +44,7 @@ void    add_exponent(t_fq *fq, int k)
 
     e = ft_strnew(4);
     e[0] = fq->type == 'e' ? 'e' : 'E';
-    e[1] = fq->n >= 0 ? '+' : '-';
+    e[1] = fq->n >= 1 || fq->n < 0 ? '+' : '-';
     if (k > 9)
         ks = ft_itoa(k);
     else
