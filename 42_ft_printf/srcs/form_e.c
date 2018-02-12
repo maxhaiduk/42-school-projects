@@ -19,7 +19,7 @@ int     normalize_number(t_fq *fq)
     power = 0;
     if (fq->n > 1 || fq->n <= 0)
     {
-        while (((intmax_t)FT_ABS(fq->fn)) > 9)
+        while ((FT_ABS((intmax_t)fq->fn)) > 9)
         {
             fq->fn /= 10;
             power++;
