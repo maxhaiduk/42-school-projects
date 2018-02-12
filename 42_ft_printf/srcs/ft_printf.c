@@ -61,7 +61,7 @@ void		execute_qualifier(t_fq *fq, va_list ap, int *count)
 		write_counter(ap, fq, *count);
 	else if (fq->type == '&')
 		fq->fd = va_arg(ap, int);
-	else if	(fq->type == 'k')
+	else if (fq->type == 'k')
 		*count += print_date(fq);
 	else if (fq->type)
 	{
@@ -102,7 +102,7 @@ int			ft_printf(const char *format, ...)
 {
 	va_list ap;
 	int		count;
-	
+
 	count = 0;
 	va_start(ap, format);
 	perform(format, ap, &count);

@@ -14,12 +14,16 @@
 
 static void	get_hex_notation(t_fq *fq)
 {
+	char *temp;
+
 	fq->s = ft_strnew(5);
 	fq->s[0] = '\\';
 	if (fq->type == 'r')
 		fq->s[1] = 'x';
-	fq->s = ft_strcat(fq->s, ft_itoa_base(fq->n, 16, 1));
+	temp = ft_itoa_base(fq->n, 16, 1);
+	fq->s = ft_strcat(fq->s, temp);
 	fq->l = ft_strlen(fq->s);
+	ft_strdel(&temp);
 }
 
 void		form_r(t_fq *fq, va_list ap)

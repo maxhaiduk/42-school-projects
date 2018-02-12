@@ -78,7 +78,7 @@ static int	check_single_hl(char **q_str, t_fq *fq)
 	return (0);
 }
 
-static int	check_single_jzL(char **q_str, t_fq *fq)
+static int	check_single_jzl(char **q_str, t_fq *fq)
 {
 	if (**q_str == 'j')
 	{
@@ -121,7 +121,7 @@ int			check_size(char **q_str, t_fq *fq)
 		return (1);
 	}
 	else if (check_single_hl(q_str, fq) ||
-			check_single_jzL(q_str, fq))
+			check_single_jzl(q_str, fq))
 		return (1);
 	return (0);
 }

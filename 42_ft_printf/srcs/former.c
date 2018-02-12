@@ -67,7 +67,7 @@ int		form_output(va_list ap, t_fq *fq)
 	else if (fq->type == 'i' || fq->type == 'd' || fq->type == 'D')
 		form_i_d(fq, ap);
 	else if (fq->type == 'x' || fq->type == 'X' || fq->type == 'o' ||
-			fq->type == 'O' ||	fq->type == 'u' || fq->type == 'U' ||
+			fq->type == 'O' || fq->type == 'u' || fq->type == 'U' ||
 			fq->type == 'b')
 		form_xoubp(fq, ap);
 	else if (fq->type == 'p')

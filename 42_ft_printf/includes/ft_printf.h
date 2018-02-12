@@ -82,7 +82,7 @@ void			form_i_d(t_fq *fq, va_list ap);
 void			form_xoubp(t_fq *fq, va_list ap);
 void			form_p(t_fq *fq, va_list ap);
 
-int   			print_date(t_fq *fq);
+int				print_date(t_fq *fq);
 void			form_r(t_fq *fq, va_list ap);
 void			form_f(t_fq *fq, va_list ap);
 void			form_e(t_fq *fq, va_list ap);
@@ -97,7 +97,7 @@ void			compute_width(t_fq *fq);
 void			compute_width_unsigned(t_fq *fq);
 void			add_prefix(t_fq *fq);
 void			compute_space(t_fq *fq);
-void    		compute_width_float(t_fq *fq);
+void			compute_width_float(t_fq *fq);
 void			add_sign_float(t_fq *fq);
 
 /*
