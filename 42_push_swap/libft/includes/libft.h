@@ -111,6 +111,7 @@ char				*ft_itoa_abs(long long n);
 char				*ft_ftoa(long double n, int precision);
 char				*ft_ftoa_abs(long double n, int precision);
 size_t				ft_numlen(intmax_t n);
+int					ft_is_number(char *str);
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);

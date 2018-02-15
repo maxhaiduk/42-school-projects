@@ -92,7 +92,8 @@ INT_FUNCS 	:=	ft_atoi.c 				\
 				ft_itoa_abs.c			\
 				ft_ftoa.c 				\
 				ft_ftoa_abs.c 			\
-				ft_numlen.c
+				ft_numlen.c				\
+				ft_is_number.c
 
 RW_FUNCS 	:= 	get_next_line.c 	\
 				ft_putchar.c 		\
