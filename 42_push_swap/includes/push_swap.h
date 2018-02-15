@@ -14,8 +14,10 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include "error.h"
 
 t_list	*read_array(char *str);
-int		check_type(char **arr);
+
+void	print_list(t_list *head);
 
 #endif

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_number.c                                     :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 15:04:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/15 15:08:44 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/15 16:13:56 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/15 16:13:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_number(char *str)
-{
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
-	}
-	return (1);
-}
+#ifndef ERROR_H
+# define ERROR_H
+
+# include "libft.h"
+# include <limits.h>
+
+void	memory_error(void);
+void	check_type(char **arr);
+void	check_values(t_list *head);
+void	check_duplicates(t_list *head);
+
+#endif

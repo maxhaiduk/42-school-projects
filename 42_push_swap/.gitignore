@@ -8,3 +8,6 @@ testing/*
 README.md
 cleantrash
 libft.a
+a.out
+a.out.dSYM
+push_swap

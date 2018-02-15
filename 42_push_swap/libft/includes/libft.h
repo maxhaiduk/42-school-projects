@@ -100,7 +100,7 @@ int					ft_iswhite(char c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 
-int					ft_atoi(char const *str);
+intmax_t			ft_atoi(char const *str);
 long long int		ft_atoi16(char const *str);
 char				*ft_itoa(long long n);
 char				*ft_itoa_base(intmax_t n, char base, int char_case);

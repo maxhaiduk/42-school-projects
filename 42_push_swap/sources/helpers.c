@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_number.c                                     :+:      :+:    :+:   */
+/*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 15:04:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/15 15:08:44 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/15 16:56:17 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/15 16:56:18 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_number(char *str)
+#include "push_swap.h"
+
+void	print_list(t_list *head)
 {
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
+	while (head)
 	{
-		if (*str < '0' || *str > '9')
-			return (0);
-		str++;
+		printf("%i\n", *((int *)head->content));
+		head = head->next;
 	}
-	return (1);
 }

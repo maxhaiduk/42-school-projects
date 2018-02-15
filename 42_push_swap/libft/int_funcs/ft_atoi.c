@@ -12,20 +12,16 @@
 
 #include "libft.h"
 
-int	ft_atoi(char const *str)
+intmax_t	ft_atoi(char const *str)
 {
-	int		num;
-	short	mult;
+	intmax_t	num;
+	char		mult;
 
 	while (ft_iswhite(*str))
 		str++;
-	mult = 1;
+	mult = *str == '-' ? -1 : 1;
 	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			mult = -1;
 		str++;
-	}
 	num = 0;
 	while (ft_isdigit(*str))
 	{

@@ -31,7 +31,8 @@ LFT_DIR := ./libft
 # Source files
 SRC :=	push_swap.c \
 		reader.c	\
-		error.c
+		error.c		\
+		helpers.c
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
@@ -56,6 +57,15 @@ $(NAME): $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
+
+VPATH = $(SRC_DIR)
+
+debug:
+	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
+	@make -C $(LFT_DIR) all --silent
+	@echo "$(GREEN)Compiling $(NAME) debug version...$(DEFAULT)"
+	@$(CC) $(FLAGS) -g $(addprefix $(SRC_DIR)/, $(SRC)) $(LFT_DIR)/$(LFT) $(INC)
+	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
 clean:
 	@echo "$(RED)Cleaning libft o-files...$(DEFAULT)" 

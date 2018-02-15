@@ -14,9 +14,11 @@
 
 int main(int argc, char **argv)
 {
-    ft_printf("argc = %i; argv[0] = %s\n", argc, argv[0]);
     t_list *stack_a;
 
+    if (argc != 2)
+        return(write(2, "Usage: ./push_swap [array]\n", 27));
     stack_a = read_array(argv[1]);
+    ft_lst_erase(stack_a);
     return (0);
 }

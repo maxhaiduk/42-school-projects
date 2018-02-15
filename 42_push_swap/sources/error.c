@@ -17,16 +17,45 @@ void	error(void)
 	exit(write(2, "Error\n", 6));
 }
 
-int	check_type(char **arr)
+void	memory_error(void)
+{
+	exit(write(2, "Memory allocation failed\n", 25));
+}
+
+void	check_type(char **arr)
 {
 	while (*arr)
 	{
 		if (!ft_is_number(*arr))
-		{
 			error();
-			return (0);
-		}
 		arr++;
 	}
-	return (1);
+}
+
+void	check_values(t_list *head)
+{
+	while (head)
+	{
+		if (*((intmax_t *)head->content) > INT_MAX ||
+			*((intmax_t *)head->content) < INT_MIN)
+			error();
+		head = head->next;
+	}	
+}
+
+void	check_duplicates(t_list *head)
+{
+	t_list *temp;
+
+	while (head->next)
+	{
+		temp = head->next;
+		while (temp)
+		{
+			if (*((intmax_t *)temp->content) == *((intmax_t *)head->content))
+				error();
+			temp = temp->next;
+		}
+		head = head->next;
+	}
 }
