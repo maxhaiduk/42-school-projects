@@ -1,0 +1,10 @@
+*~
+*#*#
+.*
+!.gitignore
+*.o
+libft/testing*
+testing/*
+README.md
+cleantrash
+libft.a
