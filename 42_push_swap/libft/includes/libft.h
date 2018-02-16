@@ -19,6 +19,7 @@
 
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "ft_btree.h"
 
 # define FT_ABS(x) x < 0 ? -x : x
 
@@ -28,6 +29,7 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
 
 typedef struct		s_word
 {
