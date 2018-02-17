@@ -30,10 +30,10 @@ void	check_values(t_list *head)
 			*((intmax_t *)head->content) < INT_MIN)
 			error();
 		head = head->next;
-	}	
+	}
 }
 
-void del(void *content, size_t content_size)
+void	del(void *content, size_t content_size)
 {
 	ft_bzero(content, content_size);
 	free(content);

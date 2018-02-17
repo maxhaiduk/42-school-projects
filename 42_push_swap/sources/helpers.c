@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-
 void	error(void)
 {
 	exit(ft_printf(RED "%&Error\n" RESET, 2));
