@@ -12,16 +12,6 @@
 
 #include "push_swap.h"
 
-void	error(void)
-{
-	exit(write(2, "Error\n", 6));
-}
-
-void	memory_error(void)
-{
-	exit(write(2, "Memory allocation failed\n", 25));
-}
-
 void	check_type(char **arr)
 {
 	while (*arr)
@@ -43,19 +33,38 @@ void	check_values(t_list *head)
 	}	
 }
 
+void del(void *content, size_t content_size)
+{
+	ft_bzero(content, content_size);
+	free(content);
+}
+
+int		cmp(void *cont1, void *cont2)
+{
+	if (*((int *)cont1) < *((int *)cont2))
+		return (-1);
+	else if (*((int *)cont1) == *((int *)cont2))
+		return (0);
+	else
+		return (1);
+}
+
 void	check_duplicates(t_list *head)
 {
-	t_list *temp;
+	t_btree *root;
 
-	while (head->next)
+	if (head)
 	{
-		temp = head->next;
-		while (temp)
-		{
-			if (*((intmax_t *)temp->content) == *((intmax_t *)head->content))
-				error();
-			temp = temp->next;
-		}
+		root = ft_btreenew(head->content, head->content_size);
 		head = head->next;
 	}
+	while (head)
+	{
+		if (!ft_btree_find(root, head->content, &cmp))
+			ft_btree_insert(root, head->content, head->content_size, &cmp);
+		else
+			error();
+		head = head->next;
+	}
+	ft_btree_erase(&root, &del);
 }

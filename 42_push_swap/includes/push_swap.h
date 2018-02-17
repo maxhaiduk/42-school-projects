@@ -19,5 +19,7 @@
 t_list	*read_array(char *str);
 
 void	print_list(t_list *head);
+void	error(void);
+void	memory_error(void);
 
 #endif

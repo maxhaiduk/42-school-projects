@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+
+void	error(void)
+{
+	exit(ft_printf(RED "%&Error\n" RESET, 2));
+}
+
+void	memory_error(void)
+{
+	exit(ft_printf(RED "%&Memory allocation failed\n" RESET, 2));
+}
+
 void	print_list(t_list *head)
 {
 	while (head)
