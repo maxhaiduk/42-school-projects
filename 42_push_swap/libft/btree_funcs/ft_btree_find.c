@@ -12,9 +12,9 @@
 
 /*
 **	cmp function should returns:
-**		1  - cont1 > cont2;
+**		positive number if cont1 > cont2;
 **		0  - cont1 == cont2;
-**		-1 - cont1 < cont2;
+**		negative number if cont1 < cont2;
 */
 
 #include "ft_btree.h"
@@ -26,7 +26,7 @@ int	ft_btree_find(t_btree *root, void *key,
 	{
 		if (cmp(key, root->content) == 0)
 			return (1);
-		else if (cmp(key, root->content) == 1)
+		else if (cmp(key, root->content) > 0)
 			root = root->right;
 		else
 			root = root->left;

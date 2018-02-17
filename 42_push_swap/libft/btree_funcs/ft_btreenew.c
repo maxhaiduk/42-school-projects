@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_btree *ft_btreenew(void const *content, size_t content_size)
+t_btree	*ft_btreenew(void const *content, size_t content_size)
 {
 	t_btree	*new_node;
 
