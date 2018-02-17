@@ -16,7 +16,9 @@ NAME 	:= libft.a
 
 INC_DIR := ./includes
 
-SRC_DIRS := mem_funcs str_funcs str_arr_funcs char_funcs list_funcs int_funcs rw_funcs ft_printf
+SRC_DIRS := mem_funcs	str_funcs	str_arr_funcs	\
+			char_funcs 	list_funcs 	int_funcs		\
+			rw_funcs 	ft_printf 	btree_funcs
 
 OBJ_DIR	 := ./objs
 
@@ -120,12 +122,22 @@ FT_PRINTF :=	ft_printf.c		        	\
 				form_date.c 				\
 				form_r.c					\
 				compute_width.c				\
-				compute_width_unsigned.c	
+				compute_width_unsigned.c
+
+BTREE_FUNCS :=	ft_btreenew.c 				\
+				ft_btree_insert.c 			\
+				ft_btree_find.c 			\
+				ft_btree_preorder_print.c 	\
+				ft_btreedelone.c 			\
+				ft_btree_erase.c 				
 		
 
 
 
-SRCS = $(MEM_FUNCS) $(STR_FUNCS) $(STR_ARR_FUNCS) $(CHAR_FUNCS) $(LIST_FUNCS) $(INT_FUNCS) $(RW_FUNCS) $(FT_PRINTF)
+SRCS = 	$(MEM_FUNCS)	$(STR_FUNCS)	$(STR_ARR_FUNCS)  	\
+		$(CHAR_FUNCS)	$(LIST_FUNCS) 	$(INT_FUNCS)    	\
+		$(RW_FUNCS) 	$(FT_PRINTF) 	$(BTREE_FUNCS)
+
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 all: $(NAME)
