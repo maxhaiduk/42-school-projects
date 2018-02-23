@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   input_error.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 13:53:54 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/23 13:40:18 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/23 13:40:19 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef INPUT_ERROR_H
+# define INPUT_ERROR_H
 
 # include "libft.h"
-# include "input_error.h"
-# include "ps_tools.h"
+# include <limits.h>
 
-t_list	*read_array(char *str);
-
-void	print_list(t_list *head);
-void	error(void);
 void	memory_error(void);
+void	check_type(char **arr);
+void	check_values(t_list *head);
+void	check_duplicates(t_list *head);
 
 #endif

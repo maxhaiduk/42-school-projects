@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   ps_tools.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 16:13:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/15 16:13:57 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/02/23 13:46:11 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/02/23 14:19:06 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+/*
+** ps means push_swap
+*/
 
-# include "libft.h"
-# include <limits.h>
+#ifndef PS_TOOLS_H
+# define PS_TOOLS_H
 
-void	memory_error(void);
-void	check_type(char **arr);
-void	check_values(t_list *head);
-void	check_duplicates(t_list *head);
+#include "libft.h"
+
+void    ps_swap(t_list *head);
+void    ps_rotate(t_list **head);
 
 #endif

@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/01/16 11:19:44 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/02/23 13:53:08 by mhaiduk          ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME = push_swap
 
@@ -29,10 +29,11 @@ INC_DIR := ./includes ./libft/includes
 LFT_DIR := ./libft
 
 # Source files
-SRC :=	push_swap.c \
-		reader.c	\
-		error.c		\
-		helpers.c
+SRC :=	push_swap.c 		\
+		reader.c			\
+		input_error.c		\
+		helpers.c			\
+		ps_tools.c			
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
