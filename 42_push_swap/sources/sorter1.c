@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 19:57:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/23 20:33:45 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,27 @@ void sort_stack(t_list *a)
 		while (len)
 		{
 			if (a && a->next && VAL(a) > VAL(a->next))
-				ps_swap(a);
+				sa(a);
 			if (b && b->next && VAL(b) < VAL(b->next))
-				ps_swap(b);
+				sb(b);
 			if (VAL(a) >= med)
-				ps_rotate(&a);
+				ra(&a);
 			else
-				ps_push(&a, &b);
+				pb(&a, &b);
+			if (b && b->next && VAL(b) > VAL(b->next))
+				sb(b);
 			len--;
+			print_stacks(a, b);
 		}
-		print_stacks(a, b);
 	}
 	while (b)
 	{
 		if (b && b->next && VAL(b) < VAL(b->next))
-				ps_swap(b);
-		ps_push(&b, &a);
+				sb(b);
+		pa(&a, &b);
 		if (a && a->next && VAL(a) > VAL(a->next))
-				ps_swap(a);
+			sa(a);
+		print_stacks(a, b);
 	}
-	print_stacks(a, b);
+	
 }
