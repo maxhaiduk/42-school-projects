@@ -12,11 +12,11 @@
 
 #include "ft_btree.h"
 
-void	ft_btree_preorder_print(t_btree *root, void (*p)(void *))
+void	ft_btree_inorder_print(t_btree *root, void (*p)(void *))
 {
 	if (!root)
 		return ;
-	ft_btree_preorder_print(root->left, p);
+	ft_btree_inorder_print(root->left, p);
 	p(root->content);
-	ft_btree_preorder_print(root->right, p);
+	ft_btree_inorder_print(root->right, p);
 }

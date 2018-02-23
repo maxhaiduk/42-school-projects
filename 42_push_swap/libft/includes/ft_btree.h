@@ -34,7 +34,7 @@ void				ft_btree_insert(t_btree *root, void *content, size_t size,
 int					ft_btree_find(t_btree *root, void *key,
 									int (*cmp)(void *cont1, void *cont2));
 
-void				ft_btree_preorder_print(t_btree *root, void (*p)(void *));
+void				ft_btree_inorder_print(t_btree *root, void (*p)(void *));
 
 void				ft_btree_erase(t_btree **root, void (*del)(void *, size_t));
 

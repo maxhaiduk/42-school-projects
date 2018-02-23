@@ -60,7 +60,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 VPATH = $(SRC_DIR)
 
-debug:
+d:
 	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
 	@make -C $(LFT_DIR) all --silent
 	@echo "$(GREEN)Compiling $(NAME) debug version...$(DEFAULT)"

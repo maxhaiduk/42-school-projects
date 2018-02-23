@@ -127,9 +127,9 @@ FT_PRINTF :=	ft_printf.c		        	\
 BTREE_FUNCS :=	ft_btreenew.c 				\
 				ft_btree_insert.c 			\
 				ft_btree_find.c 			\
-				ft_btree_preorder_print.c 	\
 				ft_btreedelone.c 			\
-				ft_btree_erase.c 				
+				ft_btree_erase.c			\
+				ft_btree_inorder_print.c				
 		
 
 
