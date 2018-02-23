@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/02/23 13:53:08 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/02/23 19:32:01 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRC :=	push_swap.c 		\
 		reader.c			\
 		input_error.c		\
 		helpers.c			\
-		ps_tools.c			
+		ps_tools.c			\
+		sorter1.c 			\
+		mediana.c    		\
+		printer.c
 
 # Object files
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
