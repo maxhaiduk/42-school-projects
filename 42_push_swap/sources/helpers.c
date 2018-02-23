@@ -3,18 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 16:56:17 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/15 16:56:18 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/23 15:05:45 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(void)
+void	error(char *desc)
 {
-	exit(ft_printf(RED "%&Error\n" RESET, 2));
+	if (!desc)
+		exit(ft_printf(RED "%&Error\n" RESET, 2));
+	else
+		exit(ft_printf(RED "%&Error: %s\n" RESET, 2, desc));
 }
 
 void	memory_error(void)

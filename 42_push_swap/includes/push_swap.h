@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 13:53:54 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/23 14:44:10 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 t_list	*read_array(char *str);
 
 void	print_list(t_list *head);
-void	error(void);
+void	error(char *desc);
 void	memory_error(void);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:39:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 13:39:26 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/23 14:46:15 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_type(char **arr)
 	while (*arr)
 	{
 		if (!ft_is_number(*arr))
-			error();
+			error("incorrect type");
 		arr++;
 	}
 }
@@ -28,7 +28,7 @@ void	check_values(t_list *head)
 	{
 		if (*((intmax_t *)head->content) > INT_MAX ||
 			*((intmax_t *)head->content) < INT_MIN)
-			error();
+			error("incorrect value");
 		head = head->next;
 	}
 }
@@ -63,7 +63,7 @@ void	check_duplicates(t_list *head)
 		if (!ft_btree_find(root, head->content, &cmp))
 			ft_btree_insert(root, head->content, head->content_size, &cmp);
 		else
-			error();
+			error("duplicates in array");
 		head = head->next;
 	}
 	ft_btree_erase(&root, &del);
