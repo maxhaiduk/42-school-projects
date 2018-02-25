@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 20:33:45 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 12:57:17 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void sort_stack(t_list *a)
 	int len;
 	int med;
 
+	b = NULL;
+	print_stacks(a, b);
 	while (a->next)
 	{
 		med = get_mediana(a);
@@ -25,10 +27,10 @@ void sort_stack(t_list *a)
 		ft_printf("Mediana is %i\n", med);
 		while (len)
 		{
-			if (a && a->next && VAL(a) > VAL(a->next))
+			if (a && a->next && VAL(a) > VAL(a->next) && VAL(a->next) < med)
 				sa(a);
-			if (b && b->next && VAL(b) < VAL(b->next))
-				sb(b);
+			// if (b && b->next && VAL(b) < VAL(b->next))
+			// 	sb(b);
 			if (VAL(a) >= med)
 				ra(&a);
 			else
@@ -42,7 +44,7 @@ void sort_stack(t_list *a)
 	while (b)
 	{
 		if (b && b->next && VAL(b) < VAL(b->next))
-				sb(b);
+			sb(b);
 		pa(&a, &b);
 		if (a && a->next && VAL(a) > VAL(a->next))
 			sa(a);

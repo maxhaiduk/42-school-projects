@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 19:33:25 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 12:51:36 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "ps_tools.h"
 
 # define VAL(x) *((int *)x->content)
+# define IS(x) 	(x && x->next) ? 1 : 0
 
 t_list	*read_array(char *str);
 
