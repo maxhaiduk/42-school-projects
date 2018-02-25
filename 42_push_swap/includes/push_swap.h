@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/25 12:51:36 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 14:36:52 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include "input_error.h"
 # include "ps_tools.h"
 
-# define VAL(x) *((int *)x->content)
-# define IS(x) 	(x && x->next) ? 1 : 0
+# define VAL(x) *((int *)(*x)->content)
+# define VAL_NEXT(x) *((int *)(*x)->next->content)
+# define IS_MIN(x, y, z) (x <= y && x <= z) ? 1 : 0
 
 t_list	*read_array(char *str);
 
@@ -29,6 +30,7 @@ void	error(char *desc);
 void	print_list(t_list *head);
 void	btree_del(void *content, size_t content_size);
 int		btree_cmp(void *cont1, void *cont2);
+int		is_min(int x, int y, int z);
 
 void	print_stacks(t_list *a, t_list *b);
 void 	sort_stack(t_list *a);

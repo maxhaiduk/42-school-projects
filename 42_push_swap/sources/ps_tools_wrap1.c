@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:38:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 20:21:12 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 15:01:46 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,40 @@ void	ss(t_list *a, t_list *b)
 	ps_swap(b);
 }
 
-void	ra(t_list **a)
+void	ra(t_list **a, t_list **tail_a)
 {
 	write(1, "ra\n", 3);
-	ps_rotate(a);
+	ps_rotate(a, tail_a);
 }
 
-void	rb(t_list **b)
+void	rb(t_list **b, t_list **tail_b)
 {
 	write(1, "rb\n", 3);
-	ps_rotate(b);
+	ps_rotate(b, tail_b);
 }
 
-void	rr(t_list **a, t_list **b)
+void	rr(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b)
 {
 	write(1, "rr\n", 3);
-	ps_rotate(a);
-	ps_rotate(b);
+	ps_rotate(a, tail_a);
+	ps_rotate(b, tail_b);
+}
+
+void	rra(t_list **a, t_list **tail_a)
+{
+	write(1, "rra\n", 4);
+	ps_rev_rotate(a, tail_a);
+}
+
+void	rrb(t_list **b, t_list **tail_b)
+{
+	write(1, "rrb\n", 4);
+	ps_rev_rotate(b, tail_b);
+}
+
+void	rrr(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b)
+{
+	write(1, "rrr\n", 4);
+	ps_rev_rotate(a, tail_a);
+	ps_rev_rotate(b, tail_b);
 }
