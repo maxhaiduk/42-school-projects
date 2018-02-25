@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/25 14:36:52 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 19:20:16 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int		is_min(int x, int y, int z);
 
 void	print_stacks(t_list *a, t_list *b);
 void 	sort_stack(t_list *a);
-int 	get_mediana(t_list *head);
+int 	get_mediana(t_list *head, int steps);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/25 19:11:12 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 20:08:32 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void divide_a(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b, int len)
 
 	if (len == 1)
 		return ;
-	med = get_mediana(*a);
+	med = get_mediana(*a, len);
 	temp = len;
-	while (temp)
+	while (temp && (*a)->next)
 	{
 		ft_printf("Stack A; Mediana is %i\n", med);
 		if (VAL(a) > med)
@@ -97,7 +97,7 @@ void divide_a(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b, int len)
 			}
 		print_stacks(*a, *b);
 	}
-	divide_a(a, b, tail_a, tail_b, ft_lstlen(*a) / 2 + 1);
+	divide_a(a, b, tail_a, tail_b, len % 2 ? len / 2 + 1 : len / 2);
 }
 
 void divide_b(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b, int len)
@@ -107,12 +107,12 @@ void divide_b(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b, int len)
 
 	if (!len)
 		return ;
-	med = get_mediana(*b);
+	med = get_mediana(*b, len);
 	temp = len;
 	while (temp)
 	{
 		ft_printf("Stack B; Mediana is %i\n", med);
-		if (VAL(b) < med)
+		if (VAL(b) <= med)
 			rb(b, tail_b);
 		else
 			{
@@ -121,7 +121,7 @@ void divide_b(t_list **a, t_list **b, t_list **tail_a, t_list **tail_b, int len)
 			}
 		print_stacks(*a, *b);
 	}
-	divide_b(a, b, tail_a, tail_b, ft_lstlen(*b) / 2);
+	divide_b(a, b, tail_a, tail_b, len % 2 ? len / 2 : len / 2 - 1);
 }
 
 void	sort_stack(t_list *a)
@@ -132,20 +132,24 @@ void	sort_stack(t_list *a)
 	int len;
 	// int med;
 	// int num;
-	//ft_printf("Mediana is %i\n", get_mediana(a));
+	//ft_printf("len is %i\n", ft_lstlen(a));
+	len = ft_lstlen(a);
+	ft_printf("len is %i\n", len);
+	len = len % 2 ? len / 2 + 1 : len / 2;
+	ft_printf("len is %i\n", len);
+	ft_printf("Mediana is %i\n", get_mediana(a, len));
 
 	b = NULL;
 	tail_a = get_tail(a);
 	len = ft_lstlen(a);
 	tail_b = get_tail(b);
 	print_stacks(a, b);
-	//divide(&a, &b, &tail_a, &tail_b, len / 2 + 1);
-	divide_a(&a, &b, &tail_a, &tail_b, ft_lstlen(a) / 2 + 1);
-	divide_b(&a, &b, &tail_a, &tail_b, ft_lstlen(b) / 2);
-	divide_a(&a, &b, &tail_a, &tail_b, ft_lstlen(a) / 4 + 1);
-	divide_b(&a, &b, &tail_a, &tail_b, ft_lstlen(b) / 4);
-	divide_a(&a, &b, &tail_a, &tail_b, ft_lstlen(a) / 2 + 1);
-	divide_b(&a, &b, &tail_a, &tail_b, ft_lstlen(b) / 2);
+	//divide(&a, &b, &tail_a, &tail_b, len % 2 ? len / 2 + 1 : len / 2);
+	divide_a(&a, &b, &tail_a, &tail_b, len % 2 ? len / 2 + 1 : len / 2);
+	divide_b(&a, &b, &tail_a, &tail_b, len % 2 ? len / 2 : len / 2 - 1);
+	// divide_a(&a, &b, &tail_a, &tail_b, ft_lstlen(a) / 4 + 1);
+	// divide_b(&a, &b, &tail_a, &tail_b, ft_lstlen(b) / 4);
+
 	//primal_dividing(&a, &b, &tail_a, &tail_b);
 	// while (a->next)
 	// {

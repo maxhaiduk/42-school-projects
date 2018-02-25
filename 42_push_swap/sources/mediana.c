@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 19:28:43 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/25 14:31:47 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/02/25 19:29:12 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ static void btree_step(t_btree *root, int *gate, int *med)
 	btree_step(root->right, gate, med);
 }
 
-int get_mediana(t_list *head)
+int get_mediana(t_list *head, int steps)
 {
 	t_btree	*root;
 	int		len;
 	int		med;
 
 	root = NULL;
-	len = (int)ft_lstlen(head);
+	//len = (int)ft_lstlen(head);
+	len = steps;
 	while (head)
 	{
 		if (!root)
@@ -39,7 +40,7 @@ int get_mediana(t_list *head)
 			ft_btree_insert(root, head->content, sizeof(int), &btree_cmp);
 		head = head->next;
 	}
-	len = len / 2 + 1;
+	//len = len / 2 + 1;
 	btree_step(root, &len, &med);
 	ft_btree_erase(&root, &btree_del);
 	return (med);
