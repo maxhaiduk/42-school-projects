@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:08:25 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 18:42:53 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/01 17:09:34 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ void print_stacks(t_list *a, t_list *b)
 	{
 		if (diff > 0)
 		{
-			//ft_printf("\t ----\n");
 			ft_printf("\t|%3i |\n", *((int *)a->content));
 			a = a->next;
 			diff--;
 		}
 		else if (diff < 0)
 		{
-			//ft_printf("\t ----\n");
 			ft_printf("\t    \t\t|%3i |\n", *((int *)b->content));
 			b = b->next;
 			diff++;
@@ -37,7 +35,6 @@ void print_stacks(t_list *a, t_list *b)
 	}
 	while (a && b)
 	{
-		//ft_printf("\t ----\t\t ----\n");
 		ft_printf("\t|%3i |\t\t|%3i |\n", *((int *)a->content),
 										*((int *)b->content));
 		a = a->next;
