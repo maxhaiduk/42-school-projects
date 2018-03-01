@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/01 17:13:00 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/01 18:18:04 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void put_back(t_list **a, t_list **b)
 	int n;
 
 	ra(a);
-	p = 2;
-	while (p)
+	p = 3;
+	while (p && (*a)->content_size != FINISH)
 	{
 		n = get_stack_len(*a);
 		if (n == 1)
