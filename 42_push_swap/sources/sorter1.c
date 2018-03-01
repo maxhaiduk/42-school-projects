@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/01 17:07:48 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/01 17:13:00 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		get_stack_len(t_list *a)
 	len = 0;
 	while (a)
 	{
-		ft_printf("NODE: content: %i\ncontent size: %i\n", *((int *)a->content), a->content_size);
+		//ft_printf("NODE: content: %i\ncontent size: %i\n", *((int *)a->content), a->content_size);
 		len++;
 		if (a->next && a->content_size != a->next->content_size)
 			break;
@@ -47,7 +47,7 @@ void	primal_dividing(t_list **a, t_list **b)
 	med = len % 2 ? len / 2 + 1 : len / 2;
 	med = get_mediana(*a, len, med);
 	len = len % 2 ? len / 2 + 1 : len / 2;
-	ft_printf("Mediana is %i\n", med);
+	//ft_printf("Mediana is %i\n", med);
 	while (len)
 	{
 		if (VAL(a) > med)
@@ -63,7 +63,7 @@ void	primal_dividing(t_list **a, t_list **b)
 	while (temp)
 	{
 		temp->content_size = med;
-		ft_printf("NODE: content: %i\ncontent size: %i\n", *((int *)temp->content), temp->content_size);
+		//ft_printf("NODE: content: %i\ncontent size: %i\n", *((int *)temp->content), temp->content_size);
 		temp = temp->next;
 	}
 }
