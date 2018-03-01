@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 19:28:43 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/25 19:29:12 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/01 13:52:33 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int get_mediana(t_list *head, int steps)
 	int		med;
 
 	root = NULL;
-	//len = (int)ft_lstlen(head);
 	len = steps;
 	while (head)
 	{
@@ -40,7 +39,6 @@ int get_mediana(t_list *head, int steps)
 			ft_btree_insert(root, head->content, sizeof(int), &btree_cmp);
 		head = head->next;
 	}
-	//len = len / 2 + 1;
 	btree_step(root, &len, &med);
 	ft_btree_erase(&root, &btree_del);
 	return (med);
