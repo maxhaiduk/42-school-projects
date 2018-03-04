@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/04 13:32:22 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:00:33 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void	primal_dividing(t_list **a, t_list **b)
 
 	len = get_stack_len(*a);
 	if (len <= 3)
+	{
+		sort_group_a(a, b);
 		return ;
+	}
 	count = len / 2;
 	med = get_mediana(*a, len, len % 2 ? len / 2 + 1 : len / 2);
 	ft_printf("Mediana is %i\n", med);
@@ -64,6 +67,11 @@ void	primal_dividing(t_list **a, t_list **b)
 	primal_dividing(a, b);
 }
 
+// void	compute_b_stack(t_list **a, t_list **b)
+// {
+	
+// }
+
 void	sort_stack(t_list *a)
 {
 	t_list *b;
@@ -71,5 +79,6 @@ void	sort_stack(t_list *a)
 	b = NULL;
 	print_stacks(a, b);
 	primal_dividing(&a, &b);
+	//compute_b_stack(&a, &b);
 	print_stacks(a, b);
 }

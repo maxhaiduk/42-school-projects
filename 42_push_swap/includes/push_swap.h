@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/01 16:21:11 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:51:13 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define VAL(x) *((int *)(*x)->content)
 # define VAL_NEXT(x) *((int *)(*x)->next->content)
-# define IS_MIN(x, y, z) (x <= y && x <= z) ? 1 : 0
+# define VAL_N_NEXT(x) *((int *)(*x)->next->next->content)
 # define FINISH 2148483647
 
 t_list	*read_array(char *str);
@@ -36,4 +36,6 @@ int		is_min(int x, int y, int z);
 void	print_stacks(t_list *a, t_list *b);
 void 	sort_stack(t_list *a);
 int 	get_mediana(t_list *head, int len, int steps);
+int		get_stack_len(t_list *a);
+void    sort_group_a(t_list **a, t_list **b);
 #endif
