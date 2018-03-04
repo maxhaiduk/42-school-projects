@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/04 13:47:49 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/04 16:15:56 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRC :=	push_swap.c 		\
 		ps_tools_wrap1.c	\
 		sorter1.c 			\
 		mediana.c    		\
-		put_back.c 			\
+		sort_group_a.c 		\
+		sort_group_b.c 		\
 		printer.c
 
 # Object files

@@ -6,20 +6,13 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/04 16:00:33 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/04 17:39:55 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *get_tail(t_list *head)
-{
-	if (!head)
-		return (NULL);
-	while (head->next)
-		head = head->next;
-	return (head); 
-}
+void	compute_b_stack(t_list **a, t_list **b);
 
 int		get_stack_len(t_list *a)
 {
@@ -28,7 +21,6 @@ int		get_stack_len(t_list *a)
 	len = 0;
 	while (a)
 	{
-		//ft_printf("NODE: content: %i\ncontent size: %i\n", *((int *)a->content), a->content_size);
 		len++;
 		if (a->next && a->content_size != a->next->content_size)
 			break;
@@ -64,13 +56,53 @@ void	primal_dividing(t_list **a, t_list **b)
 		}
 		print_stacks(*a, *b);
 	}
+	count = len % 2 ? len / 2 + 1 : len / 2;
+	while (count)
+	{
+		rra(a);
+		count--;
+	}
 	primal_dividing(a, b);
 }
 
-// void	compute_b_stack(t_list **a, t_list **b)
-// {
-	
-// }
+void	compute_b_stack(t_list **a, t_list **b)
+{
+	int len;
+	int med;
+	int count;
+
+	if (!*b)
+		return ;
+	len = get_stack_len(*b);
+	if (len <= 3)
+		sort_group_b(a, b);
+	len = get_stack_len(*b);
+	count = len % 2 ? len / 2 + 1 : len / 2;
+	med = get_mediana(*b, len, count);
+	print_stacks(*a, *b);
+	while (count)
+	{
+		if ((len % 2 == 0 && VAL(b) <= med) || (len % 2 == 1 && VAL(b) < med))
+			rb(b);
+		else
+		{
+			(*b)->content_size = med;
+			pa(a, b);
+			count--;
+		}
+	}
+	count = len / 2;
+	print_stacks(*a, *b);
+	while (count)
+	{
+		rrb(b);
+		count--;
+	}
+	print_stacks(*a, *b);
+	primal_dividing(a, b);
+	print_stacks(*a, *b);
+	compute_b_stack(a, b);
+}
 
 void	sort_stack(t_list *a)
 {
@@ -79,6 +111,6 @@ void	sort_stack(t_list *a)
 	b = NULL;
 	print_stacks(a, b);
 	primal_dividing(&a, &b);
-	//compute_b_stack(&a, &b);
+	compute_b_stack(&a, &b);
 	print_stacks(a, b);
 }

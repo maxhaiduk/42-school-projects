@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_back.c                                         :+:      :+:    :+:   */
+/*   sort_group_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/04 16:00:05 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/04 17:26:02 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static void    sort_3_nums(t_list **a, t_list **b)
     top = VAL(a);
     next = VAL_NEXT(a);
     bot = VAL_N_NEXT(a);
-    if (top < next && next > bot)
+    if (top < next && next > bot && bot > top)
         top_min(a, b);
-    else if (top > next && top < bot)
+    else if (top > next && next < bot && bot > top)
         sa(*a);
     else if (top < next && top > bot)
     {   
         top_min(a, b);
         sa(*a);
     }
-    else if (top > next && top > bot)
+    else if (top > next && top > bot && next < bot)
         top_max(a, b);
     else
     {
