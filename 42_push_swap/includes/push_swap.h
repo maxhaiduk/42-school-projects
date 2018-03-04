@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/04 16:14:10 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/04 20:37:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ int		btree_cmp(void *cont1, void *cont2);
 int		is_min(int x, int y, int z);
 
 void	print_stacks(t_list *a, t_list *b);
-void 	sort_stack(t_list *a);
+void 	sort_stack(t_list **a);
+void	compute_a_stack(t_list **a, t_list **b);
 int 	get_mediana(t_list *head, int len, int steps);
 int		get_stack_len(t_list *a);
+int     one_group_in_stack(t_list **a);
 void    sort_group_a(t_list **a, t_list **b);
 void    sort_group_b(t_list **a, t_list **b);
 #endif
