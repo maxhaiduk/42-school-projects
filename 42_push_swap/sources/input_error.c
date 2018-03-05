@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:39:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/23 19:02:42 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 14:16:37 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	check_duplicates(t_list *head)
 	while (head)
 	{
 		if (!ft_btree_find(root, head->content, &btree_cmp))
-			ft_btree_insert(root, head->content, head->content_size, &btree_cmp);
+			ft_btree_insert(root, head->content,
+							head->content_size, &btree_cmp);
 		else
 			error("duplicates in array");
 		head = head->next;

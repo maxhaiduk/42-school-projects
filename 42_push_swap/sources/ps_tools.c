@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:35:47 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/01 14:34:18 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 14:35:09 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ps_rotate(t_list **head)
 		last = last->next;
 	last->next = first;
 	first->next = NULL;
-	//*tail = first;
 }
 
 void	ps_rev_rotate(t_list **head)
@@ -69,5 +68,4 @@ void	ps_rev_rotate(t_list **head)
 	penult->next = NULL;
 	last->next = *head;
 	*head = last;
-	//*tail = penult;
 }

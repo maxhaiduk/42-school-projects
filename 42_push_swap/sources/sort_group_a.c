@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 13:11:34 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 14:13:29 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void    sort_3_nums(t_list **a, t_list **b)
     }
 }
 
-int stack_sorted(t_list *a, int len)
+int stack_sorted_a(t_list *a, int len)
 {
     len--;
     while (len)
@@ -71,13 +71,11 @@ void       sort_group_a(t_list **a, t_list **b)
 {
 	int n;
 
-    print_stacks(*a, *b);
 	n = get_stack_len(*a);
-    if (stack_sorted(*a, n))
+    if (stack_sorted_a(*a, n))
         ;
     else if (n == 2)
         sa(*a);
     else if (n == 3)
         sort_3_nums(a, b);
-    print_stacks(*a, *b);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorter1.c                                          :+:      :+:    :+:   */
+/*   sorter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 13:47:14 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 14:11:51 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int      one_group_in_stack(t_list **a)
 
 void	sort_stack(t_list **a, t_list **b)
 {
-	print_stacks(*a, *b);
 	compute_a_stack(a, b);
 	compute_b_stack(a, b);
-	print_stacks(*a, *b);
 }

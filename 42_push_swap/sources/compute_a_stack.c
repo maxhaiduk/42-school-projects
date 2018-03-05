@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 18:00:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 13:55:03 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 14:08:53 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,14 @@ void			compute_a_stack(t_list **a, t_list **b)
 	int med;
 	int ret_back;
 
-	print_stacks(*a, *b);
 	len = get_stack_len(*a);
 	if (len <= 3)
 	{
 		sort_group_a(a, b);
 		return ;
 	}
-	//count = len / 2;
 	med = get_mediana(*a, len, len % 2 ? len / 2 + 1 : len / 2);
-	print_stacks(*a, *b);
-	//ft_printf("Mediana is %i\n", med);
 	ret_back = divide_a(a, b, len, med);
 	put_back_a(a, ret_back);
-	print_stacks(*a, *b);
 	compute_a_stack(a, b);
-	print_stacks(*a, *b);
 }
