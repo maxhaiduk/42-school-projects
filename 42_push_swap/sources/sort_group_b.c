@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 14:08:36 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 16:49:16 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void    sort_vol3(t_list **a, t_list **b)
 {
-    sb(*b);
+    if (*a && (*a)->next && VAL(a) > VAL_NEXT(a))
+        ss(*a, *b);
+    else
+        sb(*b);
     pa(a, b);
     sb(*b);
     pa(a, b);
@@ -32,7 +35,10 @@ static void    sort_vol2(t_list **a, t_list **b)
     bot = VAL_N_NEXT(b);
     if (top < next && next > bot && bot < top)
     {
-        sb(*b);
+        if (*a && (*a)->next && VAL(a) > VAL_NEXT(a))
+            ss(*a, *b);
+        else
+            sb(*b);
         pa(a, b);
         pa(a, b);
         pa(a, b);
