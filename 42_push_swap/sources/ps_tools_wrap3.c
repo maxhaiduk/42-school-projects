@@ -1,44 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_tools_wrap1.c                                   :+:      :+:    :+:   */
+/*   ps_tools_wrap3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/23 18:38:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 14:46:06 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/03/05 14:45:38 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/03/05 14:49:13 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_tools.h"
 
-void	pa(t_list **a, t_list **b)
+void	rra(t_list **a)
 {
-	write(1, "pa\n", 3);
-	ps_push(b, a);
+	write(1, "rra\n", 4);
+	ps_rev_rotate(a);
 }
 
-void	pb(t_list **a, t_list **b)
+void	rrb(t_list **b)
 {
-	write(1, "pb\n", 3);
-	ps_push(a, b);
+	write(1, "rrb\n", 4);
+	ps_rev_rotate(b);
 }
 
-void	sa(t_list *a)
+void	rrr(t_list **a, t_list **b)
 {
-	write(1, "sa\n", 3);
-	ps_swap(a);
-}
-
-void	sb(t_list *b)
-{
-	write(1, "sb\n", 3);
-	ps_swap(b);
-}
-
-void	ss(t_list *a, t_list *b)
-{
-	write(1, "ss\n", 3);
-	ps_swap(a);
-	ps_swap(b);
+	write(1, "rrr\n", 4);
+	ps_rev_rotate(a);
+	ps_rev_rotate(b);
 }

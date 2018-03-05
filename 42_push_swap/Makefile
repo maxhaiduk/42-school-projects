@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/05 14:12:05 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/05 14:46:22 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ SRC :=	push_swap.c 		\
 		helpers.c			\
 		ps_tools.c			\
 		ps_tools_wrap1.c	\
+		ps_tools_wrap2.c	\
+		ps_tools_wrap3.c	\
 		sorter.c 			\
 		compute_a_stack.c	\
 		compute_b_stack.c 	\
