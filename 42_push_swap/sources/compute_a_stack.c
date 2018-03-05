@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 18:00:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 14:08:53 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 16:06:36 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ static int		divide_a(t_list **a, t_list **b, int len, int med)
 	{
 		if ((len % 2 == 0 && VAL(a) > med) || (len % 2 == 1 && VAL(a) >= med))
 		{
+			if (one_group_in_stack(a) && one_group_in_stack(b) &&
+				*b && (*b)->next && VAL(b) < VAL_NEXT(b))
+				rr(a, b);
+			else
+				ra(a);
 			ret_back++;
-			ra(a);
 		}
 		else
 		{
@@ -43,6 +47,7 @@ static int		divide_a(t_list **a, t_list **b, int len, int med)
 			pb(a, b);
 			count--;
 		}
+		print_stacks(*a, *b);
 	}
 	return (ret_back);
 }
