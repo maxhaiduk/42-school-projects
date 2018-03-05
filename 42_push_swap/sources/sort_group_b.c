@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/04 20:26:35 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/05 12:58:58 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void    sort_3_nums(t_list **a, t_list **b)
         pa(a, b);
         sb(*b);
         pa(a, b);
-        sb(*b);
+        sa(*a);
         pa(a, b);
     }
     else

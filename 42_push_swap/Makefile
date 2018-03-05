@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/04 18:39:43 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/05 12:43:01 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ RED		:=\033[0;31m
 
 # Compiler
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 
 # Directories
 SRC_DIR := ./sources
