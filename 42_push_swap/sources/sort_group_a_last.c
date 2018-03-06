@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_group_a.c                                     :+:      :+:    :+:   */
+/*   sort_group_a_last.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 12:38:49 by mhaiduk          ###   ########.fr       */
+/*   Created: 2018/03/06 11:57:20 by mhaiduk           #+#    #+#             */
+/*   Updated: 2018/03/06 12:33:40 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void    sort_vol3(t_list **a, t_list **b)
 {
-    sa(*a);
-    pb(a, b);
-    sa(*a);
-    pa(a, b);
-    sa(*a); 
+	ra(a);
+	if (*b && (*b)-> next && VAL(b) < VAL_NEXT(b))
+        ss(*a, *b);
+	else
+        sa(*a);
 }
 static void    sort_vol2(t_list **a, t_list **b)
 {
@@ -32,18 +32,15 @@ static void    sort_vol2(t_list **a, t_list **b)
 
     if (P_120(top, next, bot))
     {   
-        pb(a, b);
-        sa(*a);
-        pa(a, b);
+		if (*b && (*b)-> next && VAL(b) < VAL_NEXT(b))
+            ss(*a, *b);
+		else
+        	sa(*a);
+        ra(a);
         sa(*a);
     }
     else if (P_201(top, next, bot))
-    {
-        sa(*a);
-        pb(a, b);
-        sa(*a);
-        pa(a, b);
-    }
+		ra(a);
     else if (P_210(top, next, bot))
         sort_vol3(a, b);
 }
@@ -59,48 +56,25 @@ static void    sort_3_nums(t_list **a, t_list **b)
     bot = VAL_N_NEXT(a);
     if (P_021(top, next, bot))
     {
-        pb(a, b);
-        sa(*a);
-        pa(a, b);
+        if (*b && (*b)-> next && VAL(b) < VAL_NEXT(b))
+            ss(*a, *b);
+		else
+			sa(*a);
+		ra(a);
     }
     else if (P_102(top, next, bot))
-        sa(*a);
+	{
+		if (*b && (*b)-> next && VAL(b) < VAL_NEXT(b))
+            ss(*a, *b);
+		else
+        	sa(*a);
+	}
     else
         sort_vol2(a, b);
 }
 
-
-int stack_sorted_a(t_list *a, int len)
+void			sort_group_a_last(t_list **a, t_list **b)
 {
-    len--;
-    while (len)
-    {
-        if (*((int *)a->content) > *((int *)a->next->content))
-            return (0);
-        a = a->next;
-        len--;
-    }
-    return (1);
-}
-
-void       sort_group_a(t_list **a, t_list **b)
-{
-	int n;
-
-	n = get_stack_len(*a);
-    if (stack_sorted_a(*a, n))
-        ;
-    else if (n == 2)
-    {
-        if (*b && (*b)-> next && VAL(b) < VAL_NEXT(b))
-            ss(*a, *b);
-        else
-            sa(*a);
-    }
-    else if (n == 3)
-    {
-        if (one_group_in_stack(a))
-            sort_group_a_last(a, b);
-        sort_3_nums(a, b);
-    }
+	//if (get_stack_len(*b) == 2)
+		sort_3_nums(a, b);
 }

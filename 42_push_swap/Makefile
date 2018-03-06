@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/05 14:46:22 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/06 12:11:26 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC :=	push_swap.c 		\
 		compute_b_stack.c 	\
 		mediana.c    		\
 		sort_group_a.c 		\
+		sort_group_a_last.c \
 		sort_group_b.c 		\
 		printer.c
 
