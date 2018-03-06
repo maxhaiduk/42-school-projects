@@ -6,11 +6,12 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/06 12:11:26 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/06 17:00:58 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+NAME2 = checker
 
 # Output settings
 DEFAULT	:=\033[0m
@@ -28,7 +29,7 @@ OBJ_DIR := ./objects
 INC_DIR := ./includes ./libft/includes
 LFT_DIR := ./libft
 
-# Source files
+# Source files for push_swap
 SRC :=	push_swap.c 		\
 		reader.c			\
 		input_error.c		\
@@ -46,8 +47,21 @@ SRC :=	push_swap.c 		\
 		sort_group_b.c 		\
 		printer.c
 
-# Object files
+# Object files for push_swap
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+
+# Source files for checker
+SRC2 := checker.c			\
+		reader.c			\
+		input_error.c		\
+		helpers.c			\
+		ps_tools.c			\
+		ps_tools_wrap1.c	\
+		ps_tools_wrap2.c	\
+		ps_tools_wrap3.c	\
+
+# Object files for checker
+OBJ2 := $(addprefix $(OBJ_DIR)/, $(SRC2:.c=.o))
 
 #includes
 INC := $(addprefix -I, $(INC_DIR))
@@ -59,9 +73,7 @@ LFT := libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
-	@make -C $(LFT_DIR) all --silent
+$(NAME): $(OBJ) $(LFT)
 	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"
 	@$(CC) $(FLAGS) $(OBJ) $(LFT_DIR)/$(LFT) $(INC) -o $(NAME)
 	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
@@ -70,14 +82,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
-VPATH = $(SRC_DIR)
+$(NAME2): $(OBJ2) $(LFT) 
+	@echo "$(GREEN)Compiling $(NAME2)...$(DEFAULT)"
+	@$(CC) $(FLAGS) $(OBJ2) $(LFT_DIR)/$(LFT) $(INC) -o $(NAME2)
+	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
-d:
+$(LFT):
 	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
 	@make -C $(LFT_DIR) all --silent
-	@echo "$(GREEN)Compiling $(NAME) debug version...$(DEFAULT)"
-	@$(CC) $(FLAGS) -g $(addprefix $(SRC_DIR)/, $(SRC)) $(LFT_DIR)/$(LFT) $(INC)
-	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
 
 clean:
 	@echo "$(RED)Cleaning libft o-files...$(DEFAULT)" 

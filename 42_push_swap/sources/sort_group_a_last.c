@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 11:57:20 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 12:33:40 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 16:34:32 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void    sort_vol2(t_list **a, t_list **b)
         sort_vol3(a, b);
 }
 
-static void    sort_3_nums(t_list **a, t_list **b)
+void    sort_group_a_last(t_list **a, t_list **b)
 {
     int top;
     int next;
@@ -71,10 +71,4 @@ static void    sort_3_nums(t_list **a, t_list **b)
 	}
     else
         sort_vol2(a, b);
-}
-
-void			sort_group_a_last(t_list **a, t_list **b)
-{
-	//if (get_stack_len(*b) == 2)
-		sort_3_nums(a, b);
 }
