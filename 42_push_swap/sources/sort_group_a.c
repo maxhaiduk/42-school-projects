@@ -6,28 +6,46 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 11:25:45 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 11:43:07 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    top_max(t_list **a, t_list **b)
+static void    sort_vol3(t_list **a, t_list **b)
 {
-    if (*b && (*b)->next && VAL(b) < VAL_NEXT(b))
-        ss(*a, *b);
-    else
-        sa(*a);
+    sa(*a);
     pb(a, b);
     sa(*a);
     pa(a, b);
+    sa(*a); 
 }
-
-static void    top_min(t_list **a, t_list **b)
+static void    sort_vol2(t_list **a, t_list **b)
 {
-    pb(a, b);
-    sa(*a);
-    pa(a, b);
+    int top;
+    int next;
+    int bot;
+
+    top = VAL(a);
+    next = VAL_NEXT(a);
+    bot = VAL_N_NEXT(a);
+
+    if (P_120(top, next, bot))
+    {   
+        pb(a, b);
+        sa(*a);
+        pa(a, b);
+        sa(*a);
+    }
+    else if (P_201(top, next, bot))
+    {
+        sa(*a);
+        pb(a, b);
+        sa(*a);
+        pa(a, b);
+    }
+    else if (P_210(top, next, bot))
+        sort_vol3(a, b);
 }
 
 static void    sort_3_nums(t_list **a, t_list **b)
@@ -40,27 +58,17 @@ static void    sort_3_nums(t_list **a, t_list **b)
     next = VAL_NEXT(a);
     bot = VAL_N_NEXT(a);
     if (P_021(top, next, bot))
-        top_min(a, b);
+    {
+        pb(a, b);
+        sa(*a);
+        pa(a, b);
+    }
     else if (P_102(top, next, bot))
-    {
-        if (*b && (*b)->next && VAL(b) < VAL_NEXT(b))
-            ss(*a, *b);
-        else
-            sa(*a);
-    }
-    else if (P_120(top, next, bot))
-    {   
-        top_min(a, b);
         sa(*a);
-    }
-    else if (P_201(top, next, bot))
-        top_max(a, b);
-    else if (P_210(top, next, bot))
-    {
-        top_max(a, b);
-        sa(*a);
-    }
+    else
+        sort_vol2(a, b);
 }
+
 
 int stack_sorted_a(t_list *a, int len)
 {
