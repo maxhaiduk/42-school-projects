@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 14:08:09 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 11:22:30 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # define VAL(x) *((int *)(*x)->content)
 # define VAL_NEXT(x) *((int *)(*x)->next->content)
 # define VAL_N_NEXT(x) *((int *)(*x)->next->next->content)
+
+# define P_012(top, next, bot) (top < next && next < bot && bot > top) ? 1 : 0
+# define P_021(top, next, bot) (top < next && next > bot && bot > top) ? 1 : 0
+# define P_102(top, next, bot) (top > next && next < bot && bot > top) ? 1 : 0
+# define P_120(top, next, bot) (top < next && next > bot && bot < top) ? 1 : 0
+# define P_201(top, next, bot) (top > next && next < bot && bot < top) ? 1 : 0
+# define P_210(top, next, bot) (top > next && next > bot && bot < top) ? 1 : 0
 
 t_list	*read_array(char *str);
 

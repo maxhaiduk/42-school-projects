@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 11:50:54 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 16:49:16 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 11:23:47 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void    sort_vol2(t_list **a, t_list **b)
     top = VAL(b);
     next = VAL_NEXT(b);
     bot = VAL_N_NEXT(b);
-    if (top < next && next > bot && bot < top)
+    if (P_120(top, next, bot))
     {
         if (*a && (*a)->next && VAL(a) > VAL_NEXT(a))
             ss(*a, *b);
@@ -43,7 +43,7 @@ static void    sort_vol2(t_list **a, t_list **b)
         pa(a, b);
         pa(a, b);
     }
-    else if (top < next && next < bot && bot > top)
+    else if (P_012(top, next, bot))
     {
         pa(a, b);
         sb(*b);
@@ -52,7 +52,7 @@ static void    sort_vol2(t_list **a, t_list **b)
         pa(a, b);
         sa(*a);
     }
-    else
+    else if (P_021(top, next, bot))
         sort_vol3(a, b);
 }
 
@@ -65,14 +65,14 @@ static void    sort_3_nums(t_list **a, t_list **b)
     top = VAL(b);
     next = VAL_NEXT(b);
     bot = VAL_N_NEXT(b);
-    if (top > next && next < bot && bot < top)
+    if (P_201(top, next, bot))
     {
         pa(a, b);
         sb(*b);
         pa(a, b);
         pa(a, b);
     }
-    else if (top > next && next < bot && bot > top)
+    else if (P_102(top, next, bot))
     {
         pa(a, b);
         sb(*b);
