@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/06 17:00:58 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/06 18:16:36 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ LFT := libft.a
 
 .PHONY = all clean fclean re
 
-all: $(NAME)
+all: $(NAME) $(NAME2)
 
 $(NAME): $(OBJ) $(LFT)
 	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"

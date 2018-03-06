@@ -10,6 +10,7 @@ cleantrash
 libft.a
 a.out
 a.out.dSYM
+checker.dSYM
 push_swap
 ps.code-workspace
 arr

@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:36:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 16:11:42 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 18:19:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,6 @@ int	main(int argc, char **argv)
 	sort_stack(&a, &b);
 	print_stacks(a, b);
 	len = ft_lstlen(a);
-	if (stack_sorted_a(a, len))
-		ft_printf(GREEN "STACK SORTED\n" RESET);
-	else
-		ft_printf(GREEN "STACK -=NOT=- SORTED\n" RESET);
 	ft_lst_erase(a);
 	return (0);
 }

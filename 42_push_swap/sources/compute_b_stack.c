@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 18:36:09 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 15:53:47 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 17:35:43 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		put_back_b(t_list **b, int ret_back)
 		return ;
 	while (ret_back)
 	{
-		rrb(b);
+		rrb(b, 1);
 		ret_back--;
 	}
 }
@@ -34,13 +34,13 @@ static int		devide_b(t_list **b, t_list **a, int len, int med)
 	{
 		if ((len % 2 == 0 && VAL(b) <= med) || (len % 2 == 1 && VAL(b) < med))
 		{
-			rb(b);
+			rb(b, 1);
 			ret_back++;
 		}
 		else
 		{
 			(*b)->content_size = med;
-			pa(a, b);
+			pa(a, b, 1);
 			count--;
 		}
 		print_stacks(*a, *b);

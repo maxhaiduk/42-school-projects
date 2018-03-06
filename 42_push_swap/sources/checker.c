@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 17:23:58 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 18:28:06 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,44 @@ static int	is_sorted(t_list *a, int len)
 	return (1);
 }
 
+static int	rotations(t_list **a, t_list **b, char *line)
+{
+	if (ft_strequ(line, "ra") || ft_strequ(line, "rb") || ft_strequ(line, "rr") ||
+		ft_strequ(line, "rra") || ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
+	{
+		if (ft_strequ(line, "ra"))
+			ra(a, 0);
+		else if (ft_strequ(line, "rb"))
+			rb(b, 0);
+		else if (ft_strequ(line, "rr"))
+			rr(a, b, 0);
+		else if (ft_strequ(line, "rra"))
+			rra(a, 0);
+		else if (ft_strequ(line, "rrb"))
+			rrb(b, 0);
+		else if (ft_strequ(line, "rrr"))
+			rrr(a, b, 0);
+		return (1);
+	}
+	return (0);
+}
+
 static void	check_instructions(t_list **a, t_list **b, char **line)
 {
 	while (get_next_line(0, line) > 0)
 	{
 		if (ft_strequ(*line, "sa"))
-			sa(*a);
+			sa(*a, 0);
 		else if (ft_strequ(*line, "sb"))
-			sb(*b);
+			sb(*b, 0);
 		else if (ft_strequ(*line, "ss"))
-			ss(*a, *b);
+			ss(*a, *b, 0);
 		else if (ft_strequ(*line, "pa"))
-			pa(a, b);
+			pa(a, b, 0);
 		else if (ft_strequ(*line, "pb"))
-			pb(a, b);
-		else if (ft_strequ(*line, "ra"))
-			ra(a);
-		else if (ft_strequ(*line, "rb"))
-			rb(b);
-		else if (ft_strequ(*line, "rr"))
-			rr(a, b);
-		else if (ft_strequ(*line, "rra"))
-			rra(a);
-		else if (ft_strequ(*line, "rrb"))
-			rrb(b);
-		else if (ft_strequ(*line, "rrr"))
-			rrr(a, b);
+			pb(a, b, 0);
+		else if (rotations(a, b, *line))
+			;	
 		else
 			error("incorect instruction");
 		ft_strdel(line);
@@ -75,9 +87,9 @@ int	main(int argc, char **argv)
 	check_instructions(&a, &b, &line);
 	len = ft_lstlen(a);
 	if (is_sorted(a, len))
-		ft_printf(GREEN "STACK SORTED\n" RESET);
+		ft_printf(GREEN "OK\n" RESET);
 	else
-		ft_printf(RED "STACK -=NOT=- SORTED\n" RESET);
+		ft_printf(RED "KO\n" RESET);
 	ft_lst_erase(a);
 	return (0);
 }
