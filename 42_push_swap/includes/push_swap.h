@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 12:11:57 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 16:04:44 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # define P_201(top, next, bot) (top > next && next < bot && bot < top) ? 1 : 0
 # define P_210(top, next, bot) (top > next && next > bot && bot < top) ? 1 : 0
 
-t_list	*read_array(char *str);
+t_list	*parse_string(char *str);
+t_list	*parse_args(char **args);
 
 /*
 ** helpers.c

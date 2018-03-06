@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:36:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 13:43:45 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 16:11:42 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc != 2)
+	if (argc == 1)
 		return (write(2, "Usage: ./push_swap [array]\n", 27));
-	a = read_array(argv[1]);
+	else if (argc == 2)
+		a = parse_string(argv[1]);
+	else
+		a = parse_args(argv);
 	print_stacks(a, b);
 	sort_stack(&a, &b);
 	print_stacks(a, b);

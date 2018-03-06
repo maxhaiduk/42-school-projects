@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:54:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 14:37:07 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/06 16:06:00 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*write_to_list(char **arr)
 	return (head);
 }
 
-t_list	*read_array(char *str)
+t_list	*parse_string(char *str)
 {
 	char	**arr;
 	t_list	*head;
@@ -44,5 +44,17 @@ t_list	*read_array(char *str)
 	check_values(head);
 	check_duplicates(head);
 	ft_clear_strarr(&arr);
+	return (head);
+}
+
+t_list	*parse_args(char **args)
+{
+	t_list	*head;
+
+	args++;
+	check_type(args);
+	head = write_to_list(args);
+	check_values(head);
+	check_duplicates(head);
 	return (head);
 }
