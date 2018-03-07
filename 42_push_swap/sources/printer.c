@@ -6,13 +6,13 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:08:25 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 11:23:55 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 17:07:38 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_stacks(t_list *a, t_list *b)
+void	print_stacks(t_list *a, t_list *b)
 {
 	ft_printf(UNDERLINE BOLD GREEN "\nStack A: " RESET);
 	if (!a)
@@ -31,4 +31,17 @@ void print_stacks(t_list *a, t_list *b)
 		b = b->next;
 	}
 	write(1, "\n\n", 2);
+}
+
+
+void	print_help(void)
+{
+	ft_printf("Usage: ./checker [flags][array]\n\n");
+	ft_printf("[flags]:\n-v - visualization of stacks\n");
+	ft_printf("-s - view statistics about operations\n\n");
+	ft_printf("[array]:\n");
+	ft_printf("one string like: \"3 2 1\"\n");
+	ft_printf("or\n");
+	ft_printf("few arguments: 3 2 1\n");
+	exit(1);
 }

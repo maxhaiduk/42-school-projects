@@ -6,29 +6,28 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 12:36:33 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 16:36:13 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_sorted(t_list *a, int len)
+static int	is_sorted(t_list *a)
 {
-	len--;
-	while (len)
+	while (a->next)
 	{
 		if (*((int *)a->content) > *((int *)a->next->content))
 			return (0);
 		a = a->next;
-		len--;
 	}
 	return (1);
 }
 
 static int	rotations(t_list **a, t_list **b, char *line)
 {
-	if (ft_strequ(line, "ra") || ft_strequ(line, "rb") || ft_strequ(line, "rr") ||
-		ft_strequ(line, "rra") || ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
+	if (ft_strequ(line, "ra") || ft_strequ(line, "rb") ||
+		ft_strequ(line, "rr") || ft_strequ(line, "rra") ||
+		ft_strequ(line, "rrb") || ft_strequ(line, "rrr"))
 	{
 		if (ft_strequ(line, "ra"))
 			ra(a, 0);
@@ -47,50 +46,61 @@ static int	rotations(t_list **a, t_list **b, char *line)
 	return (0);
 }
 
-static void	check_instructions(t_list **a, t_list **b, char **line)
+static void	check_instructions(t_list **a, t_list **b, t_flags flags,
+								int stats[11])
 {
-	while (get_next_line(0, line) > 0)
+	char	*line;
+		
+	if (flags.v)
+		print_stacks(*a, *b);
+	while (get_next_line(0, &line) > 0)
 	{
-		if (ft_strequ(*line, "sa"))
+		if (flags.s)
+			read_stat(line, stats);
+		if (ft_strequ(line, "sa"))
 			sa(*a, 0);
-		else if (ft_strequ(*line, "sb"))
+		else if (ft_strequ(line, "sb"))
 			sb(*b, 0);
-		else if (ft_strequ(*line, "ss"))
+		else if (ft_strequ(line, "ss"))
 			ss(*a, *b, 0);
-		else if (ft_strequ(*line, "pa"))
+		else if (ft_strequ(line, "pa"))
 			pa(a, b, 0);
-		else if (ft_strequ(*line, "pb"))
+		else if (ft_strequ(line, "pb"))
 			pb(a, b, 0);
-		else if (rotations(a, b, *line))
+		else if (rotations(a, b, line))
 			;	
 		else
 			error("incorect instruction");
-		print_stacks(*a, *b);
-		ft_strdel(line);
+		if (flags.v)
+			print_stacks(*a, *b);
+		ft_strdel(&line);
 	}
 }
 
+
 int	main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
-	char	*line;
-	int		len;
+	t_flags		flags;
+	t_list		*a;
+	t_list		*b;
+	static int	stats[11];
+	
 
 	a = NULL;
 	b = NULL;
 	if (argc == 1)
-		return (write(2, "Usage: ./checker [array]\n", 27));
-	else if (argc == 2)
-		a = parse_string(argv[1]);
-	else
-		a = parse_args(argv);
-	check_instructions(&a, &b, &line);
-	len = ft_lstlen(a);
-	if (is_sorted(a, len))
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
+		return (write(2, "Usage: ./checker [flags][array]\n", 33));
+	argv++;
+	flags = parse_flags(&argv);
+	if (flags.h)
+		print_help();
+	if (!*argv)
+		return (write(2, "Usage: ./checker [flags][array]\n", 33));
+	a = (ft_len_strarr(argv) == 1) ? parse_string(*argv) : parse_args(argv);
+	check_instructions(&a, &b, flags, stats);
+	is_sorted(a) ? ft_printf("OK\n") : ft_printf("KO\n");
+	if (flags.s)
+		print_stats(stats);
 	ft_lst_erase(a);
 	return (0);
 }

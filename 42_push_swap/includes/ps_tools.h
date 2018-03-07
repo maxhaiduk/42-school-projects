@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:46:11 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 17:34:05 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 14:56:58 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 # define PS_TOOLS_H
 
 #include "libft.h"
+
+# define SA 0
+# define SB 1
+# define SS 2
+# define PA 3
+# define PB 4
+# define RA 5
+# define RB 6
+# define RR 7
+# define RRA 8
+# define RRB 9
+# define RRR 10
 
 void    ps_push(t_list **from, t_list **to);
 void    ps_swap(t_list *head);

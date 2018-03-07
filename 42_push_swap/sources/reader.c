@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:54:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 16:06:00 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 14:29:59 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_list	*parse_args(char **args)
 {
 	t_list	*head;
 
-	args++;
 	check_type(args);
 	head = write_to_list(args);
 	check_values(head);

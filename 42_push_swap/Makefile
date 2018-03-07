@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/07 11:12:12 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/07 14:47:07 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 # Source files for checker
 SRC2 := checker.c			\
+		parser.c			\
 		reader.c			\
 		input_error.c		\
 		helpers.c			\
@@ -60,6 +61,7 @@ SRC2 := checker.c			\
 		ps_tools_wrap1.c	\
 		ps_tools_wrap2.c	\
 		ps_tools_wrap3.c	\
+		statistics.c
 
 # Object files for checker
 OBJ2 := $(addprefix $(OBJ_DIR)/, $(SRC2:.c=.o))

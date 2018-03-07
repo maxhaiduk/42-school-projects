@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 12:36:27 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 16:47:08 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include "libft.h"
 # include "input_error.h"
 # include "ps_tools.h"
+
+typedef	struct	s_flags
+{
+	short		v;
+	short		s;
+	short		h;
+}				t_flags;
 
 # define VAL(x) *((int *)(*x)->content)
 # define VAL_NEXT(x) *((int *)(*x)->next->content)
@@ -28,8 +35,12 @@
 # define P_201(top, next, bot) (top > next && next < bot && bot < top) ? 1 : 0
 # define P_210(top, next, bot) (top > next && next > bot && bot < top) ? 1 : 0
 
+t_flags	parse_flags(char ***args);
 t_list	*parse_string(char *str);
 t_list	*parse_args(char **args);
+void	read_stat(char *line, int stats[11]);
+void	print_stats(int stats[11]);
+void	print_help(void);
 
 /*
 ** helpers.c
