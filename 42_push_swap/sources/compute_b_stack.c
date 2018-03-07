@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 18:36:09 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 17:35:43 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 11:37:49 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int		devide_b(t_list **b, t_list **a, int len, int med)
 			pa(a, b, 1);
 			count--;
 		}
-		print_stacks(*a, *b);
 	}
 	return (ret_back);
 }

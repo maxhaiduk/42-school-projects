@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 11:03:00 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 12:36:33 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static void	check_instructions(t_list **a, t_list **b, char **line)
 			;	
 		else
 			error("incorect instruction");
+		print_stacks(*a, *b);
 		ft_strdel(line);
 	}
 }
@@ -87,9 +88,9 @@ int	main(int argc, char **argv)
 	check_instructions(&a, &b, &line);
 	len = ft_lstlen(a);
 	if (is_sorted(a, len))
-		ft_printf(GREEN "OK\n" RESET);
+		ft_printf("OK\n");
 	else
-		ft_printf(RED "KO\n" RESET);
+		ft_printf("KO\n");
 	ft_lst_erase(a);
 	return (0);
 }

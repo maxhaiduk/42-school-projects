@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/06 18:16:36 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/07 11:12:12 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC2 := checker.c			\
 		reader.c			\
 		input_error.c		\
 		helpers.c			\
+		printer.c			\
 		ps_tools.c			\
 		ps_tools_wrap1.c	\
 		ps_tools_wrap2.c	\
