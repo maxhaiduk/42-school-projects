@@ -12,6 +12,7 @@ a.out
 a.out.dSYM
 checker.dSYM
 push_swap
+checker
 ps.code-workspace
 arr
 res
