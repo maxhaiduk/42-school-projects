@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 18:40:30 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/06 14:24:52 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 17:25:40 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@ int		get_stack_len(t_list *a)
 	{
 		len++;
 		if (a->next && a->content_size != a->next->content_size)
-			break;
+			break ;
 		a = a->next;
 	}
 	return (len);
 }
 
-int      one_group_in_stack(t_list **a)
+int		one_group_in_stack(t_list **a)
 {
-    t_list *temp;
+	t_list *temp;
 
-    temp = *a;
-    if (!temp)
-        return (1);
-    while (temp->next)
-    {
-        if (temp->content_size != temp->next->content_size)
-            return (0);
-        temp = temp->next;    
-    }
-    return (1);
+	temp = *a;
+	if (!temp)
+		return (1);
+	while (temp->next)
+	{
+		if (temp->content_size != temp->next->content_size)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }
 
 void	sort_stack(t_list **a, t_list **b)

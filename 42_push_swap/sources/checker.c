@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 16:36:13 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/07 17:13:45 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ static void	check_instructions(t_list **a, t_list **b, t_flags flags,
 								int stats[11])
 {
 	char	*line;
-		
+
 	if (flags.v)
 		print_stacks(*a, *b);
 	while (get_next_line(0, &line) > 0)
 	{
-		if (flags.s)
-			read_stat(line, stats);
+		flags.s ? read_stat(line, stats) : 0;
 		if (ft_strequ(line, "sa"))
 			sa(*a, 0);
 		else if (ft_strequ(line, "sb"))
@@ -68,7 +67,7 @@ static void	check_instructions(t_list **a, t_list **b, t_flags flags,
 		else if (ft_strequ(line, "pb"))
 			pb(a, b, 0);
 		else if (rotations(a, b, line))
-			;	
+			;
 		else
 			error("incorect instruction");
 		if (flags.v)
@@ -77,14 +76,12 @@ static void	check_instructions(t_list **a, t_list **b, t_flags flags,
 	}
 }
 
-
-int	main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_flags		flags;
 	t_list		*a;
 	t_list		*b;
 	static int	stats[11];
-	
 
 	a = NULL;
 	b = NULL;
