@@ -71,5 +71,18 @@ def visual(arr, tools):
 									blit=False, repeat=False, interval=100)
 	plt.show()
 
+def calc_stat(tools):
+	pass
+
+def show_stat(tools):
+	fig = plt.figure()
+	fig.canvas.set_window_title('push_swap mhaiduk')
+
+	data = calc_stat(tools)
+
+	ax = fig.add_axes()
+	plt.show()
+
 if __name__ == "__main__":
-	visual([3, 5, 4, 8, 1], ['sa', 'pb', 'pb', 'ss'])
+	#visual([3, 5, 4, 8, 1], ['sa', 'pb', 'pb', 'ss'])
+	show_stat(['sa', 'pb', 'pb', 'ss'])
