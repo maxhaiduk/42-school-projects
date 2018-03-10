@@ -47,7 +47,7 @@ def main():
 
 	visual(arr, tools)
 	
-	query(tools)
+	#query(tools)
 
 	print (arr)
 	print (tools)

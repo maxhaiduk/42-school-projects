@@ -3,6 +3,7 @@
 from matplotlib import pyplot as plt
 from matplotlib import animation
 from push_swap import push_swap
+from collections import Counter
 
 def init():
 	set_style()
@@ -78,11 +79,29 @@ def show_stat(tools):
 	fig = plt.figure()
 	fig.canvas.set_window_title('push_swap mhaiduk')
 
-	data = calc_stat(tools)
+	data = Counter(tools)
+	print (data)
+	print (len(data))
 
-	ax = fig.add_axes()
+	ax = fig.add_subplot(1, 1, 1)
+	ax.set_ylim(0, max(data.values()) + 1)
+	plt.grid()
+	plt.bar(range(len(data)), data.values(), align='center')
+	plt.xticks(range(len(data)), list(data.keys()))
+
+	print (type(data.values()))
+	summa = sum(data.values())
+	print (type(summa))
+	i = 0
+	for bar in data.values():
+		print (type(bar))
+		v = (bar * 100) / summa
+		s = str(bar) + ', ' + str(v) + '%' 
+		plt.text(i - 0.2, bar + 0.2, s)
+		i = i + 1
+
 	plt.show()
 
 if __name__ == "__main__":
 	#visual([3, 5, 4, 8, 1], ['sa', 'pb', 'pb', 'ss'])
-	show_stat(['sa', 'pb', 'pb', 'ss'])
+	show_stat(['sa', 'pb', 'pb', 'ss', 'ra', 'rrr', 'ra', 'sa', 'ra', 'ra', 'ra'])

@@ -1,16 +1,22 @@
 #!/usr/bin/python
 
 import Tkinter as tk
+from visual import show_stat
 
 def b1(tools):
-	print (tools)
-	#show_stat(tools)
+	#print (tools)
+	show_stat(tools)
+	exit()
 	
 
 def b2():
 	exit()
 
-def query(tools):
+def query():
+	file = open("/Users/mhaiduk/projects/push_swap/visual/tools", "r")
+	tools = file.read().split('\n')
+	tools.remove('')
+
 	root = tk.Tk()
 	root.title("push_swap mhaiduk")
 	root.call('wm', 'attributes', '.', '-topmost', '1')
