@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 17:57:58 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/10 12:08:23 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include "input_error.h"
 # include "ps_tools.h"
+# include <limits.h>
 
 typedef	struct	s_flags
 {
 	short		v;
 	short		s;
+	short		e;
 	short		h;
 }				t_flags;
 
@@ -35,12 +36,17 @@ typedef	struct	s_flags
 # define P_201(top, next, bot) (top > next && next < bot && bot < top) ? 1 : 0
 # define P_210(top, next, bot) (top > next && next > bot && bot < top) ? 1 : 0
 
+void			check_type(char **arr, t_flags flags);
+void			check_values(t_list *head, t_flags flags);
+void			check_duplicates(t_list *head, t_flags flags);
+
 t_flags			parse_flags(char ***args);
-t_list			*parse_string(char *str);
-t_list			*parse_args(char **args);
+t_list			*parse_string(char *str, t_flags flags);
+t_list			*parse_args(char **args, t_flags flags);
 void			read_stat(char *line, int stats[11]);
 void			print_stats(int stats[11]);
 void			print_help(void);
+void			print_help_ps(void);
 
 void			error(char *desc);
 void			print_list(t_list *head);

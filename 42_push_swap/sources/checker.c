@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 17:13:45 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/10 12:04:18 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int			main(int argc, char **argv)
 		print_help();
 	if (!*argv)
 		return (write(2, "Usage: ./checker [flags][array]\n", 33));
-	a = (ft_len_strarr(argv) == 1) ? parse_string(*argv) : parse_args(argv);
+	a = (ft_len_strarr(argv) == 1) ? parse_string(*argv, flags) :
+									parse_args(argv, flags);
 	check_instructions(&a, &b, flags, stats);
 	is_sorted(a) ? ft_printf("OK\n") : ft_printf("KO\n");
 	if (flags.s)

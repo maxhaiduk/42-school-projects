@@ -6,34 +6,44 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:39:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/05 14:16:37 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/10 12:10:04 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_type(char **arr)
+void	check_type(char **arr, t_flags flags)
 {
 	while (*arr)
 	{
 		if (!ft_is_number(*arr))
-			error("incorrect type");
+		{
+			if (flags.e)
+				error("incorrect type");
+			else
+				error(NULL);
+		}
 		arr++;
 	}
 }
 
-void	check_values(t_list *head)
+void	check_values(t_list *head, t_flags flags)
 {
 	while (head)
 	{
 		if (*((intmax_t *)head->content) > INT_MAX ||
 			*((intmax_t *)head->content) < INT_MIN)
-			error("incorrect value");
+		{
+			if (flags.e)
+				error("incorrect value");
+			else
+				error(NULL);
+		}
 		head = head->next;
 	}
 }
 
-void	check_duplicates(t_list *head)
+void	check_duplicates(t_list *head, t_flags flags)
 {
 	t_btree *root;
 
@@ -48,7 +58,12 @@ void	check_duplicates(t_list *head)
 			ft_btree_insert(root, head->content,
 							head->content_size, &btree_cmp);
 		else
-			error("duplicates in array");
+		{
+			if (flags.e)
+				error("duplicates in array");
+			else
+				error(NULL);
+		}
 		head = head->next;
 	}
 	ft_btree_erase(&root, &btree_del);

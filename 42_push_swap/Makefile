@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/07 17:26:46 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/10 11:45:52 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ LFT_DIR := ./libft
 
 # Source files for push_swap
 SRC :=	push_swap.c 		\
+		parser.c 			\
 		reader.c			\
 		input_error.c		\
 		helpers.c			\

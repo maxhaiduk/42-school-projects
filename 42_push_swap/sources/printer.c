@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:08:25 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 17:40:49 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/10 12:09:54 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ void	print_stacks(t_list *a, t_list *b)
 		b = b->next;
 	}
 	write(1, "\n\n", 2);
+}
+
+void	print_help_ps(void)
+{
+	ft_printf("Usage: ./push_swap[flags][array]\n\n");
+	ft_printf("[flags]:\n-e - describe error\n\n");
+	ft_printf("[array]:\n");
+	ft_printf("one string like: \"3 2 1\"\n");
+	ft_printf("or\n");
+	ft_printf("few arguments: 3 2 1\n");
+	exit(1);
 }
 
 void	print_help(void)
