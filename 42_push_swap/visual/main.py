@@ -2,9 +2,7 @@
 
 import sys
 import time
-import Tkinter as tk
 from visual import *
-from gui import *
 
 def read_array(argv):
 	arr = []
@@ -44,15 +42,7 @@ def main():
 	
 	arr = read_array(sys.argv)
 	tools = read_tools()
-
-	visual(arr, tools)
-	
-	#query(tools)
-
-	print (arr)
-	print (tools)
-	print (len(tools))
-	
+	visual(arr, tools)	
 
 if __name__ == "__main__":
 	main()

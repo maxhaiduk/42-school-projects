@@ -9,5 +9,5 @@ ARG=$(./ran_nums/ran_nums.py $1)
 
 echo $ARG
 
-./push_swap $ARG | tee visual/tools | ./checker $ARG && \
-./visual/main.py $ARG && ./visual/gui.py
+./push_swap $ARG | tee visual/tools | ./checker -v -s $ARG && \
+./visual/main.py $ARG
