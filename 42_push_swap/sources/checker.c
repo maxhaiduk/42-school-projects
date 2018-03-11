@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/11 14:00:51 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/11 15:41:48 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	is_sorted(t_list *a)
 {
+	if (!a)
+		return (0);
 	while (a->next)
 	{
 		if (*((int *)a->content) > *((int *)a->next->content))
