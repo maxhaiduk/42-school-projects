@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 11:57:20 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/07 17:23:15 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/11 16:07:27 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,7 @@ static void	sort_vol2(t_list **a, t_list **b)
 	next = VAL_NEXT(a);
 	bot = VAL_N_NEXT(a);
 	if (P_120(top, next, bot))
-	{
-		if (*b && (*b)->next && VAL(b) < VAL_NEXT(b))
-			ss(*a, *b, 1);
-		else
-			sa(*a, 1);
-		ra(a, 1);
-		sa(*a, 1);
-	}
+		rra(a, 1);
 	else if (P_201(top, next, bot))
 		ra(a, 1);
 	else if (P_210(top, next, bot))
