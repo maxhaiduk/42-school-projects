@@ -19,20 +19,6 @@ def read_tools():
 	tools.remove('')
 	return (tools)
 
-def promt():
-	root = tk.Tk()
-	root.call('wm', 'attributes', '.', '-topmost', '1')
-	w = 300# width for the Tk root
-	h = 200 # height for the Tk root
-	ws = root.winfo_screenwidth()
-	hs = root.winfo_screenheight()
-	x = (ws/2) - (w/2)
-	y = (hs/2) - (h/2)
-	root.geometry('%dx%d+%d+%d' % (w, h, x, y))
-
-	label = Label(root, )
-
-	root.mainloop()
 
 def main():
 
