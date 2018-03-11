@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/10 12:04:18 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/11 14:00:51 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	check_instructions(t_list **a, t_list **b, t_flags flags,
 		else if (rotations(a, b, line))
 			;
 		else
-			error("incorect instruction");
+			flags.e ? error("incorect instruction") : error(NULL);
 		if (flags.v)
 			print_stacks(*a, *b);
 		ft_strdel(&line);
@@ -86,7 +86,7 @@ int			main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	if (argc == 1)
-		return (write(2, "Usage: ./checker [flags][array]\n", 33));
+		return (1);
 	argv++;
 	flags = parse_flags(&argv);
 	if (flags.h)
