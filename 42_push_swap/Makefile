@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/10 11:45:52 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/11 13:48:16 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,8 @@ SRC :=	push_swap.c 		\
 		sort_group_a.c 		\
 		sort_group_a_last.c \
 		sort_group_b.c 		\
-		printer.c
-
+		printer.c			
+		
 # Object files for push_swap
 OBJ := $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
@@ -75,40 +75,26 @@ LFT := libft.a
 
 .PHONY = all clean fclean re
 
-all: $(NAME) $(NAME2)
+all: $(NAME)
 
-$(NAME): $(OBJ) $(LFT)
-	@echo "$(GREEN)Compiling $(NAME)...$(DEFAULT)"
-	@$(CC) $(FLAGS) $(OBJ) $(LFT_DIR)/$(LFT) $(INC) -o $(NAME)
-	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
+$(NAME): $(OBJ) $(OBJ2)
+	make -C $(LFT_DIR) all
+	$(CC) $(FLAGS) $(OBJ) $(LFT_DIR)/$(LFT) $(INC) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJ2) $(LFT_DIR)/$(LFT) $(INC) -o $(NAME2)
+
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(FLAGS) $(INC) -c $< -o $@
-
-$(NAME2): $(OBJ2) $(LFT) 
-	@echo "$(GREEN)Compiling $(NAME2)...$(DEFAULT)"
-	@$(CC) $(FLAGS) $(OBJ2) $(LFT_DIR)/$(LFT) $(INC) -o $(NAME2)
-	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
-
-$(LFT):
-	@echo "$(GREEN)Compiling libft...$(DEFAULT)"
-	@make -C $(LFT_DIR) all --silent
-
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
+	
 clean:
-	@echo "$(RED)Cleaning libft o-files...$(DEFAULT)" 
-	@make -C $(LFT_DIR) clean --silent
-	@echo "$(RED)Cleaning $(NAME) o-files...$(DEFAULT)"
-	@rm -rf $(OBJ)
-	@rm -rf $(OBJ_DIR)
-	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
+	make -C $(LFT_DIR) clean
+	rm -rf $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@echo "$(RED)Deleting libft.a...$(DEFAULT)" 
-	@rm -rf $(LFT_DIR)/$(LFT)
-	@echo "$(RED)Deleting $(NAME)...$(DEFAULT)" 
-	@rm -rf $(NAME)
-	@echo "$(GREEN)$(BOLD)DONE.\n$(DEFAULT)"
+	rm -rf $(LFT_DIR)/$(LFT)
+	rm -rf $(NAME)
 
 re: fclean all
 
