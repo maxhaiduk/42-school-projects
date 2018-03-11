@@ -1,6 +1,7 @@
 *~
 *#*#
 .*
+cleartrash
 !.gitignore
 *.o
 libft/testing*
