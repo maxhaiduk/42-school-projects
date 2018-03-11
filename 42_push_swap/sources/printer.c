@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:08:25 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/10 12:09:54 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/10 13:48:26 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	print_help_ps(void)
 void	print_help(void)
 {
 	ft_printf("Usage: ./checker [flags][array]\n\n");
-	ft_printf("[flags]:\n-v - visualization of stacks\n");
+	ft_printf("[flags]:\n-v - visualization of the stacks\n");
+	ft_printf("-e - describe error\n");
 	ft_printf("-s - view statistics about operations\n\n");
 	ft_printf("[array]:\n");
 	ft_printf("one string like: \"3 2 1\"\n");
