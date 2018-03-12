@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import matplotlib as mpl
 from matplotlib import pyplot as plt
 from matplotlib import animation
 from push_swap import push_swap
@@ -18,7 +19,7 @@ def set_style():
 	ax.set_ylim(y_lim)
 	ax2.set_ylim(y_lim)
 
-	# Seot off all ticks and labels
+	#Set off all ticks and labels
 	for tick in ax.xaxis.get_major_ticks():
 		tick.label1On = False
 		tick.tick1On = False
@@ -50,32 +51,30 @@ def animate(tool):
 
 def visual(arr, tools):
 	
-	print (tools)
+	mpl.rcParams['toolbar'] = 'None'
 	global ps
 	ps = push_swap(arr)
-	print (ps.a)
 
 	fig = plt.figure(figsize=(15, 10))
 	fig.canvas.set_window_title('push_swap mhaiduk')
-	fig.text(0.11, 0.9, 'STACK A')
-	fig.text(0.11, 0.45, 'STACK B')
+	t1 = fig.text(0.01, 0.96, 'STACK A', size='large', style='oblique')
+	fig.text(0.01, 0.46, 'STACK B', size='large', style='oblique')
 	
 	global ax
-	#ax = fig.add_axes([0.1, 0.525, 0.8, 0.4])
 	ax = fig.add_axes([0, 0.5, 1, 0.5])
 	global ax2
-	ax2 = fig.add_axes([0.0, 0.0, 1, 0.5])
+	ax2 = fig.add_axes([0, 0, 1, 0.5])
 
 	global line_a
 	line_a, = ax.plot(range(ps.len_a), ps.a, color='green', marker='o', markersize=10)
 
 	global line_b
-	line_b, = ax2.plot([], [], 'bo')
-	print (type(line_a))
+	line_b, = ax2.plot([], [], color='blue', marker='o', markersize=10)
 
 	global x_lim, y_lim
-	x_lim = (0, ps.len_a - 1)
-	y_lim = (min(ps.a), max(ps.a))
+	x_lim = (-1, ps.len_a)
+	m = max(ps.a)
+	y_lim = (min(ps.a) - m * 0.05, m + m * 0.05)
 
 	anim = animation.FuncAnimation(fig, animate, tools, init_func=init,
 									blit=False, repeat=False, interval=10)
