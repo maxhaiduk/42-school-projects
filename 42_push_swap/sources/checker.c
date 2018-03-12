@@ -6,15 +6,15 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 16:13:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/11 15:41:48 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/12 13:04:04 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_sorted(t_list *a)
+static int	is_sorted(t_list *a, t_list *b)
 {
-	if (!a)
+	if (!a || b)
 		return (0);
 	while (a->next)
 	{
@@ -98,7 +98,7 @@ int			main(int argc, char **argv)
 	a = (ft_len_strarr(argv) == 1) ? parse_string(*argv, flags) :
 									parse_args(argv, flags);
 	check_instructions(&a, &b, flags, stats);
-	is_sorted(a) ? ft_printf("OK\n") : ft_printf("KO\n");
+	is_sorted(a, b) ? ft_printf("OK\n") : ft_printf("KO\n");
 	if (flags.s)
 		print_stats(stats);
 	ft_lst_erase(a);

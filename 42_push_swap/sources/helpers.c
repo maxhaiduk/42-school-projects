@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 16:56:17 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/10 12:02:31 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/12 13:04:23 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ void	error(char *desc)
 		exit(ft_printf("%&Error\n", 2));
 	else
 		exit(ft_printf(RED "%&Error: %s\n" RESET, 2, desc));
-}
-
-void	print_list(t_list *head)
-{
-	while (head)
-	{
-		printf("%i\n", *((int *)head->content));
-		head = head->next;
-	}
 }
 
 void	btree_del(void *content, size_t content_size)
