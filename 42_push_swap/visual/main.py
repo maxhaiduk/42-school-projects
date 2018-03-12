@@ -14,7 +14,7 @@ def read_array(argv):
 	return (arr)
 
 def read_tools():
-	file = open("/Users/mhaiduk/projects/push_swap/visual/tools", "r")
+	file = open("./visual/tools", "r")
 	tools = file.read().split('\n')
 	tools.remove('')
 	return (tools)
