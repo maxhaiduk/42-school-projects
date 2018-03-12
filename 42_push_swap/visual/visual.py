@@ -7,25 +7,24 @@ from collections import Counter
 
 def init():
 	set_style()
-	x_pos = range(0, len(ps.a))
-	rects = ax.bar(x_pos, ps.a, color='green')
-	return rects
+	return line_a,
 
-def define_vars():
-	global x_lim
-	x_lim = (0, len(ps.a))
-
-	global y_lim
-	y_lim = (min(ps.a), max(ps.a) + 5)
 
 def set_style():
+	
+	# Set limits of axes
 	ax.set_xlim(x_lim)
 	ax2.set_xlim(x_lim)
-	
 	ax.set_ylim(y_lim)
 	ax2.set_ylim(y_lim)
 
+	# Seot off all ticks and labels
 	for tick in ax.xaxis.get_major_ticks():
+		tick.label1On = False
+		tick.tick1On = False
+		tick.tick2On = False
+	
+	for tick in ax.yaxis.get_major_ticks():
 		tick.label1On = False
 		tick.tick1On = False
 		tick.tick2On = False
@@ -35,23 +34,26 @@ def set_style():
 		tick.tick1On = False
 		tick.tick2On = False
 
+	for tick in ax2.yaxis.get_major_ticks():
+		tick.label1On = False
+		tick.tick1On = False
+		tick.tick2On = False
 
 def animate(tool):
-	ax.cla()
-	ax2.cla()	
 	set_style()
-	
 	ps.operate(tool)
-	x_pos = range(0, len(ps.a))
-	stack_a = ax.bar(x_pos, ps.a, color='green')
-	x_pos = range(0, len(ps.b))
-	stack_b = ax2.bar(x_pos, ps.b)
-	return stack_a, stack_b
+	
+	line_a.set_data(range(ps.len_a), ps.a)
+
+	line_b.set_data(range(ps.len_b), ps.b)
+	return line_a, line_b
 
 def visual(arr, tools):
 	
+	print (tools)
 	global ps
 	ps = push_swap(arr)
+	print (ps.a)
 
 	fig = plt.figure(figsize=(15, 10))
 	fig.canvas.set_window_title('push_swap mhaiduk')
@@ -59,19 +61,26 @@ def visual(arr, tools):
 	fig.text(0.11, 0.45, 'STACK B')
 	
 	global ax
-	ax = fig.add_axes([0.1, 0.525, 0.8, 0.4])
+	#ax = fig.add_axes([0.1, 0.525, 0.8, 0.4])
+	ax = fig.add_axes([0, 0.5, 1, 0.5])
 	global ax2
-	ax2 = fig.add_axes([0.1, 0.075, 0.8, 0.4])
-	
-	define_vars()
+	ax2 = fig.add_axes([0.0, 0.0, 1, 0.5])
 
-	x_pos = range(0, len(ps.a))
-	rects = ax.bar(x_pos, ps.a)
+	global line_a
+	line_a, = ax.plot(range(ps.len_a), ps.a, color='green', marker='o', markersize=10)
 
-	anim = animation.FuncAnimation(fig, animate, tools, init_func=init, 
-									blit=False, repeat=False, interval=200)
+	global line_b
+	line_b, = ax2.plot([], [], 'bo')
+	print (type(line_a))
+
+	global x_lim, y_lim
+	x_lim = (0, ps.len_a - 1)
+	y_lim = (min(ps.a), max(ps.a))
+
+	anim = animation.FuncAnimation(fig, animate, tools, init_func=init,
+									blit=False, repeat=False, interval=10)
 	plt.show()
 
 if __name__ == "__main__":
-	visual([3, 5, 4, 8, 1], ['sa', 'pb', 'pb', 'ss'])
+	visual([3, 2, 1], ['sa', 'rra'])
 	
