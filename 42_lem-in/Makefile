@@ -6,7 +6,7 @@
 #    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/14 10:01:41 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/14 15:39:03 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC :=	lem-in.c			\
 		reader.c			\
 		reader_checks.c		\
 		reader_exec.c 		\
+		matrix.c 			\
 		helpers.c
 		
 		
