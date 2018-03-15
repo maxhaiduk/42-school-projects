@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 17:08:25 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/10 13:48:26 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/15 15:23:49 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stacks(t_list *a, t_list *b)
 {
-	ft_printf(GREEN BOLD UNDERLINE "\nStack A: " RESET);
+	ft_printf(GREEN "\nStack A: " RESET);
 	if (!a)
 		ft_printf(RED "empty" RESET);
 	while (a)
@@ -22,7 +22,7 @@ void	print_stacks(t_list *a, t_list *b)
 		ft_printf("%i ", *((int *)a->content));
 		a = a->next;
 	}
-	ft_printf(BLUE BOLD UNDERLINE "\n\nStack B: " RESET);
+	ft_printf(BLUE "\n\nStack B: " RESET);
 	if (!b)
 		ft_printf(RED "empty" RESET);
 	while (b)

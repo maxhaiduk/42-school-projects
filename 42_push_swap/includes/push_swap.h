@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:39:56 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/10 12:08:23 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/15 15:32:07 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void			check_values(t_list *head, t_flags flags);
 void			check_duplicates(t_list *head, t_flags flags);
 
 t_flags			parse_flags(char ***args);
+t_flags			parse_flags_ps(char ***args);
 t_list			*parse_string(char *str, t_flags flags);
 t_list			*parse_args(char **args, t_flags flags);
 void			read_stat(char *line, int stats[11]);

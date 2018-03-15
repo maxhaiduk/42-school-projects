@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 14:36:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/11 13:51:26 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/15 15:32:14 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (write(2, "Usage: ./push_swap [flags][array]\n", 34));
 	argv++;
-	flags = parse_flags(&argv);
+	flags = parse_flags_ps(&argv);
 	if (flags.h)
 		print_help_ps();
 	if (!*argv)
