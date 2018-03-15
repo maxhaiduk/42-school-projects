@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/23 13:39:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/10 12:10:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/15 15:52:02 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_type(char **arr, t_flags flags)
 {
 	while (*arr)
 	{
-		if (!ft_is_number(*arr))
+		if (!ft_is_number(*arr) || !ft_strlen(*arr))
 		{
 			if (flags.e)
 				error("incorrect type");
