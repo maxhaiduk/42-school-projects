@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 16:24:53 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/16 18:18:45 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/16 19:36:02 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_data
 	t_list		*rooms;
 	t_room		*room_arr;
 	t_matrix	adj;
+	t_list		*pathways;
 }				t_data;
 
 void			error(void);
