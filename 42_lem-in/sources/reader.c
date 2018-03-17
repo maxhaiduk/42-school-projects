@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 16:57:19 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/16 19:38:46 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/17 12:33:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ t_data	read_data(void)
 	char 	*temp;
 	t_data	data;
 
-	open("./test", O_RDONLY);
+	open("./testing/farm2", O_RDONLY);
 
 	data.lem_num = 0;
 	data.rooms = NULL;

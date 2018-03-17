@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 16:24:53 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/16 19:36:02 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/17 14:06:02 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void			error(void);
 void			print_rooms(t_list *rooms);
 void			print_room_arr(t_room *room_arr, int room_num);
 void			print_int(t_list *room);
+void			print_pathways(t_list *pathways);
 void			delete_room(void *room, size_t content_size);
+void			delete_path(void *content, size_t content_size);
+void			delete_pathways(t_list **head);
 
 /*
 ** Functions for reading data
