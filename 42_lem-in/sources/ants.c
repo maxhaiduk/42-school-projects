@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 08:55:03 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/18 15:54:34 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/18 16:38:01 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	create_ants(t_data *data)
 	}
 }
 
-t_list *get_shortest_path(t_data *data)
+t_list	*get_shortest_path(t_data *data)
 {
 	t_list	*temp;
 	t_list	*short_path;
