@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/18 08:55:03 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/18 10:34:46 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/18 15:54:34 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void	appoint_path(t_data *data)
 		data->ants[i].path = get_shortest_path(data);
 		i++;
 	}
-	print_ants(data->ants, data->ant_qty);
 }
