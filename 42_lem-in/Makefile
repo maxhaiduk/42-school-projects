@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+         #
+#    By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/16 17:37:27 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/18 09:27:50 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,11 @@ SRC :=	lem-in.c			\
 		wave_front.c		\
 		queue_funcs.c 		\
 		detector.c			\
+		transfer.c 			\
+		ants.c 				\
 		matrix.c 			\
-		helpers.c
+		helpers.c			\
+		helpers_delete.c 	
 		
 		
 # Object files
