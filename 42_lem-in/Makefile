@@ -6,7 +6,7 @@
 #    By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 08:37:35 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/03/18 16:42:13 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/03/19 12:03:50 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC :=	lem_in.c			\
 		reader.c			\
 		reader_checks.c		\
 		reader_exec.c 		\
+		reader_helpers.c 	\
 		room_funcs.c		\
 		wave_front.c		\
 		queue_funcs.c 		\
