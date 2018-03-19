@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 09:30:08 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/18 16:45:02 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/19 16:29:13 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	parse_room(t_data *data, char *line, char status)
 	room.name = ft_strdup(arr[0]);
 	room.x = ft_atoi(arr[1]);
 	room.y = ft_atoi(arr[2]);
+	check_uniqe_room(data, room, line);
 	room.status = status;
 	room.index = index;
 	room.visited = 0;
