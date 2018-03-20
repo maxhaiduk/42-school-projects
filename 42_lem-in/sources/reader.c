@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 16:57:19 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/19 16:47:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/20 10:03:56 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	read_ant_qty(t_data *data)
 			ft_strdel(&line);
 			continue ;
 		}
-		if (ft_is_number(line))
+		if (ft_is_number(line) && ft_strlen(line))
 		{
 			write_ants_qty(data, line);
 			return ;

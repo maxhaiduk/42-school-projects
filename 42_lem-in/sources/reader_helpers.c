@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 12:00:43 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/19 18:25:21 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/20 09:55:11 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	write_ants_qty(t_data *data, char *line)
 	data->ant_qty = ft_atoi(line);
 	if (data->ant_qty <= 0)
 		ERROR_MSG("non-positive value");
-	if (data->ant_qty >= INT_MAX)
-		ERROR_MSG("value greater than INT");
+	if (data->ant_qty > 100000)
+		ERROR_MSG("Dude, it`s too much ants :) [limit 100 000]");
 	ft_strdel(&line);
 }
 
