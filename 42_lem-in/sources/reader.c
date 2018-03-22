@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 16:57:19 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/03/22 08:47:43 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/22 09:16:16 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ static void	write_rooms_to_arr(t_data *data)
 void		read_data(t_data *data)
 {
 	char	*line;
-
-	open("testing/farm0", O_RDONLY, 0);
 
 	line = NULL;
 	read_ant_qty(data, &line);
