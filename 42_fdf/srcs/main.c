@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:10:16 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/16 13:16:14 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/03/22 09:49:28 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int		expose_hook(t_env *env)
 int		key_hook(int keycode, t_env *env)
 {
 	if (keycode == 53)
-	{
-		system("leaks fdf");
 		exit(1);
-	}
 	if ((keycode >= LEFT_ARROW_KEY && keycode <= UP_ARROW_KEY) ||
 		(keycode == PLUS_NUM_KEY || keycode == MINUS_NUM_KEY))
 		cam_trans(keycode, env);
