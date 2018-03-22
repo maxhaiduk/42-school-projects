@@ -15,7 +15,11 @@ Available operation:
 
 checker checks will be the stack sorted using this operations;</pre></code>
 
-To visualize sorting process use **./run [n]**, 
+To visualize sorting process use **./run.sh [n]**, 
+
+_python2.x and matplotlib required_
 
 where n - quantity of numbers, which will be generated randomly.
 
+Example:
+![sorting_process](img/00_ps.png)
