@@ -24,6 +24,7 @@
 			</div>
 				<div class="sidebar">
 					<?php echo '<p> Total price:' .$_SESSION['total_price'] .'$</p>'; ?>
+					<a href=""><button type="button">Buy!</button></a>
 				</div>
 			<div class="content">
 			<?php
