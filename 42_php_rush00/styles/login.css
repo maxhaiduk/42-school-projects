@@ -1,0 +1,163 @@
+.container{
+    display: table;
+    grid-template-rows: auto auto auto auto;
+    background-color: whitesmoke;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    margin: 10px;   
+    grid-gap: 5px;
+    margin: auto;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.24),0 0 15px 0 rgba(0,0,0,0.19);
+}
+.container h2{
+    grid-row: 1;
+    text-align: center; 
+    font-family: "Arial Black", Times, sans-serif;
+}
+/*логин и пароль*/
+.input_data{
+    display: grid;
+    grid-row: 2;
+    grid-template-columns: 100px auto;
+}
+.input_data label{
+    font-family: "Arial", Times, sans-serif;
+    text-align: center;
+}
+/*кнопка назад*/
+.back_to{
+    display: table;
+    width: 30px;
+    height: 20px;
+    background-color: whitesmoke;
+}
+.back_to a{
+    font-family: "Arial", Times, sans-serif;
+    text-decoration: none;
+}
+.back{
+    display: table;
+    background-color: whitesmoke;
+    font-family: "Arial Black", Times, sans-serif;
+    width: 100px;
+    border: 0;
+    color: rgb(85, 83, 83);
+    transition-duration: 0.6s;
+    height: 50px;   
+}
+.back:hover{
+    background-color: #38a798;
+}
+/*кнопка новый юзер*/
+.checkbox{
+    margin: auto;
+    grid-column: 1;
+}
+/*грид для кнопки*/
+.confirm{
+    display: grid;
+    grid-row: 1 / span 2;
+    grid-template-columns: 30px auto 80px;
+}
+.confirm p{
+    grid-column: 2;
+    font-size: 80%;
+    font-family: "Arial", Times, sans-serif;
+    float: left;
+}
+/*кнопка ОК*/
+.submit{
+    grid-column: 3;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    font-family: "Arial", Times, sans-serif;
+    transition-duration: 0.4s;
+    border: 0;
+    background-color: #43d0bf;
+}
+.submit:hover{
+    background-color: #38a798;
+}.container{
+    display: table;
+    grid-template-rows: auto auto auto auto;
+    background-color: whitesmoke;
+    width: 300px;
+    height: 200px;
+    padding: 10px;
+    margin: 10px;   
+    grid-gap: 5px;
+    margin: auto;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.24),0 0 15px 0 rgba(0,0,0,0.19);
+}
+.container h2{
+    grid-row: 1;
+    text-align: center; 
+    font-family: "Arial Black", Times, sans-serif;
+}
+/*логин и пароль*/
+.input_data{
+    display: grid;
+    grid-row: 2;
+    grid-template-columns: 100px auto;
+}
+.input_data label{
+    font-family: "Arial", Times, sans-serif;
+    text-align: center;
+}
+/*кнопка назад*/
+.back_to{
+    display: table;
+    width: 30px;
+    height: 20px;
+    background-color: whitesmoke;
+}
+.back_to a{
+    font-family: "Arial", Times, sans-serif;
+    text-decoration: none;
+}
+.back{
+    display: table;
+    background-color: whitesmoke;
+    font-family: "Arial Black", Times, sans-serif;
+    width: 100px;
+    border: 0;
+    color: rgb(85, 83, 83);
+    transition-duration: 0.6s;
+    height: 50px;   
+}
+.back:hover{
+    background-color: #38a798;
+}
+/*кнопка новый юзер*/
+.checkbox{
+    margin: auto;
+    grid-column: 1;
+}
+/*грид для кнопки*/
+.confirm{
+    display: grid;
+    grid-row: 1 / span 2;
+    grid-template-columns: 30px auto 80px;
+}
+.confirm p{
+    grid-column: 2;
+    font-size: 80%;
+    font-family: "Arial", Times, sans-serif;
+    float: left;
+}
+/*кнопка ОК*/
+.submit{
+    grid-column: 3;
+    height: 70%;
+    margin-top: 5px;
+    text-align: center;
+    font-family: "Arial", Times, sans-serif;
+    transition-duration: 0.4s;
+    border: 0;
+    background-color: #43d0bf;
+}
+.submit:hover{
+    background-color: #38a798;
+}
