@@ -1,6 +1,6 @@
 .container{
     display: table;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
     background-color: whitesmoke;
     width: 300px;
     height: 200px;
@@ -14,6 +14,14 @@
     grid-row: 1;
     text-align: center; 
     font-family: "Arial Black", Times, sans-serif;
+}
+.container a{
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    grid-row: 5;
+    color: rgba(128, 128, 128, 0.925);
+    text-align: center;
 }
 /*логин и пароль*/
 .input_data{

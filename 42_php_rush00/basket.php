@@ -23,8 +23,10 @@
 				</div>
 			</div>
 				<div class="sidebar">
-					<?php echo '<p> Total price:' .$_SESSION['total_price'] .'$</p>'; ?>
-					<a href=""><button type="button">Buy!</button></a>
+					<?php
+						require_once('count_price.php');
+						echo '<p> Total price:' .$_SESSION['total_price'] .'$</p>'; ?>
+					<a href="http://localhost:8100/RUSH00/basket.php?action=buy"><button type="button">Buy!</button></a>
 				</div>
 			<div class="content">
 			<?php

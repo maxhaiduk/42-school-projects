@@ -10,8 +10,8 @@
 
 			<div class="header">
 				<div class="header_content">
-						<p>MUSIC SHOP</p>
-						<div></div>
+					<div class="school42"><img src="http://www.42.fr/wp-content/themes/42/images/42_logo_black.svg" alt="42"></div>
+					<div class="music_show"><p>MUSIC SHOP</p></div>
 						<?php
 							session_start();
 							if (isset($_SESSION['login']))

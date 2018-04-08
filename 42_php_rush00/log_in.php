@@ -68,7 +68,12 @@
             </a>';
         ?></p>
     <form class="container" method="POST" action="log_in.php">
-        <h2>Input Form</h2>
+		<h2><?php 
+			if ($msg)
+				print($msg);
+			else
+				print('Login Form');
+		?></h2>
         <div class="input_data">
             <label>Username:</label>
             <input type="text" name="login"/>
@@ -84,5 +89,6 @@
 		</div>
 	
 		<a href="http://localhost:8100/RUSH00/delete_user.php">delete account</a>
+		
         </form>
 </body></html>

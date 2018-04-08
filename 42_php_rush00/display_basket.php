@@ -1,5 +1,10 @@
 <?php
 	session_start();
+	if ($_GET['action'] == "buy")
+	{
+		echo 'Succes!';
+		$_SESSION['booking'] = array();
+	}
 	if (empty($_SESSION['login']))
 	{
 		echo '<div>You need to login or create account to use basket </div>';
@@ -19,7 +24,7 @@
 		$data = mysqli_query($dbc, $query);
 
 		$rowcount = mysqli_num_rows($data);
-		if ($rowcount == 0)
+		if ($rowcount == 0 and !$_GET['action'] == "buy")
 			echo 'Basket is empty <br />';
 
 		$total_price = 0;
@@ -38,7 +43,6 @@
 			$total_price += $row['price'];
 		}
 		$_SESSION['total_price'] = $total_price;
-		//print("Total price:" . $total_price . "$");
 		mysqli_close($dbc);
 	}
 ?>
