@@ -3,6 +3,7 @@
 	{
 		session_start();
 		$_SESSION['login'] = $login;
+		mysqli_close($dbc);
 		header('Location: ' . HOME_PAGE);
 	}
 
@@ -47,10 +48,8 @@
 				$msg = "Wrong password";
 		}
 		else if (!$_POST['create'] and $rowcount == 0)
-		{
 			$msg = "Wrong login";
-		}
-		
+		mysqli_close($dbc);
 	}
 	else if ($_POST['submit'] == 'OK' and empty($_POST['login']))
 		$msg = "Empty login field";
@@ -71,6 +70,6 @@
 		<p><?php
 			echo "$msg <br />";
 			echo $_SESSION['login'];
-			echo '<a href="index.php">На главную</a>';
+			echo '<a href="index.php">To Home Page</a>';
 		?></p>
 </body></html>
