@@ -3,7 +3,7 @@
 	display: grid;
 	grid-template-columns: 300px auto auto;
 	grid-gap: 10px;
-	background-color: rgb(69, 153, 17);
+	background-color: rgb(185, 222, 247);
 	padding: 10px;
 	height: 95vh;
 	grid-template-rows: 100px auto;
@@ -17,15 +17,18 @@
 
 .header {
 	grid-column: 1 / span 3;
+	background: blue;
 }
 .content{
 	grid-column: 2 / span 2;
 	overflow: scroll;
 }
 
-.header_content > *{
-	display: inline-block;
-	align-content: left;
+
+/*HEADER CONTENT*/
+.header_content {
+	display: grid;
+	grid-template-columns: 200px  auto 100px 100px;
 }
 
 /* PRODUCT STYLE*/

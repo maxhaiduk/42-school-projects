@@ -10,13 +10,18 @@
 
 			<div class="header">
 				<div class="header_content">
-						<img src="" alt="Some picture">
-						<p>SOME NAME</p>
+						<p>MUSIC SHOW</p>
+						<div></div>
+						<p><a href="log_in.html">Log_in</a></p>
+						<p>Basket</p>
 				</div>
+
 			</div>
 
 			<div class="sidebar">
-				<div class="category1">category1</div>
+				<div class="category1">
+					<a href="http://localhost:8100/RUSH00?category=drums">drums</a>
+				</div>
 				<div class="category2">category2</div>
 				<div class="category3">category3</div>
 				<div class="category4">category4</div>
