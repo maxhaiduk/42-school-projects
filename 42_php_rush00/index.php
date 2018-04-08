@@ -12,7 +12,13 @@
 				<div class="header_content">
 						<p>MUSIC SHOW</p>
 						<div></div>
-						<p><a href="log_in.html">Log_in</a></p>
+						<?php
+							session_start();
+							if (isset($_SESSION['login']))
+								echo '<p><a href="log_out.php">Log_out</a></p>';
+							else
+								echo '<p><a href="log_in.php">Log_in</a></p>';
+						?>
 						<p>Basket</p>
 				</div>
 

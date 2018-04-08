@@ -15,6 +15,7 @@
 		echo '<div> <strong>Price</strong> ' . $row['price'] .  '</div>';
 		echo '</div>';
 	}
+	mysqli_close($dbc);
 ?>
 
 </html>
