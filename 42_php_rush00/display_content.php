@@ -3,7 +3,10 @@
 	require_once('appvars.php');
 	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) 
 		or die("DATA BASE CONNECTION ERROR");
-	$query = "SELECT * FROM `products`";
+	if (empty($_GET['category']) or $_GET['category'] == 'all')
+		$query = "SELECT * FROM `products`";
+	else
+		$query = "SELECT * FROM `products` WHERE category='" . $_GET['category'] . "'";
 	$data = mysqli_query($dbc, $query);
 	while ($row = mysqli_fetch_array($data))
 	{

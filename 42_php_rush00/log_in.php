@@ -37,7 +37,7 @@
 		else if ($_POST['create'] and $rowcount == 1)
 			$msg = "User with name <strong>$login </strong> is already exists";
 		
-		/* LOG IN BLOCK*/
+		/* LOGIN BLOCK*/
 		else if (!$_POST['create'] and $rowcount == 1)
 		{
 			$user = mysqli_fetch_array($sql);

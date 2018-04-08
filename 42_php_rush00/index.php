@@ -21,18 +21,30 @@
 						?>
 						<p>Basket</p>
 				</div>
-
 			</div>
 
-			<div class="sidebar">
-				<div class="category1">
-					<a href="http://localhost:8100/RUSH00?category=drums">drums</a>
+				<div class="sidebar">
+					<div class="sidebar">
+						<button class="category1">
+							<a href="http://localhost:8100/RUSH00/index.php?category=all">All</a>
+						</button>
+						<button class="category1">
+							<a href="http://localhost:8100/RUSH00/index.php?category=drums">drums</a>
+						</button>
+						<button class="category1">
+							<a href="http://localhost:8100/RUSH00?category=eguitars">electric guitars</a>
+						</button>
+						<button class="category1">
+							<a href="http://localhost:8100/RUSH00?category=aguitars">acoustic guitars</a>
+						</button>
+						<button class="category1">
+							<a href="http://localhost:8100/RUSH00?category=synt">synthesizer</a>
+						</button>
+						<button class="category1">
+							<a href="http://localhost:8100/RUSH00?category=sax">saxophones</a>
+						</button>
+					</div>
 				</div>
-				<div class="category2">category2</div>
-				<div class="category3">category3</div>
-				<div class="category4">category4</div>
-				<div class="category5">category5</div>
-			</div>
 	
 			<div class="content">
 			<?php
