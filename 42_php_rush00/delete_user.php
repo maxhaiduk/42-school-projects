@@ -20,33 +20,20 @@
         $sql = mysqli_query($dbc, $query);
         
         $rowcount = mysqli_num_rows($sql);
-				
-		/* CREATE ACCOUNT BLOCK */
-		if ($_POST['create'] and $rowcount == 0)
-		{
-			$query = " INSERT INTO 
-						users (login, password) 
-						VALUES ('" . $login . "', '" . $password . "')";
-			mysqli_query($dbc, $query) or die ("ACCOUNT CREATION ERROR");
-			log_in($login);
-		}
-		else if ($_POST['create'] and $rowcount == 1)
-			$msg = "User with name <strong>$login </strong> is already exists";
-		
-		/* LOGIN BLOCK*/
-		else if (!$_POST['create'] and $rowcount == 1)
-		{
-			$user = mysqli_fetch_array($sql);
-			if ($user['password'] == $password)
-				log_in($login);
-			else
-				$msg = "Wrong password";
-		}
-		else if (!$_POST['create'] and $rowcount == 0)
-			$msg = "Wrong login";
-
-
-        
+        if ($rowcount == 1){
+            $user = mysqli_fetch_array($sql);
+            print_r($user);
+            if ($user['password'] == $password)
+            {
+                $query = "DELETE FROM users WHERE login='" . $login . "'";
+                print($query);
+                mysqli_query($dbc, $query);
+                session_start();
+                $_SESSION = array();
+                mysqli_close($dbc);
+                header('Location: ' . HOME_PAGE);
+            }
+        }
     }
     else if ($_POST['submit'] == 'OK' and empty($_POST['login']))
         $msg = "Empty login field";
@@ -67,8 +54,8 @@
             </button>
             </a>';
         ?></p>
-    <form class="container" method="POST" action="log_in.php">
-        <h2>Input Form</h2>
+    <form class="container" method="POST" action="delete_user.php">
+        <h2>Delete Form</h2>
         <div class="input_data">
             <label>Username:</label>
             <input type="text" name="login"/>
@@ -78,11 +65,8 @@
             <input type="password" name="password"/>
         </div>
         <div class="confirm">
-            <input type="checkbox" name="create" class="checkbox"> 
-            <p>Create new account</p>
             <input type="submit" name="submit" class="submit", value="OK">
 		</div>
 	
-		<a href="http://localhost:8100/RUSH00/delete_user.php">delete account</a>
         </form>
 </body></html>
