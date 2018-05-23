@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_arena.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maks <maksim.gayduk@gmail.com>             +#+  +:+       +#+        */
+/*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 15:23:55 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/22 22:03:43 by maks             ###   ########.fr       */
+/*   Updated: 2018/05/23 15:07:19 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_arena(t_data *data)
 	{
 		pc = ((t_process *)track->content)->pc;
 		exec_code = data->players[i].exec_code;
-		size = get_number(data->players[i].size);
+		size = get_int_number(data->players[i].size);
 		ft_memcpy(&(data->arena[pc]), exec_code, size);
 		track = track->next;
 		i--;
