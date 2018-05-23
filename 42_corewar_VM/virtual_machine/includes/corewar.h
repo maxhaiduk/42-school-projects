@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:22:40 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/23 15:16:21 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/23 15:54:33 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ typedef struct	s_data
 	t_byte		arena[MEM_SIZE];
 	size_t		players_qty;
 	t_player	players[MAX_PLAYERS];
-	size_t		curs_qty;
+	size_t		process_qty;
 	t_list		*processes;
 	int			cycle;
 	int			counter;
