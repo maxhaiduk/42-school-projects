@@ -6,7 +6,7 @@
 #    By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/27 16:20:32 by mhaiduk           #+#    #+#              #
-#    Updated: 2018/05/23 13:54:47 by mhaiduk          ###   ########.fr        #
+#    Updated: 2018/05/23 14:05:58 by mhaiduk          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ OPER := oper_tab.c		\
 		oper_06_and.c	\
 		oper_07_or.c	\
 		oper_08_xor.c	\
-		# oper_09_zjmp.c	\
+		oper_09_zjmp.c	\
 		# oper_10_ldi.c	\
 		# oper_11_sti.c	\
 		# oper_12_fork.c	\
