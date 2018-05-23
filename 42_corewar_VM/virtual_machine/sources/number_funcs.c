@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 21:40:48 by maks              #+#    #+#             */
-/*   Updated: 2018/05/23 15:16:38 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/23 16:38:54 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ short get_short_number(void *arr)
 	return (res);
 }
 
+/*
+**	Wrapper function for get_int_number and get_sort_number.
+*/
 
 int	get_number(void *arr, int size)
 {
