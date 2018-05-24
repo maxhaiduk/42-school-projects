@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 11:57:21 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/23 16:23:30 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/24 12:45:47 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct	s_op
 	char		*name;
 	char		*description;
 	int			codage;
-	int			argc;
+	int			args_num;
 	int			delay;
 	int			carry;
 	int			label_size;
