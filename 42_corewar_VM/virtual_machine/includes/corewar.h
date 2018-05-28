@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 17:22:40 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/28 12:35:36 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/28 13:17:59 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ typedef struct	s_data
 }				t_data;
 
 # include 		"operations.h"
+# include		"render.h"
 
 void			parse_input_params(t_data *data, char **argv);
 void			init_players(t_data *data);
