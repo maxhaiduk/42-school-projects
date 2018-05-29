@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 12:51:27 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/29 12:53:59 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/29 12:55:25 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # define	ARENA_RAW_SIZE 		64
 # define 	ARENA_WIN_HEIGHT	70
 # define	ARENA_WIN_WIDTH		205
-# define	ARENA_Y_PADDING			4
-# define 	ARENA_X_PADDING 			10
+# define	ARENA_Y_PADDING		4
+# define 	ARENA_X_PADDING 	10
+
+
 
 typedef	struct	s_ren
 {
