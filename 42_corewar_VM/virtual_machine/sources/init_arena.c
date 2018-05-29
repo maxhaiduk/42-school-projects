@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 15:23:55 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/24 20:16:31 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/29 12:19:50 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_arena(t_data *data)
 		exec_code = data->players[i].exec_code;
 		size = data->players[i].exec_code_size;
 		ft_memcpy(&(data->arena[pc]), exec_code, size);
+		ft_memset(&(data->color_map[pc]), data->players[i].number, size);
 		track = track->next;
 		i--;
 	}
