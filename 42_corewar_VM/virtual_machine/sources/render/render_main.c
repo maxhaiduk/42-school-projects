@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 12:50:38 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/30 15:50:42 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/30 16:03:00 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	init_start_window(t_data *data)
 int render_game(t_data *data)
 {
 	int c;
+
+	init_start_window(data);
 	while (1)
 	{
 		usleep(1000000 / data->render.speed);
