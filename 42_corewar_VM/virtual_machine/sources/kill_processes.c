@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 12:48:39 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/31 12:53:16 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/31 13:28:18 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ void	delete_dead_processes(t_data *data)
 			delete_from_beginnig(&data->processes, &track);
 		}
 		else
-			delete_process(&track, &overtake);
-		if (track) track = track->next;			
+			delete_process(&track, &overtake);		
 	}
 }
 

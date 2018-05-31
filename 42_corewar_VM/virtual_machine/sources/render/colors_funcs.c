@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 10:50:36 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/31 10:58:26 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/05/31 14:13:57 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	update_color_map(t_data *data, size_t src, int start, size_t n)
 	{
 		index = normalize_index(start);
 		data->render.color_map[index] = parent_color;
+		data->render.brightness_map[index] = data->cycle;
 		start++;
 		i++;
 	}
