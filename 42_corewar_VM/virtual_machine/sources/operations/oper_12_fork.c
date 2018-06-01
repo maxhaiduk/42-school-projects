@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/16 13:08:36 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/31 17:19:36 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/01 11:39:55 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	let_new_process_play(t_data *data, t_process *process)
 {
-	// возможно иначе нужно перейти на следущюю позицию !проверить!
 	if (IS_OPCODE(data->arena[process->pc]))
 	{
 		process->oper.op_code = data->arena[process->pc];
