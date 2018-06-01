@@ -6,11 +6,11 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 10:50:36 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/06/01 16:11:55 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/01 16:36:24 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#include "corewar.h"
 
 void	init_colors(void)
 {

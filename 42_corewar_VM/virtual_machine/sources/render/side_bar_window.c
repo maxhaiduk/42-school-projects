@@ -6,11 +6,11 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/29 13:20:20 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/06/01 16:10:33 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/01 16:36:22 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#include "corewar.h"
 
 void	render_speed_data(t_data *data)
 {

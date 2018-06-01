@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   oper_01_live.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
+/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 09:22:48 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/06/01 13:34:57 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/01 16:33:42 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "operations.h"
+#include "corewar.h"
 
 /*
 **	The instruction that allows a process to stay alive.

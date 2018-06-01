@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_btree_erase.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 17:58:09 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/16 17:58:11 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/01 16:55:55 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_btree_erase(t_btree **root, void (*del)(void *, size_t))
 {
-
 	if (!(*root))
 		return ;
 	ft_btree_erase(&((*root)->left), del);
