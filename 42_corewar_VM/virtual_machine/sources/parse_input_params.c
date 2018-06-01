@@ -6,7 +6,7 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 15:27:51 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/05/30 16:01:03 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/01 12:15:28 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void check_uniqueness(t_data *data, int number)
 	size_t i;
 
 	i = 0;
-	while (i < MAX_PLAYERS)
+	while (i < MAX_PLAYERS && data->input_params.players_info[i].used)
 	{
 		if (data->input_params.players_info[i].signature == number)
 			error_msg("player with the same number is already exist", NULL);
