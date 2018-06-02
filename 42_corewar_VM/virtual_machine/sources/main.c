@@ -6,19 +6,18 @@
 /*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/27 16:12:55 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/06/01 14:03:09 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/02 16:13:00 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-// make help
 int	main(int argc, char **argv)
 {
 	t_data data;
 
 	if (argc == 1)
-		error_msg("no input parameters", NULL);
+		print_usage();
 	ft_bzero(&data, sizeof(t_data));
 	parse_input_params(&data, ++argv);
 	init_players(&data);
