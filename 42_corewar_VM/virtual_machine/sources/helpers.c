@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <maksim.gayduk@gmail.com>          +#+  +:+       +#+        */
+/*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/28 15:52:05 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/06/02 16:25:39 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2018/06/17 12:37:45 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	print_usage(void)
 	ft_printf("            s - reduce speed for 100 cycles/second\n");
 	ft_printf("            q - reduce speed for 10 cycles/second\n");
 	ft_printf("            w - reduce speed for 1 cycles/second\n");
-	ft_printf("            r - increase speed for 1 cycles/second\n");
-	ft_printf("|           t - increase speed for 10 cycles/second       |\n");
+	ft_printf("            e - increase speed for 1 cycles/second\n");
+	ft_printf("|           r - increase speed for 10 cycles/second       |\n");
 	ft_printf("|           d - increase speed for 100 cycles/second      |\n");
 	ft_printf("*---                                                   ---*\n");
 	exit(1);
