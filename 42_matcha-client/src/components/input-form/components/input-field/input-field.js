@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import InputChecker from '../input-checker';
 
 export default class InputField extends Component {
 
     constructor(props) {
         super(props);
+
+        this.checker = new InputChecker();
         this.state = {
             wasChanged: false,
             isValid: false,
@@ -20,7 +23,11 @@ export default class InputField extends Component {
                         type={ type }
                         id={ id }
                         name={ name }
-                        onInput={ () => { console.log(event) } }
+                        onInput={ () => {
+                            console.log('event from FIELD');
+                            this.checker.sayHello();
+                            this.props.onChange(); 
+                        }}
                     />
                 </label>
             </div>
