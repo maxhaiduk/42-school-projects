@@ -12,6 +12,8 @@ const LoginForm = () => {
             ]}/>
             <InputField type='password' name='password' label='Password'/>
             <InputField type='submit' value='submit' />
+
+            <a href="">Some link</a>
         </InputForm>
     );
 };

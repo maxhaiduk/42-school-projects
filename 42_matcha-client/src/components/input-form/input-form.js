@@ -1,23 +1,70 @@
-import React from 'react';
+import React, { Component } from 'react';
+import InputField from './components/input-field';
 
-const InputForm = (props) => {
+class InputForm extends Component {
 
-    const elements = React.Children.map(props.children, child => {
-        child = React.cloneElement(child, { 
-            id: props.id + '-' +  child.props.name,
-            onChange: () => { console.log('event from INPUT FORM') }
+    constructor(props) {
+        super(props);
+
+        this.children = this._prepareChildComponents(this.props.children);
+        this.state = this._prepareInitialState(this.children);
+
+        console.log(this.state);
+    }
+
+    handleOnInput(inputName, value) {
+
+        const state = {};
+
+        state[inputName] = {
+            'value': value
+        };
+
+        this.setState(state);
+    }
+
+    _prepareChildComponents(children) {
+        return React.Children.map(children, child => {
+            const childName = child.props.name;
+
+            child = React.cloneElement(child, {
+                id: this.props.id + '-' +  childName,
+                onInput: (name, value) => { this.handleOnInput(name, value) }
+            });
+
+            return child;
+        });
+    }
+
+    _prepareInitialState(children) {
+
+        let state = {};
+
+        React.Children.map(children, child => {
+            if (child.type !== InputField ||
+                child.props.name === undefined) {
+                return;
+            }
+
+            state[child.props.name] = {
+                value: null,
+                isValid: false,
+            };
         });
 
-        return child;
-    })
+        return state;
+    }
 
-    return (
-        <form>
-            {
-                elements
-            }
-        </form>
-    )
-};
+
+    render () {
+        return (
+            <form>
+                {
+                    this.children
+                }
+            </form>
+        )
+    }
+}
 
 export default InputForm;

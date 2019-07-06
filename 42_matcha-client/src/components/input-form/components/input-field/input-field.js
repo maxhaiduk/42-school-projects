@@ -24,9 +24,11 @@ export default class InputField extends Component {
                         id={ id }
                         name={ name }
                         onInput={ () => {
-                            console.log('event from FIELD');
+                            // console.log(event);
+                            let value = event.target.value;
+                            // console.log('event from FIELD');
                             this.checker.sayHello();
-                            this.props.onChange(); 
+                            this.props.onInput(this.props.name, value);
                         }}
                     />
                 </label>
