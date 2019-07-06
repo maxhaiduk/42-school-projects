@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import InputField from './components/input-field';
+import InputChecker from './components/input-checker';
 
 class InputForm extends Component {
 
     constructor(props) {
         super(props);
 
-        this.children = this._prepareChildComponents(this.props.children);
-        this.state = this._prepareInitialState(this.children);
-
-        console.log(this.state);
+        this.state = this._prepareInitialState(this.props.children);
+        this.inputChecker = new InputChecker();
     }
 
     handleOnInput(inputName, value) {
@@ -20,20 +19,9 @@ class InputForm extends Component {
             'value': value
         };
 
+        state['last_changed'] = inputName;
+
         this.setState(state);
-    }
-
-    _prepareChildComponents(children) {
-        return React.Children.map(children, child => {
-            const childName = child.props.name;
-
-            child = React.cloneElement(child, {
-                id: this.props.id + '-' +  childName,
-                onInput: (name, value) => { this.handleOnInput(name, value) }
-            });
-
-            return child;
-        });
     }
 
     _prepareInitialState(children) {
@@ -60,7 +48,20 @@ class InputForm extends Component {
         return (
             <form>
                 {
-                    this.children
+                    React.Children.map(this.props.children, child => {
+
+                        const childName = child.props.name;
+                        const value = (this.state[childName] || {}).value;
+
+                        child = React.cloneElement(child, {
+                            key: childName,
+                            id: this.props.id + '-' +  childName,
+                            value: value,
+                            onInput: (name, value) => { this.handleOnInput(name, value) }
+                        });
+
+                        return child;
+                    })
                 }
             </form>
         )

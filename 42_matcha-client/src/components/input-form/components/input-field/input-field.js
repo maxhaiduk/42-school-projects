@@ -1,39 +1,24 @@
-import React, { Component } from 'react';
-import InputChecker from '../input-checker';
+import React from 'react';
 
-export default class InputField extends Component {
+const InputField = (props) => {
 
-    constructor(props) {
-        super(props);
-
-        this.checker = new InputChecker();
-        this.state = {
-            wasChanged: false,
-            isValid: false,
-        }
-    }
-
-    render() {
-        const { type, id, name, label } = this.props;
+        const { type, id, name, label } = props;
 
         return (
             <div>
-                <label> { label }
-                    <input 
+                <label>
+                    { label }
+                    <input
+                        className={ props.className }
                         type={ type }
                         id={ id }
                         name={ name }
-                        onInput={ () => {
-                            // console.log(event);
-                            let value = event.target.value;
-                            // console.log('event from FIELD');
-                            this.checker.sayHello();
-                            this.props.onInput(this.props.name, value);
-                        }}
+                        onInput={ () => { props.onInput(props.name, event.target.value) }}
                     />
                 </label>
             </div>
         )
-    }
 };
+
+export default InputField;
 
