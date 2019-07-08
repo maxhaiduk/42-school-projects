@@ -5,10 +5,15 @@ const LoginForm = () => {
 
     return (
         <InputForm id='login-form'>
-            <InputField type='text' name='login' label='Login' checks={[
-                'emptiness',
-                'word',
-                'length'
+            <InputField type='text' name='login' label='Login' rules={[
+                {
+                    length: {
+                        max: 12,
+                        min: 4,
+                    }
+                },
+                'required',
+                // 'word',
             ]}/>
             <InputField type='password' name='password' label='Password'/>
             <InputField type='submit' value='submit' />
@@ -19,4 +24,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-

@@ -1,3 +1,3 @@
-import InputChecker from './input-checker';
+import InputValidator from './input-validator';
 
-export default InputChecker;
+export default InputValidator;

@@ -12,7 +12,7 @@ class InputForm extends Component {
     }
 
     /**
-     * @param {array} children
+     * @param {Comment[] | Component} children
      * @private
      *
      * @return {object} state
@@ -30,7 +30,7 @@ class InputForm extends Component {
             state['inputFields'][child.props.name] = {
                 value: null,
                 isValid: false,
-                checks: child.props.checks,
+                rules: child.props.rules,
             };
         });
 
@@ -43,9 +43,11 @@ class InputForm extends Component {
      */
     handleOnInput(inputName, value) {
 
-        const checks = this.state.inputFields[inputName].checks;
+        const rules = this.state.inputFields[inputName].rules;
 
-        const isValid = this.inputValidator.validate(value, checks);
+        const isValid = this.inputValidator.validate(value, rules);
+
+        console.log('isValid', isValid);
 
         this.setState((state) => {
             return {
@@ -63,22 +65,21 @@ class InputForm extends Component {
     render () {
         return (
             <form>
-                {
-                    React.Children.map(this.props.children, child => {
+            {
+                React.Children.map(this.props.children, child => {
+                    const childName = child.props.name;
+                    const value = ((this.state['inputFields'] || {})[childName] || {}).value;
 
-                        const childName = child.props.name;
-                        const value = ((this.state['inputFields'] || {})[childName] || {}).value;
+                    child = React.cloneElement(child, {
+                        key: childName,
+                        id: this.props.id + '-' +  childName,
+                        value: value,
+                        onInput: (name, value) => { this.handleOnInput(name, value) }
+                    });
 
-                        child = React.cloneElement(child, {
-                            key: childName,
-                            id: this.props.id + '-' +  childName,
-                            value: value,
-                            onInput: (name, value) => { this.handleOnInput(name, value) }
-                        });
-
-                        return child;
-                    })
-                }
+                    return child;
+                })
+            }
             </form>
         )
     }
