@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputField from './components/input-field';
-import InputChecker from './components/input-checker';
+import InputValidator from './components/input-validator';
 
 class InputForm extends Component {
 
@@ -8,25 +8,18 @@ class InputForm extends Component {
         super(props);
 
         this.state = this._prepareInitialState(this.props.children);
-        this.inputChecker = new InputChecker();
+        this.inputValidator = new InputValidator();
     }
 
-    handleOnInput(inputName, value) {
-
-        const state = {};
-
-        state[inputName] = {
-            'value': value
-        };
-
-        state['last_changed'] = inputName;
-
-        this.setState(state);
-    }
-
+    /**
+     * @param {array} children
+     * @private
+     *
+     * @return {object} state
+     */
     _prepareInitialState(children) {
 
-        let state = {};
+        let state = { 'inputFields' : {} };
 
         React.Children.map(children, child => {
             if (child.type !== InputField ||
@@ -34,15 +27,38 @@ class InputForm extends Component {
                 return;
             }
 
-            state[child.props.name] = {
+            state['inputFields'][child.props.name] = {
                 value: null,
                 isValid: false,
+                checks: child.props.checks,
             };
         });
 
         return state;
     }
 
+    /**
+     * @param {string} inputName
+     * @param {string} value
+     */
+    handleOnInput(inputName, value) {
+
+        const checks = this.state.inputFields[inputName].checks;
+
+        const isValid = this.inputValidator.validate(value, checks);
+
+        this.setState((state) => {
+            return {
+                inputFields: {
+                    ...state.inputFields,
+                    [inputName]: {
+                        ...state.inputFields[inputName],
+                        'value': value
+                    }
+                },
+            }
+        })
+    }
 
     render () {
         return (
@@ -51,7 +67,7 @@ class InputForm extends Component {
                     React.Children.map(this.props.children, child => {
 
                         const childName = child.props.name;
-                        const value = (this.state[childName] || {}).value;
+                        const value = ((this.state['inputFields'] || {})[childName] || {}).value;
 
                         child = React.cloneElement(child, {
                             key: childName,
