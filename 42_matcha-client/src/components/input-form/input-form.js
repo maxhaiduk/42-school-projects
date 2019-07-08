@@ -7,17 +7,15 @@ class InputForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = this._prepareInitialState(this.props.children);
+        this.state = this.prepareInitialState(this.props.children);
         this.inputValidator = new InputValidator();
     }
 
     /**
-     * @param {Comment[] | Component} children
-     * @private
-     *
+     * @param {Component[] | Component} children
      * @return {object} state
      */
-    _prepareInitialState(children) {
+    prepareInitialState(children) {
 
         let state = { 'inputFields' : {} };
 
@@ -29,8 +27,9 @@ class InputForm extends Component {
 
             state['inputFields'][child.props.name] = {
                 value: null,
-                isValid: false,
+                valid: null,
                 rules: child.props.rules,
+                shouldValidate: Boolean(child.props.rules)
             };
         });
 
@@ -43,11 +42,11 @@ class InputForm extends Component {
      */
     handleOnInput(inputName, value) {
 
-        const rules = this.state.inputFields[inputName].rules;
+        const {rules, shouldValidate} = this.state.inputFields[inputName];
 
-        const isValid = this.inputValidator.validate(value, rules);
-
-        console.log('isValid', isValid);
+        const valid = shouldValidate ?
+                    this.inputValidator.validate(value, rules) :
+                    null;
 
         this.setState((state) => {
             return {
@@ -55,30 +54,48 @@ class InputForm extends Component {
                     ...state.inputFields,
                     [inputName]: {
                         ...state.inputFields[inputName],
-                        'value': value
+                        value,
+                        ...(shouldValidate && {valid})
                     }
                 },
             }
         })
     }
 
+    /**
+     * Supplements child elements with needed props
+     *
+     * @return {Component[] | Component}
+     */
+    getChildren() {
+        return React.Children.map(this.props.children, child => {
+
+            if (child.type !== InputField ||
+                child.props.name === undefined) {
+                return child;
+            }
+
+            const childName = child.props.name;
+            const fieldState = (this.state['inputFields'] || {})[childName] || {};
+            const { value, shouldValidate, valid } = fieldState;
+
+            child = React.cloneElement(child, {
+                key: childName,
+                id: this.props.id + '-' +  childName,
+                value,
+                ...(shouldValidate && { valid }),
+                onInput: (name, value) => { this.handleOnInput(name, value) }
+            });
+
+            return child;
+        })
+    }
+
     render () {
         return (
-            <form>
+            <form role="form" className="form-horizontal">
             {
-                React.Children.map(this.props.children, child => {
-                    const childName = child.props.name;
-                    const value = ((this.state['inputFields'] || {})[childName] || {}).value;
-
-                    child = React.cloneElement(child, {
-                        key: childName,
-                        id: this.props.id + '-' +  childName,
-                        value: value,
-                        onInput: (name, value) => { this.handleOnInput(name, value) }
-                    });
-
-                    return child;
-                })
+                this.getChildren()
             }
             </form>
         )

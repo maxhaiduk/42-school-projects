@@ -1,23 +1,32 @@
 import React from 'react';
+import cx from 'react-classset';
+
+import './input-field.css';
 
 const InputField = (props) => {
 
-        const { type, id, name, label } = props;
+    const { type, id, name, label, valid } = props;
 
-        return (
-            <div>
-                <label>
-                    { label }
-                    <input
-                        className={ props.className }
-                        type={ type }
-                        id={ id }
-                        name={ name }
-                        onInput={ () => { props.onInput(props.name, event.target.value) }}
-                    />
-                </label>
-            </div>
-        )
+    let classes = cx({
+        'form-control': true,
+        'invalid-input': valid === false
+    });
+
+    return (
+        <div >
+            <label>
+                { label }
+
+            </label>
+            <input
+                className={ classes }
+                type={ type }
+                id={ id }
+                name={ name }
+                onInput={ () => { props.onInput(props.name, event.target.value) }}
+            />
+        </div>
+    )
 };
 
 export default InputField;

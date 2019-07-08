@@ -9,6 +9,7 @@ class InputValidator {
      * @return {boolean}
      */
     validate(value, rules) {
+
         let result = false;
 
         for (let i = 0; i < rules.length; i++) {

@@ -1,0 +1,9 @@
+.valid-input {
+    border-color: limegreen !important;
+    box-shadow: 0 0 3px 1px limegreen !important;
+}
+
+.invalid-input {
+    border-color: red !important;
+    box-shadow: 0 0 3px 1px #ff4c31 !important;
+}
