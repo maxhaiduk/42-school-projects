@@ -8,7 +8,6 @@ class InputForm extends Component {
         super(props);
 
         this.state = this.prepareInitialState(this.props.children);
-        this.inputValidator = new InputValidator();
     }
 
     /**
@@ -41,12 +40,9 @@ class InputForm extends Component {
      * @param {string} value
      */
     handleOnInput(inputName, value) {
+        const {shouldValidate} = this.state.inputFields[inputName];
 
-        const {rules, shouldValidate} = this.state.inputFields[inputName];
-
-        const valid = shouldValidate ?
-                    this.inputValidator.validate(value, rules, this.state.inputFields) :
-                    null;
+        const valid = shouldValidate ? this.validate(inputName, value): null;
 
         this.setState((state) => {
             return {
@@ -60,6 +56,18 @@ class InputForm extends Component {
                 },
             }
         })
+    }
+
+    /**
+     * @param {string} inputName
+     * @param {string} value
+     * @returns {boolean | null}
+     */
+    validate(inputName, value) {
+        let validator = new InputValidator(this.state.inputFields);
+        const {rules} = this.state.inputFields[inputName];
+
+        return validator.validate(value, rules);
     }
 
     /**

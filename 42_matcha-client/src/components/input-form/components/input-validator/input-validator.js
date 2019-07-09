@@ -4,14 +4,18 @@ import getDynamicValidator from './validators/validator-getter';
 class InputValidator {
 
     /**
+     * @param {array} inputFieldsState
+     */
+    constructor(inputFieldsState) {
+        this.inputFieldsState = inputFieldsState;
+    }
+
+    /**
      * @param {string} value
      * @param {array} rules
-     * @param inputFieldsState
      * @return {boolean}
      */
-    validate(value, rules, inputFieldsState) {
-
-        this.inputFieldsState = inputFieldsState;
+    validate(value, rules) {
         let result = false;
 
         for (let i = 0; i < rules.length; i++) {
