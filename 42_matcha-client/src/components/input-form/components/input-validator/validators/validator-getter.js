@@ -1,9 +1,11 @@
 import RequiredValidator from './required-validator';
 import LengthValidator from './length-validator';
+import EqualValidator from './equal-validator';
 
 const validators = {
-  RequiredValidator,
+    RequiredValidator,
     LengthValidator,
+    EqualValidator,
 };
 
 const getDynamicValidator = (validatorName) => {
@@ -11,7 +13,7 @@ const getDynamicValidator = (validatorName) => {
     const validator = validators[validatorName];
 
     if (!validator) {
-        throw new Error(`Validator ${validatorName} doesn't exists`);
+        throw new Error(`${validatorName} doesn't exists`);
     }
 
     return validator;

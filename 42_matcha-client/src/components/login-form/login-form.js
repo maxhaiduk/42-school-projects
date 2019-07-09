@@ -16,6 +16,11 @@ const LoginForm = () => {
                 // 'word',
             ]}/>
             <InputField type='password' name='password' label='Password'/>
+            <InputField type='password' name='confirm-password' label='Confirm password' rules={[
+                {
+                    equal: 'password'
+                }
+            ]}/>
             <InputField type='submit' value='submit' />
 
             <a href="">Some link</a>

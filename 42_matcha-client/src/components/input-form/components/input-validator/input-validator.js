@@ -6,10 +6,12 @@ class InputValidator {
     /**
      * @param {string} value
      * @param {array} rules
+     * @param inputFieldsState
      * @return {boolean}
      */
-    validate(value, rules) {
+    validate(value, rules, inputFieldsState) {
 
+        this.inputFieldsState = inputFieldsState;
         let result = false;
 
         for (let i = 0; i < rules.length; i++) {
@@ -74,10 +76,10 @@ class InputValidator {
      * @return {AbstractValidator}
      */
     getValidator(rule) {
-        const validatorName = `${this.ucFirst(rule)}Validator`
-        const validator = getDynamicValidator(validatorName)
+        const validatorName = `${this.ucFirst(rule)}Validator`;
+        const validator = getDynamicValidator(validatorName);
 
-        return new validator();
+        return new validator(this.inputFieldsState);
     }
 
     /**

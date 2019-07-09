@@ -45,7 +45,7 @@ class InputForm extends Component {
         const {rules, shouldValidate} = this.state.inputFields[inputName];
 
         const valid = shouldValidate ?
-                    this.inputValidator.validate(value, rules) :
+                    this.inputValidator.validate(value, rules, this.state.inputFields) :
                     null;
 
         this.setState((state) => {
