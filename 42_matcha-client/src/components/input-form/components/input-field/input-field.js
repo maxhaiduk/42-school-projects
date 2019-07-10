@@ -13,7 +13,7 @@ const InputField = (props) => {
     });
 
     return (
-        <div >
+        <div id={ id }>
             <label>
                 { label }
 
@@ -21,9 +21,8 @@ const InputField = (props) => {
             <input
                 className={ classes }
                 type={ type }
-                id={ id }
                 name={ name }
-                onInput={ () => { props.onInput(props.name, event.target.value) }}
+                onInput={ (event) => { props.onInput(props.name, event.target.value) }}
             />
         </div>
     )

@@ -4,7 +4,9 @@ import LoginPage from '../pages/login-page';
 const App = () => {
 
   return (
-    <LoginPage/>
+      <React.StrictMode>
+        <LoginPage/>
+      </React.StrictMode>
   );
 };
 export default App;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import InputField from './components/input-field';
 import InputValidator from './components/input-validator';
 
+import './input-form.scss';
+
 class InputForm extends Component {
 
     constructor(props) {
@@ -100,8 +102,10 @@ class InputForm extends Component {
     }
 
     render () {
+        const { id } = this.props;
+
         return (
-            <form role="form" className="form-horizontal">
+            <form id={ id } className='input-form'>
             {
                 this.getChildren()
             }
