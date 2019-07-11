@@ -31,10 +31,26 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.p?css$/,
+                exclude: /node_modules/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        ident: 'postcss',
+                        options: {
+                            importLoaders: 1,
+                            plugins: [
+                                require('precss'),
+                                require('tailwindcss'),
+                            ]
+                        }
+                    }
                 ]
             },
         ]

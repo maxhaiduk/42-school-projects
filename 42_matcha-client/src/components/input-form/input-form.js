@@ -105,7 +105,7 @@ class InputForm extends Component {
         const { id } = this.props;
 
         return (
-            <form id={ id } className='input-form'>
+            <form id={ id } className='input-form' >
             {
                 this.getChildren()
             }
