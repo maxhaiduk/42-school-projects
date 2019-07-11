@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import LoginPage from '../pages/login-page';
 
@@ -9,4 +10,5 @@ const App = () => {
       </React.StrictMode>
   );
 };
-export default App;
+
+export default hot(App);

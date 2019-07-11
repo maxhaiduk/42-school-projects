@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InputField from './components/input-field';
 import InputValidator from './components/input-validator';
 
-import './input-form.scss';
+import './input-form.css';
 
 class InputForm extends Component {
 
