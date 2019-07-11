@@ -12,7 +12,6 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         port: 3000,
-        hot: true
     },
     module: {
         rules: [
@@ -26,7 +25,6 @@ module.exports = {
                             '@babel/preset-env',
                             '@babel/preset-react'
                         ],
-                        "plugins": ["react-hot-loader/babel"]
                     }
                 }
             },
@@ -55,7 +53,4 @@ module.exports = {
             },
         ]
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ]
 };

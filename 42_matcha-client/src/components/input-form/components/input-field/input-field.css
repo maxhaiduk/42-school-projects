@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind utilities;
+
 .valid-input {
     border-color: limegreen !important;
     box-shadow: 0 0 3px 1px limegreen !important;
@@ -6,4 +9,16 @@
 .invalid-input {
     border-color: red !important;
     box-shadow: 0 0 3px 1px #ff4c31 !important;
+}
+
+.input-field-container {
+    @apply mb-4;
+}
+
+.input-field-label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.input-field {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }

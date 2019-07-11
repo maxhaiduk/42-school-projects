@@ -93,8 +93,8 @@ class InputForm extends Component {
                 key: childName,
                 id: this.props.id + '-' +  childName,
                 value,
+                onInput: (name, value) => { this.handleOnInput(name, value) },
                 ...(shouldValidate && { valid }),
-                onInput: (name, value) => { this.handleOnInput(name, value) }
             });
 
             return child;
@@ -105,11 +105,13 @@ class InputForm extends Component {
         const { id } = this.props;
 
         return (
-            <form id={ id } className='input-form' >
-            {
-                this.getChildren()
-            }
-            </form>
+            <div className='form-container'>
+                <form id={ id } className='input-form' >
+                {
+                    this.getChildren()
+                }
+                </form>
+            </div>
         )
     }
 }

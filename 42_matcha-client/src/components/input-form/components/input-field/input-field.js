@@ -3,18 +3,21 @@ import cx from 'react-classset';
 
 import './input-field.css';
 
-const InputField = (props) => {
+function InputField(props) {
 
+    console.log(props);
     const { type, id, name, label, valid } = props;
 
     let classes = cx({
-        'form-control': true,
-        'invalid-input': valid === false
+        'input-field': true,
+        'invalid-input': valid === false,
+        'focus:outline-none': true,
+        'focus:shadow-outline': true
     });
 
     return (
-        <div id={ id }>
-            <label>
+        <div id={ id } className='input-field-container'>
+            <label className='input-field-label'>
                 { label }
 
             </label>
@@ -26,7 +29,6 @@ const InputField = (props) => {
             />
         </div>
     )
-};
+}
 
 export default InputField;
-

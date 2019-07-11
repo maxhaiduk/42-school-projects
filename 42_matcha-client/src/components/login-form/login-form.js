@@ -21,8 +21,6 @@ const LoginForm = () => {
                 }
             ]}/>
             <InputField type='submit' value='submit' />
-
-            <a href="">Some link</a>
         </InputForm>
     );
 };
