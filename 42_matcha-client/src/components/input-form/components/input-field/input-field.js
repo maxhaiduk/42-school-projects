@@ -5,8 +5,8 @@ import './input-field.css';
 
 function InputField(props) {
 
-    console.log(props);
     const { type, id, name, label, valid } = props;
+    const required = (props.rules || []).includes('required');
 
     let classes = cx({
         'input-field': true,
@@ -17,14 +17,15 @@ function InputField(props) {
     return (
         <div id={ id } className='input-field-container'>
             <label className='input-field-label'>
-                { label }
-
+                { required ? label + '*' : label }
             </label>
             <input
                 className={ classes }
                 type={ type }
                 name={ name }
-                onInput={ (event) => { props.onInput(props.name, event.target.value) }}
+                onInput={ (event) => {
+                    props.onInput(props.name, event.target.value)
+                }}
             />
         </div>
     )
