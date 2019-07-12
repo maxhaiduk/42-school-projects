@@ -1,16 +1,6 @@
 @tailwind base;
 @tailwind utilities;
 
-.valid-input {
-    border-color: limegreen !important;
-    box-shadow: 0 0 3px 1px limegreen !important;
-}
-
-.invalid-input {
-    border-color: red !important;
-    box-shadow: 0 0 3px 1px #ff4c31 !important;
-}
-
 .input-field-container {
     @apply mb-4;
 }
@@ -21,4 +11,16 @@
 
 .input-field {
     @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.valid-input {
+    @apply outline-none .border-green-500;
+
+    box-shadow: 0 0 3px 1px limegreen !important;
+}
+
+.invalid-input {
+    @apply outline-none .border-red-500 shadow-outline;
+
+    box-shadow: 0 0 3px 1px #ff4c31 !important;
 }

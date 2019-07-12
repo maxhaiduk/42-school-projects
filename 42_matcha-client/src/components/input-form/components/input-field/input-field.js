@@ -10,9 +10,8 @@ function InputField(props) {
 
     let classes = cx({
         'input-field': true,
+        'valid-input': valid === true,
         'invalid-input': valid === false,
-        'focus:outline-none': true,
-        'focus:shadow-outline': true
     });
 
     return (
