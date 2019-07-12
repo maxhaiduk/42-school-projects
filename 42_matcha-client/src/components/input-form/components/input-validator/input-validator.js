@@ -1,12 +1,14 @@
 import getDynamicValidator from './validators/validator-getter';
-
+import { StringHelper } from '../../../../helpers';
 
 class InputValidator {
 
     /**
+     * @param inputName
      * @param {array} inputFieldsState
      */
-    constructor(inputFieldsState) {
+    constructor(inputName, inputFieldsState) {
+        this.inputName = inputName;
         this.inputFieldsState = inputFieldsState;
     }
 
@@ -18,15 +20,13 @@ class InputValidator {
     validate(value, rules) {
         let result = false;
 
+        console.log(rules);
         for (let i = 0; i < rules.length; i++) {
-
-            console.log(rules[i]);
-
             result = typeof rules[i] === 'object' ?
                         this.validateObject(rules[i], value) :
                         this.executeValidation(rules[i], value);
 
-            if (!result) {
+            if (!result.valid) {
                 break;
             }
         }
@@ -43,15 +43,16 @@ class InputValidator {
      */
     validateObject(rules, value) {
         let result;
+        let rule;
 
-        for (let rule in rules) {
+        for (rule in rules) {
             if (!rules.hasOwnProperty(rule)) {
                 continue;
             }
 
             result = this.executeValidation(rule, value, rules[rule]);
 
-            if (!result) {
+            if (!result.valid) {
                 break;
             }
         }
@@ -80,20 +81,10 @@ class InputValidator {
      * @return {AbstractValidator}
      */
     getValidator(rule) {
-        const validatorName = `${this.ucFirst(rule)}Validator`;
+        const validatorName = `${StringHelper.ucFirst(rule)}Validator`;
         const validator = getDynamicValidator(validatorName);
 
-        return new validator(this.inputFieldsState);
-    }
-
-    /**
-     * Capitalises string
-     *
-     * @param {string} string
-     * @return {string}
-     */
-    ucFirst(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
+        return new validator(this.inputName, this.inputFieldsState);
     }
 }
 

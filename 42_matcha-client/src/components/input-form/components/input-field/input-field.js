@@ -5,7 +5,7 @@ import './input-field.css';
 
 function InputField(props) {
 
-    const { type, id, name, label, valid } = props;
+    const { type, id, name, label, valid, errorMessage } = props;
     const required = (props.rules || []).includes('required');
 
     let classes = cx({
@@ -19,6 +19,10 @@ function InputField(props) {
             <label className='input-field-label'>
                 { required ? label + '*' : label }
             </label>
+            { errorMessage ?
+                <p className='errorMessage'>{errorMessage}</p> :
+                null
+            }
             <input
                 className={ classes }
                 type={ type }

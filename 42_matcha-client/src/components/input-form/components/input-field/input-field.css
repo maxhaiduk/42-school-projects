@@ -13,14 +13,18 @@
     @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
 }
 
+.errorMessage {
+    @apply text-red-500 text-xs italic;
+}
+
 .valid-input {
-    @apply outline-none .border-green-500;
+    @apply outline-none;
 
     box-shadow: 0 0 3px 1px limegreen !important;
 }
 
 .invalid-input {
-    @apply outline-none .border-red-500 shadow-outline;
+    @apply outline-none;
 
     box-shadow: 0 0 3px 1px #ff4c31 !important;
 }

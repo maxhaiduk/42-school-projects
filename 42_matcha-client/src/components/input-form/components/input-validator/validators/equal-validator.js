@@ -2,11 +2,9 @@ import AbstractValidator from './abstract-validator';
 
 export default class EqualValidator extends AbstractValidator {
 
-    constructor(inputFieldsState) {
-        super();
-        this.inputFieldsState = inputFieldsState;
-    }
-
+    /**
+     * @inheritDoc
+     */
     validate(value, payload) {
         let equalToValue = (this.inputFieldsState[payload] || {}).value;
 

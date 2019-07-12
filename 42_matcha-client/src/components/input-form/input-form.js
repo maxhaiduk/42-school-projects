@@ -44,7 +44,14 @@ class InputForm extends Component {
     handleOnInput(inputName, value) {
         const {shouldValidate} = this.state.inputFields[inputName];
 
-        const valid = shouldValidate ? this.validate(inputName, value): null;
+        const {
+            valid,
+            errorMessage
+        } = shouldValidate ? this.validate(inputName, value): {};
+
+        console.log({
+            valid, errorMessage
+        });
 
         this.setState((state) => {
             return {
@@ -53,7 +60,8 @@ class InputForm extends Component {
                     [inputName]: {
                         ...state.inputFields[inputName],
                         value,
-                        ...(shouldValidate && {valid})
+                        ...(shouldValidate && {valid}),
+                        ...(shouldValidate && !valid && {errorMessage})
                     }
                 },
             }
@@ -66,10 +74,12 @@ class InputForm extends Component {
      * @returns {boolean | null}
      */
     validate(inputName, value) {
-        let validator = new InputValidator(this.state.inputFields);
+        let validator = new InputValidator(inputName, this.state.inputFields);
         const {rules} = this.state.inputFields[inputName];
 
-        return validator.validate(value, rules);
+        let result = validator.validate(value, rules);
+
+        return result;
     }
 
     /**
@@ -87,7 +97,7 @@ class InputForm extends Component {
 
             const childName = child.props.name;
             const fieldState = (this.state['inputFields'] || {})[childName] || {};
-            const { value, shouldValidate, valid } = fieldState;
+            const { value, shouldValidate, valid, errorMessage } = fieldState;
 
             child = React.cloneElement(child, {
                 key: childName,
@@ -95,6 +105,7 @@ class InputForm extends Component {
                 value,
                 onInput: (name, value) => { this.handleOnInput(name, value) },
                 ...(shouldValidate && { valid }),
+                ...(shouldValidate && !valid && {errorMessage})
             });
 
             return child;
