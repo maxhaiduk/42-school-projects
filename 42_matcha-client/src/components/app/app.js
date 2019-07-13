@@ -1,12 +1,18 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import LoginPage from '../pages/login-page';
 
 const App = () => {
 
   return (
-      <React.StrictMode>
-        <LoginPage/>
-      </React.StrictMode>
+      <BrowserRouter>
+          <React.StrictMode>
+              <Switch>
+                  <Route path="/login" component={LoginPage} />
+              </Switch>
+          </React.StrictMode>
+      </BrowserRouter>
   );
 };
 

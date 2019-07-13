@@ -47,7 +47,8 @@ export default class LengthValidator extends AbstractValidator {
             ...(!valid && { errorMessage: this.getErrorMessage({
                     rule,
                     value: rules[rule]
-                }) })
+                })
+            })
         }
     }
 
