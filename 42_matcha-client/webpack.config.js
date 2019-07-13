@@ -25,6 +25,13 @@ module.exports = {
                             '@babel/preset-env',
                             '@babel/preset-react'
                         ],
+                        'plugins': [
+                            [
+                                'babel-plugin-root-import', {
+                                    'rootPathSuffix': 'src'
+                                }
+                            ]
+                        ]
                     }
                 }
             },

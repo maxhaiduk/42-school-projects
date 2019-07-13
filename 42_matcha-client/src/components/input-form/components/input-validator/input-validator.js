@@ -1,5 +1,5 @@
 import getDynamicValidator from './validators/validator-getter';
-import { StringHelper } from '../../../../helpers';
+import { StringHelper } from '~/helpers';
 
 class InputValidator {
 

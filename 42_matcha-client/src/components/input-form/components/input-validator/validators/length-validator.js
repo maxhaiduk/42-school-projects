@@ -1,5 +1,18 @@
 import AbstractValidator from './abstract-validator';
+import { StringHelper } from '~/helpers';
 
+/**
+ * Validates given string for length
+ * The min and max value can be specify in form configuration
+ *
+ * example:
+ *  length: {
+ *      max: 12,
+ *      min: 4,
+ *  }
+ *
+ *  both rules are optional
+ */
 export default class LengthValidator extends AbstractValidator {
 
     /**
@@ -23,6 +36,10 @@ export default class LengthValidator extends AbstractValidator {
             if (!valid) {
                 break;
             }
+        }
+
+        if (valid === undefined || rules.length === 0) {
+            throw new Error('No rules were specified for length validator');
         }
 
         return {
@@ -60,7 +77,7 @@ export default class LengthValidator extends AbstractValidator {
         };
 
         return 'The {name} shouldn`t be {criteria} {value} characters'
-            .replace('{name}', this.inputName)
+            .replace('{name}', StringHelper.ucFirst(this.inputName))
             .replace('{criteria}', map[payload.rule])
             .replace('{value}', payload.value);
     }
