@@ -1,5 +1,5 @@
 import AbstractValidator from './abstract-validator';
-import { StringHelper } from '../../../../../helpers';
+import { StringHelper } from '~/helpers';
 
 
 export default class RequiredValidator extends AbstractValidator {
@@ -20,7 +20,6 @@ export default class RequiredValidator extends AbstractValidator {
      * @inheritDoc
      */
     getErrorMessage(payload) {
-        // const rawMessage = 'Field {name} is required';
 
         return 'Field {name} is required'
             .replace('{name}', StringHelper.ucFirst(this.inputName));

@@ -1,4 +1,5 @@
 import AbstractValidator from './abstract-validator';
+import {StringHelper} from "~/helpers";
 
 export default class EqualValidator extends AbstractValidator {
 
@@ -12,6 +13,20 @@ export default class EqualValidator extends AbstractValidator {
             throw new Error(`Field ${payload} doesn't exists`);
         }
 
-        return value === equalToValue;
+        let valid = value === equalToValue;
+
+        return {
+            valid,
+            ...(!valid && { errorMessage: this.getErrorMessage(payload) })
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    getErrorMessage(payload) {
+
+        return 'This field must be equal to {equalTo}'
+            .replace('{equalTo}', StringHelper.ucFirst(payload));
     }
 }
