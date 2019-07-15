@@ -1,10 +1,10 @@
 import React from 'react';
-import InputForm, { InputField } from '../input-form';
+import InputForm, { InputField } from '../../../input-form';
 
-const LoginForm = () => {
+const SignInForm = () => {
 
     return (
-        <InputForm id='login-form'>
+        <InputForm id='sign-in-form'>
             <InputField type='text' name='login' label='Login' rules={[
                 'required',
                 {
@@ -15,14 +15,9 @@ const LoginForm = () => {
                 },
             ]}/>
             <InputField type='password' name='password' label='Password'/>
-            <InputField type='password' name='confirm-password' label='Confirm password' rules={[
-                {
-                    equal: 'password'
-                }
-            ]}/>
             <InputField type='submit' value='submit' />
         </InputForm>
     );
 };
 
-export default LoginForm;
+export default SignInForm;

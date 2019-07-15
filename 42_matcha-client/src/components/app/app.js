@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import LoginPage from '../pages/login-page';
+import SignInPage from '../pages/sign-in-page';
+import SignUpPage from "../pages/sign-up-page/sign-up-page";
 
 const App = () => {
 
@@ -9,7 +10,8 @@ const App = () => {
       <BrowserRouter>
           <React.StrictMode>
               <Switch>
-                  <Route path="/login" component={LoginPage} />
+                  <Route path="/sign-in" component={ SignInPage } />
+                  <Route path='/sign-up' component={ SignUpPage } />
               </Switch>
           </React.StrictMode>
       </BrowserRouter>
