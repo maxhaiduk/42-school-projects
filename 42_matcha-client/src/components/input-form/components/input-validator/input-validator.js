@@ -20,7 +20,6 @@ class InputValidator {
     validate(value, rules) {
         let result = false;
 
-        console.log(rules);
         for (let i = 0; i < rules.length; i++) {
             result = typeof rules[i] === 'object' ?
                         this.validateObject(rules[i], value) :

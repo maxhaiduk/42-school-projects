@@ -3,8 +3,13 @@ import InputForm, { InputField, SubmitButton } from '~/components/input-form';
 
 const SignUpForm = () => {
 
+    const handleSubmit = (formState) => {
+        console.log('Sign up form is submitted with values');
+        console.log(formState);
+    };
+
     return (
-        <InputForm id='login-form'>
+        <InputForm id='login-form' onSubmit={ handleSubmit }>
             <InputField type='text' name='login' label='Login' rules={[
                 'required',
                 {
@@ -15,7 +20,8 @@ const SignUpForm = () => {
                 },
             ]}/>
             <InputField type='password' name='password' label='Password'/>
-            <InputField type='password' name='confirm-password' label='Confirm password' rules={[
+            <InputField type='password' name='confirm-password'
+                        label='Confirm password' rules={[
                 {
                     equal: 'password'
                 }

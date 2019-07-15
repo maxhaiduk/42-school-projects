@@ -49,10 +49,6 @@ class InputForm extends Component {
             errorMessage
         } = shouldValidate ? this.validate(inputName, value): {};
 
-        console.log({
-            valid, errorMessage
-        });
-
         this.setState((state) => {
             return {
                 inputFields: {
@@ -77,9 +73,7 @@ class InputForm extends Component {
         let validator = new InputValidator(inputName, this.state.inputFields);
         const {rules} = this.state.inputFields[inputName];
 
-        let result = validator.validate(value, rules);
-
-        return result;
+        return validator.validate(value, rules);
     }
 
     /**
@@ -112,12 +106,21 @@ class InputForm extends Component {
         })
     }
 
+    handleOnSubmit(event) {
+        event.preventDefault();
+        this.props.onSubmit(this.state)
+    };
+
     render () {
         const { id } = this.props;
 
         return (
             <div className='form-container'>
-                <form id={ id } className='input-form' >
+                <form
+                    id={ id }
+                    className='input-form'
+                    onSubmit={ (event) => { this.handleOnSubmit(event) } }
+                >
                 {
                     this.getChildren()
                 }
