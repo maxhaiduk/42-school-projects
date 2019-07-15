@@ -1,5 +1,5 @@
 import React from 'react';
-import InputForm, { InputField } from '../../../input-form';
+import InputForm, { InputField, SubmitButton } from '~/components/input-form';
 
 const SignUpForm = () => {
 
@@ -20,7 +20,7 @@ const SignUpForm = () => {
                     equal: 'password'
                 }
             ]}/>
-            <InputField type='submit' value='submit' />
+            <SubmitButton value='sign up'/>
         </InputForm>
     );
 };
