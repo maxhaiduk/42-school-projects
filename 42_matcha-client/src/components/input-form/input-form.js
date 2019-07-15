@@ -44,11 +44,18 @@ class InputForm extends Component {
     handleOnInput(inputName, value) {
         const {shouldValidate} = this.state.inputFields[inputName];
 
-        const {
-            valid,
-            errorMessage
-        } = shouldValidate ? this.validate(inputName, value): {};
+        this.updateFieldValue(inputName, value);
 
+        if (!shouldValidate) {
+            return;
+        }
+
+        const {valid, errorMessage} = this.validateField(inputName, value);
+
+        this.updateFieldValidState(inputName, valid, errorMessage);
+    }
+
+    updateFieldValue(inputName, value) {
         this.setState((state) => {
             return {
                 inputFields: {
@@ -56,20 +63,45 @@ class InputForm extends Component {
                     [inputName]: {
                         ...state.inputFields[inputName],
                         value,
-                        ...(shouldValidate && {valid}),
-                        ...(shouldValidate && !valid && {errorMessage})
                     }
                 },
             }
         })
     }
 
+    updateFieldValidState(inputName, valid, errorMessage) {
+        this.setState((state) => {
+            return {
+                inputFields: {
+                    ...state.inputFields,
+                    [inputName]: {
+                        ...state.inputFields[inputName],
+                        valid,
+                        ...(!valid && {errorMessage})
+                    }
+                },
+            }
+        })
+    }
+
+    validateForm() {
+        Object.entries(this.state.inputFields)
+            .filter(([, inputState]) => inputState.shouldValidate)
+            .map(([inputName, inputState]) => {
+                const {
+                    valid,
+                    errorMessage
+                } = this.validateField(inputName, inputState.value);
+                this.updateFieldValidState(inputName, valid, errorMessage);
+            });
+    }
+
     /**
      * @param {string} inputName
      * @param {string} value
-     * @returns {boolean | null}
+     * @returns {object}
      */
-    validate(inputName, value) {
+    validateField(inputName, value) {
         let validator = new InputValidator(inputName, this.state.inputFields);
         const {rules} = this.state.inputFields[inputName];
 
@@ -108,6 +140,7 @@ class InputForm extends Component {
 
     handleOnSubmit(event) {
         event.preventDefault();
+        this.validateForm();
         this.props.onSubmit(this.state)
     };
 
@@ -119,7 +152,7 @@ class InputForm extends Component {
                 <form
                     id={ id }
                     className='input-form'
-                    onSubmit={ (event) => { this.handleOnSubmit(event) } }
+                    onSubmit={ (event) => { this.handleOnSubmit(event) }}
                 >
                 {
                     this.getChildren()

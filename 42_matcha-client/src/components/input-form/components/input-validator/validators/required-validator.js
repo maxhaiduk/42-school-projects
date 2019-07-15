@@ -8,7 +8,7 @@ export default class RequiredValidator extends AbstractValidator {
      * @inheritDoc
      */
     validate(value, payload) {
-        const valid = (value !== undefined && value.length !== 0);
+        const valid = Boolean(value);
 
         return {
             valid,
@@ -21,7 +21,9 @@ export default class RequiredValidator extends AbstractValidator {
      */
     getErrorMessage(payload) {
 
+        let inputName = StringHelper.toHumanCaseCap(this.inputName);
+
         return 'Field {name} is required'
-            .replace('{name}', StringHelper.ucFirst(this.inputName));
+            .replace('{name}', inputName);
     }
 }

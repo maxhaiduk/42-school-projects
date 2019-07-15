@@ -1,5 +1,5 @@
 import AbstractValidator from './abstract-validator';
-import {StringHelper} from "~/helpers";
+import { StringHelper } from '~/helpers';
 
 export default class EqualValidator extends AbstractValidator {
 
@@ -21,12 +21,13 @@ export default class EqualValidator extends AbstractValidator {
         }
     }
 
-    /**
-     * @inheritDoc
-     */
     getErrorMessage(payload) {
 
-        return 'This field must be equal to {equalTo}'
-            .replace('{equalTo}', StringHelper.ucFirst(payload));
+        let inputName = StringHelper.toHumanCaseCap(this.inputName);
+        payload= StringHelper.toHumanCaseCap(payload);
+
+        return 'Field {name} must be equal to {equalTo}'
+            .replace('{name}', inputName)
+            .replace('{equalTo}', payload);
     }
 }

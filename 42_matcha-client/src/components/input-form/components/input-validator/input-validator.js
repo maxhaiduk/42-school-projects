@@ -15,10 +15,10 @@ class InputValidator {
     /**
      * @param {string} value
      * @param {array} rules
-     * @return {boolean}
+     * @return {object}
      */
     validate(value, rules) {
-        let result = false;
+        let result = {valid: false};
 
         for (let i = 0; i < rules.length; i++) {
             result = typeof rules[i] === 'object' ?

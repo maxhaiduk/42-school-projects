@@ -22,6 +22,7 @@ const SignUpForm = () => {
             <InputField type='password' name='password' label='Password'/>
             <InputField type='password' name='confirm-password'
                         label='Confirm password' rules={[
+                'required',
                 {
                     equal: 'password'
                 }
