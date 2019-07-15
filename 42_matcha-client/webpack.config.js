@@ -31,12 +31,13 @@ module.exports = {
                             '@babel/preset-env',
                             '@babel/preset-react'
                         ],
-                        'plugins': [
+                        plugins: [
                             [
                                 'babel-plugin-root-import', {
                                     'rootPathSuffix': 'src'
                                 }
-                            ]
+                            ],
+                            '@babel/plugin-proposal-class-properties'
                         ]
                     }
                 }

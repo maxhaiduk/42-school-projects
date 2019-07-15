@@ -1,7 +1,6 @@
 import AbstractValidator from './abstract-validator';
 import { StringHelper } from '~/helpers';
 
-
 export default class RequiredValidator extends AbstractValidator {
 
     /**
