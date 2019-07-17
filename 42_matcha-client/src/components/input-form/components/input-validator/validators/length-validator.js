@@ -44,7 +44,7 @@ export default class LengthValidator extends AbstractValidator {
 
         return {
             valid,
-            ...(!valid && { errorMessage: this.getErrorMessage({
+            ...(!valid && { message: this.getMessage({
                     rule,
                     value: rules[rule]
                 })
@@ -70,7 +70,7 @@ export default class LengthValidator extends AbstractValidator {
         return value.length >= constraint;
     }
 
-    getErrorMessage(payload) {
+    getMessage(payload) {
 
         let map = {
             max: 'greater',

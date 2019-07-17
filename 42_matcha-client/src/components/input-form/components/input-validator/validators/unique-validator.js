@@ -11,11 +11,11 @@ export default class UniqueValidator extends AbstractValidator {
 
         return {
             valid,
-            errorMessage: this.getErrorMessage(valid, value),
+            message: this.getMessage(valid, value),
         }
     }
 
-    getErrorMessage(valid, value) {
+    getMessage(valid, value) {
         return `The ${this.inputName} '${value}' is ` +
             `${valid ? 'is available' : 'already taken'}`;
     }

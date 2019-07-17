@@ -17,11 +17,11 @@ export default class EqualValidator extends AbstractValidator {
 
         return {
             valid,
-            ...(!valid && { errorMessage: this.getErrorMessage(payload) })
+            ...(!valid && { message: this.getMessage(payload) })
         }
     }
 
-    getErrorMessage(payload) {
+    getMessage(payload) {
 
         let inputName = StringHelper.toHumanCaseCap(this.inputName);
         payload= StringHelper.toHumanCaseCap(payload);

@@ -34,7 +34,7 @@ export default class RegexpValidator extends AbstractValidator {
 
         return {
             valid,
-            ...(!valid && { errorMessage: this.getErrorMessage({
+            ...(!valid && { message: this.getMessage({
                     description: this.patterns[pattern]
                 })
             })
@@ -44,7 +44,7 @@ export default class RegexpValidator extends AbstractValidator {
     /**
      * @inheritDoc
      */
-    getErrorMessage({ description }) {
+    getMessage({ description }) {
 
         return description.replace(
             '{name}',

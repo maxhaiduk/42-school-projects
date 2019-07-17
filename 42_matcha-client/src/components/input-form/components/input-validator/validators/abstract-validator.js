@@ -15,7 +15,7 @@ export default class AbstractValidator {
      * @return {object} result of validation with error message
      *  {
      *      valid,
-     *      errorMessage
+     *      message
      *  }
      */
     validate(value, payload) {
@@ -28,8 +28,8 @@ export default class AbstractValidator {
      * @param {*} payload
      * @return {string} error message
      */
-    getErrorMessage(payload) {
-        throw new Error("Method 'getErrorMessage' was not implemented");
+    getMessage(payload) {
+        throw new Error("Method 'getMessage' was not implemented");
     }
 
 

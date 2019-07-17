@@ -56,8 +56,8 @@ class InputForm extends Component {
         if (!shouldValidate) {
             return;
         }
-        const { valid, errorMessage } = this.validateField(inputName, value);
-        this.updateFieldState(inputName, { valid, errorMessage });
+        const { valid, message } = this.validateField(inputName, value);
+        this.updateFieldState(inputName, { valid, message });
 
         if (valid && unique) {
             this.checkUnique(inputName, value);
@@ -91,9 +91,9 @@ class InputForm extends Component {
             .map(([inputName, inputState]) => {
                 const {
                     valid,
-                    errorMessage
+                    message
                 } = this.validateField(inputName, inputState.value);
-                this.updateFieldState(inputName, { valid, errorMessage });
+                this.updateFieldState(inputName, { valid, message });
             });
     }
 
@@ -123,9 +123,9 @@ class InputForm extends Component {
 
         timerId = setTimeout(async () => {
             await uniqueValidator.validate(value, unique.handler)
-                .then(({ valid, errorMessage }) => {
-                    console.log(errorMessage);
-                    this.updateFieldState(inputName, { valid, errorMessage });
+                .then(({ valid, message }) => {
+                    console.log(message);
+                    this.updateFieldState(inputName, { valid, message });
                 } )
         }, unique.timeout);
 
@@ -148,7 +148,7 @@ class InputForm extends Component {
 
             const childName = child.props.name;
             const fieldState = (this.state['inputFields'] || {})[childName] || {};
-            const { value, shouldValidate, valid, unique, errorMessage } = fieldState;
+            const { value, shouldValidate, valid, unique, message } = fieldState;
 
             child = React.cloneElement(child, {
                 key: childName,
@@ -156,7 +156,7 @@ class InputForm extends Component {
                 value,
                 onInput: (name, value) => { this.handleOnInput(name, value) },
                 ...(shouldValidate && { valid }),
-                ...((shouldValidate || unique) && { errorMessage })
+                ...((shouldValidate || unique) && { message })
             });
 
             return child;

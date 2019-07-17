@@ -11,14 +11,14 @@ export default class RequiredValidator extends AbstractValidator {
 
         return {
             valid,
-            ...(!valid && { errorMessage: this.getErrorMessage(payload) })
+            ...(!valid && { message: this.getMessage(payload) })
         }
     }
 
     /**
      * @inheritDoc
      */
-    getErrorMessage(payload) {
+    getMessage(payload) {
 
         let inputName = StringHelper.toHumanCaseCap(this.inputName);
 
