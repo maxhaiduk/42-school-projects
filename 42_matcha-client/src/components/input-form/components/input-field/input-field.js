@@ -20,7 +20,7 @@ function InputField(props) {
                 { required ? label + '*' : label }
             </label>
             { errorMessage ?
-                <p className='errorMessage'>{errorMessage}</p> :
+                <p className={valid ? 'successMessage' : 'errorMessage'}>{errorMessage}</p> :
                 null
             }
             <input

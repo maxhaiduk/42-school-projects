@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import InputField from './components/input-field';
 import InputValidator from './components/input-validator';
+import UniqueValidator from './components/input-validator/validators/unique-validator';
 
 import './input-form.css';
 
 class InputForm extends Component {
 
-    constructor(props) {
-        super(props);
 
-        this.state = this.prepareInitialState(this.props.children);
-    }
+    state = this.prepareInitialState(this.props.children);
 
     /**
      * @param {Component[] | Component} children
@@ -26,11 +24,20 @@ class InputForm extends Component {
                 return;
             }
 
+            const { rules, unique } = child.props;
+
+            if (unique && !unique.timeout) {
+                unique.timeout = 1500;
+            }
+
             state['inputFields'][child.props.name] = {
                 value: null,
                 valid: null,
-                rules: child.props.rules,
-                shouldValidate: Boolean(child.props.rules)
+                rules,
+                shouldValidate: Boolean(rules),
+                unique,
+                ...(unique && { timerId : null }),
+                ...(unique && { loading : false })
             };
         });
 
@@ -42,42 +49,36 @@ class InputForm extends Component {
      * @param {string} value
      */
     handleOnInput(inputName, value) {
-        const {shouldValidate} = this.state.inputFields[inputName];
+        const { shouldValidate, unique } = this.state.inputFields[inputName];
 
-        this.updateFieldValue(inputName, value);
+        this.updateFieldState(inputName, { value });
 
         if (!shouldValidate) {
             return;
         }
+        const { valid, errorMessage } = this.validateField(inputName, value);
+        this.updateFieldState(inputName, { valid, errorMessage });
 
-        const {valid, errorMessage} = this.validateField(inputName, value);
+        if (valid && unique) {
+            this.checkUnique(inputName, value);
+        }
 
-        this.updateFieldValidState(inputName, valid, errorMessage);
     }
 
-    updateFieldValue(inputName, value) {
+    /**
+     * Updates state of specified input field
+     *
+     * @param {string} inputName
+     * @param {object} newState
+     */
+    updateFieldState(inputName, newState){
         this.setState((state) => {
             return {
                 inputFields: {
                     ...state.inputFields,
                     [inputName]: {
                         ...state.inputFields[inputName],
-                        value,
-                    }
-                },
-            }
-        })
-    }
-
-    updateFieldValidState(inputName, valid, errorMessage) {
-        this.setState((state) => {
-            return {
-                inputFields: {
-                    ...state.inputFields,
-                    [inputName]: {
-                        ...state.inputFields[inputName],
-                        valid,
-                        ...(!valid && {errorMessage})
+                        ...newState,
                     }
                 },
             }
@@ -92,7 +93,7 @@ class InputForm extends Component {
                     valid,
                     errorMessage
                 } = this.validateField(inputName, inputState.value);
-                this.updateFieldValidState(inputName, valid, errorMessage);
+                this.updateFieldState(inputName, { valid, errorMessage });
             });
     }
 
@@ -109,6 +110,30 @@ class InputForm extends Component {
     }
 
     /**
+     * @param {string} inputName
+     * @param {string} value
+     */
+    checkUnique(inputName, value) {
+        const uniqueValidator = new UniqueValidator(inputName);
+
+        let { timerId, unique } = this.state.inputFields[inputName];
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+
+        timerId = setTimeout(async () => {
+            await uniqueValidator.validate(value, unique.handler)
+                .then(({ valid, errorMessage }) => {
+                    console.log(errorMessage);
+                    this.updateFieldState(inputName, { valid, errorMessage });
+                } )
+        }, unique.timeout);
+
+        this.updateFieldState(inputName, { timerId });
+    }
+
+
+    /**
      * Supplements child elements with needed props
      *
      * @return {Component[] | Component}
@@ -123,7 +148,7 @@ class InputForm extends Component {
 
             const childName = child.props.name;
             const fieldState = (this.state['inputFields'] || {})[childName] || {};
-            const { value, shouldValidate, valid, errorMessage } = fieldState;
+            const { value, shouldValidate, valid, unique, errorMessage } = fieldState;
 
             child = React.cloneElement(child, {
                 key: childName,
@@ -131,7 +156,7 @@ class InputForm extends Component {
                 value,
                 onInput: (name, value) => { this.handleOnInput(name, value) },
                 ...(shouldValidate && { valid }),
-                ...(shouldValidate && !valid && {errorMessage})
+                ...((shouldValidate || unique) && { errorMessage })
             });
 
             return child;
@@ -152,8 +177,7 @@ class InputForm extends Component {
                 <form
                     id={ id }
                     className='input-form'
-                    onSubmit={ (event) => { this.handleOnSubmit(event) }}
-                >
+                    onSubmit={ (event) => { this.handleOnSubmit(event) }}>
                 {
                     this.getChildren()
                 }

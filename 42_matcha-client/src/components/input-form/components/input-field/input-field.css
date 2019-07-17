@@ -17,6 +17,10 @@
     @apply text-red-500 text-xs italic;
 }
 
+.successMessage {
+    @apply text-green-500 text-xs italic;
+}
+
 .valid-input {
     @apply outline-none;
 

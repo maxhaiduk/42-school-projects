@@ -4,7 +4,7 @@ export default class AbstractValidator {
      * @param {string} inputName
      * @param {object} inputFieldsState
      */
-    constructor(inputName, inputFieldsState) {
+    constructor(inputName, inputFieldsState = []) {
         this.inputName = inputName;
         this.inputFieldsState = inputFieldsState;
     }
