@@ -4,7 +4,7 @@ import SubmitButton from './components/submit-button/submit-button';
 
 export {
     InputField,
-    SubmitButton
+    SubmitButton,
 };
 
 export default InputForm;

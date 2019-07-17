@@ -16,7 +16,7 @@ const SignUpForm = () => {
             <InputField type='text' name='login' label='Login'
                 unique={{
                     handler: apiService.checkAvailability,
-                    timeout: 1000,
+                    timeout: 2000,
                 }}
                 rules={[
                     'required',
@@ -26,7 +26,8 @@ const SignUpForm = () => {
                             min: 4,
                         }
                     },
-                ]}/>
+                ]}
+            />
             <InputField type='password' name='password' label='Password' rules={[
                 'required',
                 'password'
@@ -38,7 +39,7 @@ const SignUpForm = () => {
                     equal: 'password'
                 }
             ]}/>
-            <SubmitButton value='sign up'/>
+            <SubmitButton/>
         </InputForm>
     );
 };

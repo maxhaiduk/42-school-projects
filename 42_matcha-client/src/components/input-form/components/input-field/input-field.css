@@ -32,3 +32,14 @@
 
     box-shadow: 0 0 3px 1px #ff4c31 !important;
 }
+
+.input-container {
+    position: relative;
+}
+
+.input-container .spinner {
+    position: absolute;
+
+    right: 10px;
+    top: 7px;
+}

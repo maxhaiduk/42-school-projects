@@ -13,7 +13,6 @@ export default class ApiService {
     async isLoginAvailable(login) {
         return new Promise(resolve => {
             setTimeout(() => {
-                console.log('api works ', login);
                 resolve(!this.state.names.includes(login));
             }, 1000)
         })

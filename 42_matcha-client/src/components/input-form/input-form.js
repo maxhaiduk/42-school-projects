@@ -19,8 +19,7 @@ class InputForm extends Component {
         let state = { 'inputFields' : {} };
 
         React.Children.map(children, child => {
-            if (child.type !== InputField ||
-                child.props.name === undefined) {
+            if (child.type !== InputField) {
                 return;
             }
 
@@ -49,7 +48,7 @@ class InputForm extends Component {
      * @param {string} value
      */
     handleOnInput(inputName, value) {
-        const { shouldValidate, unique } = this.state.inputFields[inputName];
+        const { shouldValidate, unique, timerId } = this.state.inputFields[inputName];
 
         this.updateFieldState(inputName, { value });
 
@@ -61,8 +60,9 @@ class InputForm extends Component {
 
         if (valid && unique) {
             this.checkUnique(inputName, value);
+        } else if (!valid && unique && timerId) {
+            this.clearTimer(inputName, timerId);
         }
-
     }
 
     /**
@@ -117,21 +117,32 @@ class InputForm extends Component {
         const uniqueValidator = new UniqueValidator(inputName);
 
         let { timerId, unique } = this.state.inputFields[inputName];
+        console.log('timer id: ', timerId);
+
         if (timerId) {
-            clearTimeout(timerId);
+            this.clearTimer(inputName, timerId);
         }
 
         timerId = setTimeout(async () => {
+            this.updateFieldState(inputName, { loading: true });
+
             await uniqueValidator.validate(value, unique.handler)
                 .then(({ valid, message }) => {
-                    console.log(message);
-                    this.updateFieldState(inputName, { valid, message });
+                    this.updateFieldState(inputName, { valid, message, loading: false });
                 } )
         }, unique.timeout);
 
         this.updateFieldState(inputName, { timerId });
     }
 
+    /**
+     * @param {string} inputName
+     * @param {number} timerId
+     */
+    clearTimer(inputName, timerId) {
+        clearTimeout(timerId);
+        this.updateFieldState(inputName, { timerId: null });
+    }
 
     /**
      * Supplements child elements with needed props
@@ -141,14 +152,13 @@ class InputForm extends Component {
     getChildren() {
         return React.Children.map(this.props.children, child => {
 
-            if (child.type !== InputField ||
-                child.props.name === undefined) {
+            if (child.type !== InputField) {
                 return child;
             }
 
             const childName = child.props.name;
             const fieldState = (this.state['inputFields'] || {})[childName] || {};
-            const { value, shouldValidate, valid, unique, message } = fieldState;
+            const { value, shouldValidate, valid, unique, loading, message } = fieldState;
 
             child = React.cloneElement(child, {
                 key: childName,
@@ -156,7 +166,8 @@ class InputForm extends Component {
                 value,
                 onInput: (name, value) => { this.handleOnInput(name, value) },
                 ...(shouldValidate && { valid }),
-                ...((shouldValidate || unique) && { message })
+                ...((shouldValidate || unique) && { message }),
+                ...(unique && { loading })
             });
 
             return child;
