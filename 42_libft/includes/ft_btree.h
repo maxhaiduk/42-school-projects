@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_btree.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 11:27:10 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/02/16 11:27:11 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2019/07/19 12:42:32 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void				ft_btree_erase(t_btree **root, void (*del)(void *, size_t));
 **		free(content);
 **	}
 **
-**int cmp(void *cont1, void *cont2)
+**	int cmp(void *cont1, void *cont2)
 **	{
 **		if (*((int *)cont1) < *((int *)cont2))
 **			return (-1);
