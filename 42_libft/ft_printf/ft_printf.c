@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhaiduk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: maks <maksym.haiduk@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 14:51:42 by mhaiduk           #+#    #+#             */
-/*   Updated: 2018/01/25 13:03:04 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2019/07/31 18:39:34 by maks             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Goes through the format string, looking for the % symbol
-** If % was found - parse qualifier by filling stuct fq;
+** If % was found - parse qualifier by filling struct fq;
 ** Then next ap will be written on stdout;
 */
 
