@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 16:15:04 by maks              #+#    #+#             */
-/*   Updated: 2019/08/07 15:48:52 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2019/08/07 19:47:00 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int				md5(int argc, char * const *argv)
 	i = optind;
 	while (i < argc)
 	{
-		ft_putendl(argv[i++]);
+		ft_putendl(argv[i]);
+		hash_file(argv[i++]);
 	}
 
 	// ft_putendl("Prepared string dump:");
