@@ -1,48 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ssl_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/10 14:47:15 by mhaiduk           #+#    #+#             */
-/*   Updated: 2019/08/10 14:56:55 by mhaiduk          ###   ########.fr       */
+/*   Created: 2019/08/10 14:41:22 by mhaiduk           #+#    #+#             */
+/*   Updated: 2019/08/10 14:55:07 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "ft_ssl.h"
 
-const t_hash_algo g_algo_list[ALGO_QTY] =
+void		print_error_message(char *wrong_name)
 {
-	{"md5", DIGEST, md5},
-};
+	ft_printf("ft_ssl: Error: %s is an invalid command.\n", wrong_name);
+}
 
-t_hash_func	dispatch(char *algo_name)
+void		print_help_message(void)
 {
 	unsigned int i;
 
+	ft_printf("Standard commands:\n\n");
+	ft_printf("Message Digest commands:\n");
 	i = 0;
 	while (i < ALGO_QTY)
 	{
-		if (ft_strcmp(algo_name, g_algo_list[i].name) == 0)
-			return (g_algo_list[i].func);
+		if (g_algo_list[i].category == DIGEST)
+			ft_putendl(g_algo_list[i].name);
 		i++;
 	}
-	return (NULL);
-}
-
-int			main(int argc, char *const *argv)
-{
-	t_hash_func func;
-
-	func = dispatch(argv[1]);
-	if (!func)
-	{
-		print_error_message(argv[1]);
-		ft_putchar('\n');
-		print_help_message();
-		return (1);
-	}
-	return (func(argc - 1, &(argv[1])));
 }
