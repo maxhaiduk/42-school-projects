@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/27 11:03:18 by mhaiduk           #+#    #+#             */
-/*   Updated: 2019/08/10 12:04:33 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:59:24 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 # define FT_FREE_FIRST	0
 # define FT_FREE_SECOND	1
 # define FT_FREE_BOTH	2
+
+# define FT_TRUE	1
+# define FT_FALSE	0
+
+typedef	char	ft_bool;
 
 typedef struct		s_list
 {
