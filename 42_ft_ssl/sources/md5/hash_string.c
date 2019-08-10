@@ -6,7 +6,7 @@
 /*   By: mhaiduk <mhaiduk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 11:41:32 by mhaiduk           #+#    #+#             */
-/*   Updated: 2019/08/10 11:41:48 by mhaiduk          ###   ########.fr       */
+/*   Updated: 2019/08/10 13:08:21 by mhaiduk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	md5_hash_string(char *string)
 	md5_init(&context);
 	md5_update(&context, (unsigned char *)string, length);
 	md5_finish(digest, &context);
-	md5_print(digest);
+	md5_print(digest, string, FT_FALSE);
 }
