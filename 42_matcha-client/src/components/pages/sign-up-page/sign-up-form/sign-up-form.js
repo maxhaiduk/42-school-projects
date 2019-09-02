@@ -13,7 +13,7 @@ const SignUpForm = () => {
 
     return (
         <InputForm id='login-form' onSubmit={ handleSubmit }>
-            <InputField type='text' name='login' label='Login'
+            <InputField type='text' name='login'
                 unique={{
                     handler: apiService.checkAvailability,
                     timeout: 2000,
@@ -28,12 +28,20 @@ const SignUpForm = () => {
                     },
                 ]}
             />
-            <InputField type='password' name='password' label='Password' rules={[
+            <InputField type='email' name='email' rules={[
+                'email',
+            ]}/>
+            <InputField type='text' name='first-name' rules={[
+                    { length: { max: 12 } },
+            ]}/>
+            <InputField type='text' name='second-name' rules={[
+                    { length: { max: 12 } },
+            ]}/>
+            <InputField type='password' name='password' rules={[
                 'required',
                 'password'
             ]}/>
-            <InputField type='password' name='confirm-password'
-                        label='Confirm password' rules={[
+            <InputField type='password' name='confirm-password' rules={[
                 'required',
                 {
                     equal: 'password'

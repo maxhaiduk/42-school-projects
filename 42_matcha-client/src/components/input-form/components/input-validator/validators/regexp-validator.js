@@ -7,6 +7,7 @@ export default class RegexpValidator extends AbstractValidator {
         '[a-z]': '{name} must contain at least one lowercase character',
         '[A-Z]': '{name} must contain at least one capital character',
         '[0-9]': '{name} must contain at least one number',
+        '^.+@[a-z]+(\.[a-z]+)+$': 'Incorrect email',
     };
 
     /**

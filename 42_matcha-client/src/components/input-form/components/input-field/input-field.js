@@ -1,12 +1,14 @@
 import React from 'react';
 import cx from 'react-classset';
+import { StringHelper } from '~/helpers';
 import Spinner from '~/components/spinner';
 
 import './input-field.css';
 
 const InputField = (props) => {
 
-    const { type, id, name, label, valid, message, loading } = props;
+    const { type, id, name, valid, message, loading } = props;
+    let { label=StringHelper.toHumanCaseCap(name) } = props;
     const required = (props.rules || []).includes('required');
 
     const inputId = id + '-input';
