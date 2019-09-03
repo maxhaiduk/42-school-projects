@@ -7,8 +7,6 @@ export default class UniqueValidator extends AbstractValidator {
 
         const valid = await uniqueHandler(this.inputName, value);
 
-        console.log('result from service: ', valid);
-
         return {
             valid,
             message: this.getMessage(valid, value),

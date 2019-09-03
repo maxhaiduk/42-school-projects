@@ -1,16 +1,10 @@
 import React from "react";
 
 
-const {
-  Provider: CurrentThemeProvider,
-  Consumer: CurrentThemeConsumer,
-} = React.createContext({
-  currentTheme: 'light',
-  changeCurrentTheme: () => {},
+const CurrentThemeContext = React.createContext({
+  currentTheme: '',
+  changeTheme: () => {},
 });
 
 
-export {
-  CurrentThemeProvider,
-  CurrentThemeConsumer,
-}
+export default CurrentThemeContext;

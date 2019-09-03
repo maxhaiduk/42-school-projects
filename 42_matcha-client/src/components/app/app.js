@@ -10,16 +10,15 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <React.StrictMode>
         <div>
-          <ThemeSwitcher/>
           <Header/>
+          <ThemeSwitcher/>
+
           <Switch>
             <Route path="/sign-in" component={SignInPage}/>
             <Route path='/sign-up' component={SignUpPage}/>
           </Switch>
         </div>
-      </React.StrictMode>
     </BrowserRouter>
   );
 };

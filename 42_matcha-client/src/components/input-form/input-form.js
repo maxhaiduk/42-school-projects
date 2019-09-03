@@ -117,7 +117,6 @@ class InputForm extends Component {
         const uniqueValidator = new UniqueValidator(inputName);
 
         let { timerId, unique } = this.state.inputFields[inputName];
-        console.log('timer id: ', timerId);
 
         if (timerId) {
             this.clearTimer(inputName, timerId);
