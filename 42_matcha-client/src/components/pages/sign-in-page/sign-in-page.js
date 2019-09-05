@@ -20,7 +20,7 @@ const SignInPage = () => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root} maxWidth={'sm'}>
+    <Container maxWidth={'sm'}>
       <SignInForm/>
       <div className={classes.linksContainer}>
         <Link component="button" variant="body2" color="primary">

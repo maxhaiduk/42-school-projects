@@ -77,7 +77,7 @@ export default class LengthValidator extends AbstractValidator {
             min: 'less',
         };
 
-        return 'The {name} shouldn`t be {criteria} {value} characters'
+        return 'The {name} shouldn`t be {criteria} than {value} characters'
             .replace('{name}', StringHelper.toHumanCaseCap(this.inputName))
             .replace('{criteria}', map[payload.rule])
             .replace('{value}', payload.value);

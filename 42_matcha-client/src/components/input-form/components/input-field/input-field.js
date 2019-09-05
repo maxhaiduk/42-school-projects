@@ -1,48 +1,37 @@
 import React from 'react';
-import cx from 'react-classset';
 import { StringHelper } from '~/helpers';
 import Spinner from '~/components/spinner';
-
-import './input-field.css';
+import { TextField } from "@material-ui/core";
 
 const InputField = (props) => {
 
-    const { type, id, name, valid, message, loading } = props;
-    let { label=StringHelper.toHumanCaseCap(name) } = props;
-    const required = (props.rules || []).includes('required');
+  const {type, id, name, valid, message, loading, className} = props;
+  let {label = StringHelper.toHumanCaseCap(name)} = props;
+  const required = (props.rules || []).includes('required');
+  label = required ? label + ' *' : label;
 
-    const inputId = id + '-input';
+  const inputId = id + '-input';
 
-    let classes = cx({
-        'input-field': true,
-        'valid-input': valid === true,
-        'invalid-input': valid === false,
-    });
-
-    return (
-        <div id={ id } className='input-field-container'>
-            <label className='input-field-label' htmlFor={ inputId }>
-                { required ? label + '*' : label }
-            </label>
-            { message ?
-                <p className={valid ? 'successMessage' : 'errorMessage'}>{message}</p> :
-                null
-            }
-            <div className='input-container'>
-                <input
-                    id = { inputId }
-                    className={ classes }
-                    type={ type }
-                    name={ name }
-                    disabled={ loading }
-                    onChange={ (event) => {
-                        props.onInput(props.name, event.target.value)
-                    }}
-                />
-                { loading ? <Spinner width={25} thickness={15}/> : null }
-            </div>
-        </div>
-    )
+  return (
+    <div id={id} className={'input-field-container ' + className}>
+      <div className='input-container'>
+        <TextField
+          id={inputId}
+          className={ className }
+          error={valid != null && !valid}
+          type={type}
+          name={name}
+          label={label}
+          helperText={message}
+          disabled={loading}
+          onChange={(event) => {
+            props.onInput(props.name, event.target.value)
+          }}
+        />
+        {loading ? <Spinner width={25} thickness={15}/> : null}
+      </div>
+    </div>
+  )
 };
 
 export default InputField;
