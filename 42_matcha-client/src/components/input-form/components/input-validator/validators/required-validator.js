@@ -22,7 +22,7 @@ export default class RequiredValidator extends AbstractValidator {
 
         let inputName = StringHelper.toHumanCaseCap(this.inputName);
 
-        return 'Field {name} is required'
+        return '{name} is required'
             .replace('{name}', inputName);
     }
 }

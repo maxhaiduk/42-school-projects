@@ -12,7 +12,7 @@ export default class RegexpValidator extends AbstractValidator {
       pattern: '[A-Z]',
       message: '{name} must contain at least one capital character',
     },
-    hasNumber: {
+    hasDigit: {
       pattern: '[0-9]',
       message: '{name} must contain at least one number',
     },

@@ -25,6 +25,9 @@ export default class LengthValidator extends AbstractValidator {
         let rules = payload;
         let rule;
 
+        if (value == null)
+            return true;
+
         for (rule in rules) {
             if (!rules.hasOwnProperty(rule)) {
                 continue;
@@ -77,7 +80,7 @@ export default class LengthValidator extends AbstractValidator {
             min: 'less',
         };
 
-        return 'The {name} shouldn`t be {criteria} than {value} characters'
+        return '{name} shouldn\'t be {criteria} than {value} characters'
             .replace('{name}', StringHelper.toHumanCaseCap(this.inputName))
             .replace('{criteria}', map[payload.rule])
             .replace('{value}', payload.value);

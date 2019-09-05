@@ -41,25 +41,41 @@ const SignUpForm = () => {
                     },
                   ]}
       />
-      <InputField className={classes.textField} type='email' name='email' rules={[
-          'email',
+      <InputField className={classes.textField} type='email' name='email'
+                  rules={[
+                    'required',
+                    'email',
+                  ]}/>
+      <InputField className={classes.textField} type='text' name='firstName'
+                  rules={[
+                    {
+                      length: {
+                        max: 12,
+                        min: 4,
+                      }
+                    },
+                  ]}/>
+      <InputField className={classes.textField} type='text' name='lastName'
+                  rules={[
+                    {length: {max: 12}},
+                  ]}/>
+      <InputField className={classes.textField} type='password' name='password'
+                  rules={[
+                    'required',
+                    'password',
+                    {
+                      length: {
+                        min: 8
+                      }
+                    }
+                  ]}/>
+      <InputField className={classes.textField} type='password'
+                  name='confirm-password' rules={[
+                  'required',
+                  {
+                    equal: 'password'
+                  }
       ]}/>
-      {/*<InputField type='text' name='first-name' rules={[*/}
-      {/*        { length: { max: 12 } },*/}
-      {/*]}/>*/}
-      {/*<InputField type='text' name='second-name' rules={[*/}
-      {/*        { length: { max: 12 } },*/}
-      {/*]}/>*/}
-      {/*<InputField type='password' name='password' rules={[*/}
-      {/*    'required',*/}
-      {/*    'password'*/}
-      {/*]}/>*/}
-      {/*<InputField type='password' name='confirm-password' rules={[*/}
-      {/*    'required',*/}
-      {/*    {*/}
-      {/*        equal: 'password'*/}
-      {/*    }*/}
-      {/*]}/>*/}
       <Button className={classes.button} type="submit" variant="contained"
               color="primary">
         Submit
