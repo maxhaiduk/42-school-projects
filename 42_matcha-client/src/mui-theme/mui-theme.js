@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { green, red } from '@material-ui/core/colors';
+import { green, orange, blue, pink, red } from '@material-ui/core/colors';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CurrentThemeContext from '../context/current-theme-context'
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,21 +10,21 @@ const themes = {
   dark: createMuiTheme({
     palette: {
       type: 'dark',
-      primary: red,
+      primary: orange,
       secondary: green,
     },
     status: {
-      danger: 'orange',
+      danger: red,
     },
   }),
   light: createMuiTheme({
      palette: {
        type: 'light',
-       primary: red,
-       secondary: green,
+       primary: blue,
+       secondary: pink,
      },
      status: {
-       danger: 'orange',
+       danger: red,
      },
    })
 };

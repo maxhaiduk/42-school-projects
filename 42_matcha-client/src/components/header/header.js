@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import {
@@ -34,7 +35,7 @@ export default function Header() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit"><Link to="/sign-in">Sign In</Link></Button>
         </Toolbar>
       </AppBar>
     </div>
