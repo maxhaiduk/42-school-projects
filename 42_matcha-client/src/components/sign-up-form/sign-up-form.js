@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import React from 'react';
+import InputForm, { InputField } from '~/components/input-form';
 import { Button, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
   textField: {
-    marginTop: 20,
+    marginTop: 10,
     width: '100%',
   },
 
@@ -22,82 +22,50 @@ const SignUpForm = () => {
 
   const classes = useStyles();
 
-  const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const {username, email, firstName, lastName, password, confirmPassword} = formState;
-
-  const handleOnChange = ({name, value}) => {
-    setFormState({
-      ...formState,
-      [name]: value,
-    })
+  const handleSubmit = (formState) => {
+    console.log('Sign up form is submitted with values');
+    console.log(formState);
   };
 
   return (
-    <ValidatorForm
-      className={classes.container}
-      onSubmit={() => {
-        console.log(formState)
-      }}
-      onError={errors => console.log(errors)}
-    >
-      <TextValidator
-        className={classes.textField}
-        label="Username"
-        onChange={(event) => {
-          handleOnChange(event.target)
-        }}
-        name="username"
-        value={username}
-        validators={['required']}
-        errorMessages={['this field is required']}
+    <InputForm className={classes.container} id='sign-up-form'
+               onSubmit={handleSubmit}>
+      <InputField className={classes.textField} type='text' name='username'
+                  rules={[
+                    'required',
+                    {
+                      length: {
+                        max: 12,
+                        min: 4,
+                      }
+                    },
+                  ]}
       />
-      <TextValidator
-        className={classes.textField}
-        label="Email"
-        onChange={(event) => {
-          handleOnChange(event.target)
-        }}
-        name="email"
-        value={email}
-        validators={['required', 'isEmail']}
-        errorMessages={['this field is required', 'email is not valid']}
-      />
-      <TextValidator
-        className={classes.textField}
-        label="First Name"
-        onChange={(event) => {
-          handleOnChange(event.target)
-        }}
-        name="firstName"
-        value={firstName}
-        validators={['required']}
-        errorMessages={['this field is required']}
-      />
-      <TextValidator
-        className={classes.textField}
-        label="Password"
-        onChange={(event) => {
-          handleOnChange(event.target)
-        }}
-        name="password"
-        value={password}
-        validators={['required']}
-        errorMessages={['this field is required']}
-      />
+      <InputField className={classes.textField} type='email' name='email' rules={[
+          'email',
+      ]}/>
+      {/*<InputField type='text' name='first-name' rules={[*/}
+      {/*        { length: { max: 12 } },*/}
+      {/*]}/>*/}
+      {/*<InputField type='text' name='second-name' rules={[*/}
+      {/*        { length: { max: 12 } },*/}
+      {/*]}/>*/}
+      {/*<InputField type='password' name='password' rules={[*/}
+      {/*    'required',*/}
+      {/*    'password'*/}
+      {/*]}/>*/}
+      {/*<InputField type='password' name='confirm-password' rules={[*/}
+      {/*    'required',*/}
+      {/*    {*/}
+      {/*        equal: 'password'*/}
+      {/*    }*/}
+      {/*]}/>*/}
       <Button className={classes.button} type="submit" variant="contained"
               color="primary">
         Submit
       </Button>
-    </ValidatorForm>
+    </InputForm>
   );
 };
 
-export default SignUpForm
+export default SignUpForm;
