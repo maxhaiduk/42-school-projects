@@ -2,8 +2,8 @@ import React from 'react';
 import InputForm, { InputField } from '~/components/input-form';
 import { Button, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
-  container: {
+const useStyles = makeStyles((theme) => ({
+  form: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -15,6 +15,10 @@ const useStyles = makeStyles(() => ({
 
   button: {
     marginTop: 20,
+    width: 200,
+    [theme.breakpoints.down('xs')]: {
+      width: '100%',
+    },
   }
 }));
 
@@ -28,7 +32,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <InputForm className={classes.container} id='sign-up-form'
+    <InputForm className={classes.form} id='sign-up-form'
                onSubmit={handleSubmit}>
       <InputField className={classes.textField} type='text' name='username'
                   rules={[
@@ -64,17 +68,15 @@ const SignUpForm = () => {
                     'required',
                     'password',
                     {
-                      length: {
-                        min: 8
-                      }
+                      length: {min: 8}
                     }
                   ]}/>
       <InputField className={classes.textField} type='password'
                   name='confirm-password' rules={[
-                  'required',
-                  {
-                    equal: 'password'
-                  }
+        'required',
+        {
+          equal: 'password'
+        }
       ]}/>
       <Button className={classes.button} type="submit" variant="contained"
               color="primary">

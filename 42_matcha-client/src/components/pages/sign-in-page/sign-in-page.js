@@ -5,13 +5,15 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import Link from '@material-ui/core/Link';
 import { Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(() => ({
-  linksContainer: {
-    marginTop: 20,
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
+    linksContainer: {
+      marginTop: 20,
+    },
+    button: {
+      width: '100%'
+    }
 }));
 
 
@@ -22,19 +24,23 @@ const SignInPage = () => {
   return (
     <Container maxWidth={'sm'}>
       <SignInForm/>
-      <div className={classes.linksContainer}>
-        <Link component="button" variant="body2" color="primary">
-          <RouterLink to={'/'}>
-            Forgot the password?
-          </RouterLink>
-        </Link>
+        <Grid justify="center" className={classes.linksContainer} container spacing={4}>
+          <Grid item xs={12} sm={6}>
+            <Button className={classes.button} color="secondary">
+              <Link component={RouterLink} variant="body2" color="primary" to={'/'}>
+                Forgot the password?
+              </Link>
+            </Button>
+          </Grid>
 
-        <Button variant="outlined" color="secondary">
-          <RouterLink to={'/sign-up'}>
-            Create an account
-          </RouterLink>
-        </Button>
-      </div>
+          <Grid item xs={12} sm={6}>
+            <Button className={classes.button} variant="outlined" color="secondary">
+              <Link component={RouterLink} to={'/sign-up'}>
+                Create an account
+              </Link>
+            </Button>
+          </Grid>
+        </Grid>
     </Container>
   )
 };

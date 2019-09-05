@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
+import Link from "@material-ui/core/Link";
 import {
   AppBar,
   Toolbar,
@@ -29,13 +30,16 @@ export default function Header() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} aria-label="menu">
-            <MenuIcon />
+          <IconButton
+            edge="start" className={classes.menuButton} aria-label="menu">
+            <MenuIcon/>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit"><Link to="/sign-in">Sign In</Link></Button>
+
+          <Link color="inherit" className={classes.link} component={RouterLink}
+                to="/sign-in">Sign In</Link>
         </Toolbar>
       </AppBar>
     </div>

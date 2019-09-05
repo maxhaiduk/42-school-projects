@@ -24,6 +24,7 @@ const themes = {
        secondary: pink,
      },
      status: {
+       success: green,
        danger: red,
      },
    })
