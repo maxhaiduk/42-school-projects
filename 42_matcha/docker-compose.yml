@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./.docker/nginx
+    volumes:
+    - .:/usr/share/nginx/html
+    - ./.docker/nginx/log:/var/log/nginx/
+    ports:
+    - 80:80
+
+  php-fpm:
+    build: ./.docker/php-fpm
+    env_file:
+      - .env
+    volumes:
+    - .:/var/www/html
