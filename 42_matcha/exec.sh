@@ -16,6 +16,8 @@ COMPOSE="docker-compose"
 # docker service name where commands will be executed
 CONTAINER="php-fpm"
 
+USER="www-data"
+
 # execute command in running container
 # globals:
 #   $COMPOSE, $TTY
@@ -24,7 +26,7 @@ CONTAINER="php-fpm"
 #   $2.. - command itself
 function stack_exec () {
     local CONTAINER=$1; shift
-    (set -x; $COMPOSE exec $TTY --user www-data $CONTAINER $@)
+    (set -x; $COMPOSE exec $TTY --user $USER $CONTAINER $@)
 }
 
 # spin up ephemeral container and run command in it
@@ -37,7 +39,7 @@ function stack_exec () {
 #   $2.. - command itself
 function stack_run () {
     local CONTAINER=$1; shift
-    (set -x; $COMPOSE run $TTY --rm --user www-data --entrypoint="/bin/bash -c" $CONTAINER "$*")
+    (set -x; $COMPOSE run $TTY --rm --user $USER --entrypoint="/bin/bash -c" $CONTAINER "$*")
 }
 
 function usage () {
@@ -80,12 +82,16 @@ esac
 case $COMMAND in
     setup)
         stack_run $CONTAINER composer install --prefer-dist
-        stack_run voice php artisan migrate
+        stack_run $CONTAINER artisan migrate
         ;;
 
     composer)
-        stack_run voice composer $@ ;;
+        stack_run $CONTAINER composer $@ ;;
 
     artisan)
         stack_run $CONTAINER php artisan $@ ;;
+
+    bash)
+        stack_exec $CONTAINER bash ;;
+
 esac
