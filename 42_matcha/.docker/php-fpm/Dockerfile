@@ -10,7 +10,7 @@ RUN apt-get install -y unzip curl
 
 # xdebug
 RUN pecl install xdebug-2.9.0 && docker-php-ext-enable xdebug
-COPY config/xdebug.ini $PHP_INI_DIR/conf.d/
+COPY config/xdebug.ini "$PHP_INI_DIR"/conf.d/
 
 # composer
 RUN /usr/local/bin/composer-installer.sh\
@@ -33,6 +33,6 @@ ARG USER_GID=33
 RUN chown -R www-data:www-data /var/www
 
 # sync www-data uid/gid with host user
-RUN /usr/local/bin/change-user-id.sh www-data $USER_UID $USER_GID
+RUN /usr/local/bin/change-user-id.sh www-data "$USER_UID" "$USER_GID"
 
 RUN install -o www-data -g www-data -d /var/www/.composer
