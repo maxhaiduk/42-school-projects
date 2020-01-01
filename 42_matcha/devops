@@ -45,11 +45,13 @@ function stack_run () {
 function usage () {
 
     declare -A COMMANDS=(
-        [help     ]='display this help message'
-        [bash     ]="open bash interpreter in $CONTAINER container"
-        [setup    ]='install project dependencies and and perform migration'
-        [composer ]="shortcut for composer in $CONTAINER container"
-        [artisan  ]="shortcut for artisan in $CONTAINER container"
+        [help       ]='display this help message'
+        [bash       ]="open bash interpreter in $CONTAINER container"
+        [setup      ]='install project dependencies and and perform migration'
+        [composer   ]="shortcut for composer in $CONTAINER container"
+        [artisan    ]="shortcut for artisan in $CONTAINER container"
+        [test       ]="run tests"
+        [test-failed]="run failed tests first"
     )
 
     echo "Usage: $(basename "$0") [COMMAND]"
@@ -93,6 +95,12 @@ case $COMMAND in
 
     artisan)
         stack_run "$CONTAINER" php artisan "$@" ;;
+
+    test)
+        stack_run "$CONTAINER" phpunit "$@" ;;
+
+    test-failed)
+        stack_run "$CONTAINER" phpunit --order-by=defects --stop-on-failure ;;
 
     bash)
         stack_exec "$CONTAINER" bash ;;
