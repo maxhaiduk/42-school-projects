@@ -29,10 +29,12 @@ RUN apt-get install -y libpq-dev && \
 ARG USER_UID=33
 ARG USER_GID=33
 
-# working dir and ownership
+# working directory ownership
 RUN chown -R www-data:www-data /var/www
 
 # sync www-data uid/gid with host user
 RUN /usr/local/bin/change-user-id.sh www-data "$USER_UID" "$USER_GID"
 
+# composer settings
 RUN install -o www-data -g www-data -d /var/www/.composer
+ENV PATH="$PATH":/var/www/html/vendor/bin
