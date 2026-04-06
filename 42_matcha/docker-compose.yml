@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  nginx:
+    build: ./.docker/nginx
+    volumes:
+    - .:/usr/share/nginx/html
+    - ./.docker/nginx/log:/var/log/nginx/
+    ports:
+    - 8080:80
+
+  php-fpm:
+    build:
+      context: ./.docker/php-fpm
+      args:
+        - USER_UID=${USER_UID:-1000}
+        - USER_GID=${USER_GID:-1000}
+    env_file:
+      - .env
+    volumes:
+      - .:/var/www/html
