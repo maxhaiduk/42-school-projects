@@ -1,0 +1,14 @@
+.*
+!.gitignore
+
+# Object files
+*.o
+
+# Dependencies files
+*.d
+
+# executable
+ft_ssl
+
+*.dSYM
+__pycache__
