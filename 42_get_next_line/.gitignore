@@ -1,0 +1,9 @@
+*~
+#*#
+.*
+!.gitignore
+*.o
+README.md
+cleantrash
+*a.out
+libft.a
