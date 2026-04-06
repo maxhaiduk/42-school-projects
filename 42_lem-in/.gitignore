@@ -1,0 +1,18 @@
+#temp files
+*~
+*#*#
+
+#hidden files
+.*
+!.gitignore
+
+#object files
+*.o
+
+*.pyc
+
+libft.a
+lem-in
+cleartrash
+
+checklist
