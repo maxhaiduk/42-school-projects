@@ -1,0 +1,12 @@
+*~
+*#*#
+.*
+!.gitignore
+*.o
+libft/testing*
+testing/*
+README.md
+cleantrash
+libftprintf.a
+libft/libft.a
+work_plan.ods
