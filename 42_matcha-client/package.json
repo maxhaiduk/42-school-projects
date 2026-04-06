@@ -1,0 +1,44 @@
+{
+  "name": "matcha",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.4.0",
+    "@material-ui/icons": "^4.2.1",
+    "classnames": "^2.2.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-material-ui-form-validator": "^2.0.9",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "2.0.3",
+    "tailwindcss": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-root-import": "^6.4.1",
+    "css-loader": "^3.2.0",
+    "error-overlay-webpack-plugin": "^0.4.1",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "react-hot-loader": "^4.12.12",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind utilities;
+
+.input-field-container {
+    @apply mb-4;
+}
+
+.input-field-label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+}
+
+.input-field {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+.errorMessage {
+    @apply text-red-500 text-xs italic;
+}
+
+.successMessage {
+    @apply text-green-500 text-xs italic;
+}
+
+.valid-input {
+    @apply outline-none;
+
+    box-shadow: 0 0 3px 1px limegreen !important;
+}
+
+.invalid-input {
+    @apply outline-none;
+
+    box-shadow: 0 0 3px 1px #ff4c31 !important;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container .spinner {
+    position: absolute;
+
+    right: 10px;
+    top: 7px;
+}
