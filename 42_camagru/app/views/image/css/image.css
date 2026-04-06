@@ -1,0 +1,30 @@
+#toolbar__container {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#toolbar__container > img {
+    margin: 10px;
+
+    width: 75px;
+
+    display: block;
+    height: auto;
+}
+
+header {
+    margin-bottom: 0 !important;
+}
+
+#image__past-photos img {
+    height: 200px;
+
+    padding: 10px;
+}

@@ -1,0 +1,15 @@
+.*
+!.gitignore
+!.env.example
+
+# Database volume
+database
+
+# Local data base dump
+db_dump
+
+# nginx logs
+nginx/logs
+
+#smtp relay data
+php-fpm/ssmtp.env
